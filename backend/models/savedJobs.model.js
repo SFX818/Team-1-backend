@@ -5,7 +5,8 @@ const SavedJobs = mongoose.model(
     new mongoose.Schema({
        location: String,
        language: String,
-       title: String,
+       company: String,
+       jobTitle: String,
        heardBack: {
            status: Boolean,
            scheduledInterview: Date,

@@ -2,11 +2,14 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
-import { login } from '../services/auth.service'
-
+//helper
+import {login} from '../services/auth.service'
+import {resMessage} from '../utilities/functions.utilities'
+//components 
+import FormGroup from './common/FormGroup'
+import ButtonSpinner from './common/ButtonSpinner'
 // Function given to react-validator
-const required = (value) => {
+const required = (value) => {          
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -15,21 +18,19 @@ const required = (value) => {
     );
   }
 };
-
 const Login = (props) => {
   const form = useRef();
   const checkBtn = useRef();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-
   // Stores the username in our username state
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
   };
+
   // Stores the password in our password state
   const onChangePassword = (e) => {
     const password = e.target.value;
@@ -37,41 +38,34 @@ const Login = (props) => {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    //Prevent message clear them out
-    setMessage("")
-    setLoading(true)
+      e.preventDefault()
+      //prevent message clear them out 
+      setMessage('')
+      setLoading(true)
+      //valides all the filed s 
+      form.current.validateAll()
 
-    // Validates all the fields
-    form.current.validateAll();
+      if(checkBtn.current.context._errors.length === 0){
 
-    // Validator stores errors and we can check if error exist
-        console.log(checkBtn.current)
-    if(checkBtn.current.context._errors.length === 0){
-        login(username, password).then(
-            () => {
-              props.history.push("/profile");
-              window.location.reload()
-            },
-            (error) => {
-                // Checking all the data recieved from our backend
-              const resMessage =
-                (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
-                error.message ||
-                error.toString();
-                // Setting loading to false and return the error
-                  setLoading(false)
-                setMessage(resMessage)
-            }
-          );
-    }else {
+      login(username, password).then(
+        () =>{
+          props.history.push('/profile')
+          window.location.reload()
+        },
+        (error) => {
+          //checking all the data recieved from our backend 
+              //setting loading to false and return the error 
+              setLoading(false)
+              setMessage(resMessage(error))
+        }
+      )
+      }else{
         setLoading(false)
-    }
-
+      }
   };
   
+
+  console.log(username, password);
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -80,10 +74,8 @@ const Login = (props) => {
           alt="profile-img"
           className="profile-img-card"
         />
-
         <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
+          <FormGroup text="Username">
             <Input
               type="text"
               className="form-control"
@@ -92,9 +84,9 @@ const Login = (props) => {
               onChange={onChangeUsername}
               validations={[required]}
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+         </FormGroup>
+
+          <FormGroup text="Password">
             <Input
               type="password"
               className="form-control"
@@ -103,16 +95,10 @@ const Login = (props) => {
               onChange={onChangePassword}
               validations={[required]}
             />
-          </div>
+          </FormGroup>
 
-          <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Login</span>
-            </button>
-          </div>
+        <ButtonSpinner text="login" loading={loading} />
+
 
           {message && (
             <div className="form-group">
@@ -121,12 +107,10 @@ const Login = (props) => {
               </div>
             </div>
           )}
-
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
       </div>
     </div>
   );
 };
-
 export default Login;

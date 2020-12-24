@@ -1,8 +1,10 @@
 const express = require('express') 
 const bodyParser = require('body-parser') 
 const dbConfig = require('./config/db.config')
-const cors = require("cors"); /*  Require here   */
 const mongoose = require("mongoose");
+//to prevent unanthorixed endpoints in the browser
+const cors = require("cors"); /*  Require here   */
+
 
 const app = express()  
 

@@ -53,10 +53,26 @@ As a user:
 ##### Network Dashboard: 
 <img width="871" alt="Screen Shot 2020-12-24 at 3 22 40 PM" src="https://user-images.githubusercontent.com/69879822/103105454-f5549100-45fb-11eb-8eb8-94cfeb8910c1.png">
 
-Website Used: <https://lucid.app/>
+Website Used: [Lucid App](https://lucid.app/)
 
 ### ERD
 
 <img width="1196" alt="Screen Shot 2020-12-24 at 4 09 08 PM" src="https://user-images.githubusercontent.com/69879822/103106342-9e05ef00-4602-11eb-80ef-9c0ae13759ed.png">
 
-Website Used: <http://whimsical.com>
+
+Website Used: [Whimsical](http://whimsical.com)
+
+
+### Technologies Used:
+* Node/Express
+* Bcrypt for authentification and password hashing.
+* Mongoose for data structure.
+* MongoDB for data storage.
+* Axios for API calls/fetch data.
+* CSS for styling,
+* HTML for basic structure
+* JavaScript used to make web page interactive 
+* Postman used to help with RESTful apis.
+
+
+### Routes:

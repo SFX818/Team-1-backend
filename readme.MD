@@ -34,4 +34,29 @@ As a user:
 * Be able to write notes on how an interview went: good/bad/space to improve.
 * Be able to keep track and organize contacts and network.
 
- 
+ ### Wireframe: 
+
+ ##### Home:
+
+ <img width="711" alt="Screen Shot 2020-12-24 at 2 48 21 PM" src="https://user-images.githubusercontent.com/69879822/103104781-4b730580-45f7-11eb-8501-54b134aa12c7.png">
+
+##### Search Page:
+<img width="800" alt="Screen Shot 2020-12-24 at 2 53 13 PM" src="https://user-images.githubusercontent.com/69879822/103105083-5890f400-45f9-11eb-9e8e-24c7a8c4d021.png">
+
+##### Profile:
+
+<img width="808" alt="Screen Shot 2020-12-24 at 3 07 10 PM" src="https://user-images.githubusercontent.com/69879822/103105141-cc330100-45f9-11eb-895b-804d722d49c5.png">
+
+##### Results:
+<img width="875" alt="Screen Shot 2020-12-24 at 3 20 17 PM" src="https://user-images.githubusercontent.com/69879822/103105400-a0b11600-45fb-11eb-97fd-1bd0f161347e.png">
+
+##### Network Dashboard: 
+<img width="871" alt="Screen Shot 2020-12-24 at 3 22 40 PM" src="https://user-images.githubusercontent.com/69879822/103105454-f5549100-45fb-11eb-8eb8-94cfeb8910c1.png">
+
+Website Used: <https://lucid.app/>
+
+### ERD
+
+<img width="1196" alt="Screen Shot 2020-12-24 at 4 09 08 PM" src="https://user-images.githubusercontent.com/69879822/103106342-9e05ef00-4602-11eb-80ef-9c0ae13759ed.png">
+
+Website Used: <http://whimsical.com>

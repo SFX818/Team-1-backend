@@ -7,11 +7,26 @@ const User = mongoose.model(
        email: String,
        password: String,
        roles: [
-           {
+            {
                type: mongoose.Schema.Types.ObjectId,
                ref: "Role"
            }
-       ] 
+       ],
+       todos: [],
+       savedJobs: [
+            {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "SavedJob"
+            }
+       ],
+       codingGoal: Number,
+       appGoal: Number,
+       network: [
+            {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Network"
+            }
+        ]
     })
 )
 

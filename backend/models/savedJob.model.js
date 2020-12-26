@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
-const SavedJobs = mongoose.model(
-    "SavedJobs",
+const SavedJob = mongoose.model(
+    "SavedJob",
     new mongoose.Schema({
        location: String,
        language: String,
@@ -20,4 +20,4 @@ const SavedJobs = mongoose.model(
     })
 )
 
-module.exports = SavedJobs
+module.exports = SavedJob

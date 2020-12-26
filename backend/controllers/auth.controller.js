@@ -4,6 +4,8 @@ const db = require('../models/index')
 const User = db.user
 const Role = db.role
 
+
+
 // this will give access to encode and decode the jwt itself. ( allows us to work with jwt)
 const jwt = require('jsonwebtoken')
 // For hashing / encrypting out passwords 

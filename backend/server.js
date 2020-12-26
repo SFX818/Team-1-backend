@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 const db = require('./models/')
 const Role = db.role
 
+//access the models
+const SavedJob = db.savedJob;
+
+
 // connect to mongo database
 db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
@@ -42,6 +46,8 @@ app.get('/', (req,res) => {
 // import the routes we wrote
 require('./routes/auth.routes')(app)
 require('./routes/user.routes')(app)
+require('./routes/savedJob.routes')(app)
+
 
 // set the port, listen for request
 const PORT = process.env.PORT || 8080
@@ -74,3 +80,31 @@ function initial() {
       }
     });
   }
+
+
+
+  // THIS IS TESTING THE SAVED JOB ROUTE.
+  // const savedJob1 = new SavedJob({
+  //   language: "english",
+  //   company: "google",
+  //   jobTitle: "junior software developer",
+  //   heardBack: {
+  //     status: "true",
+  //     scheduledInterview: "1-20-2021",
+  //     closed: "false",
+  // },
+  //   appliedTo: {
+  //     appStatus: "true",
+  //     date: "12-21-2020",
+  //     notes: ["this is a test"],
+  //   }
+  // })
+
+  // savedJob1.save()
+  // console.log("THIS IS THE SAVED JOB", savedJob1)
+
+
+  
+
+
+

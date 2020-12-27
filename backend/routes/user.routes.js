@@ -1,5 +1,6 @@
 const { authJwt } = require('../middlewares')
 const controller = require('../controllers/user.controller')
+const savedJobController = require('../controllers/savedJob.controller')
 
 module.exports = function(app) {
     app.use( (req,res, next) => {
@@ -10,6 +11,8 @@ module.exports = function(app) {
         );
         next();
     })
+
+    app.get("/savedJob", [authJwt.verifyWebToken], savedJobController.findAll)
 
     app.get("/api/test/all", controller.allAccess)
 

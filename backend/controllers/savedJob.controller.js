@@ -1,6 +1,7 @@
 const { savedJob } = require('../models/index');
 const db = require('../models/index')
 const SavedJob = db.savedJob
+const User = db.user
 
 
    
@@ -43,16 +44,24 @@ exports.create = (req, res) =>{
 
                 // GET all jobs  (working) 
 exports.findAll = (req, res) =>{
-    SavedJob.find()
-    .then((data)=>{
-        res.send(data);
-    })
-    .catch((err)=>{
-        res.status(500).send({
-            message:
-            err.message || "some error occured in findAll"
-        })
-    })
+  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
+  User.findOne({
+    _id:req.userId
+  })
+  .then((user) => {
+    console.log("THIS IS THE TEST FOR THE USER ID")
+    res.send(user)
+  })
+    // SavedJob.find()
+    // .then((data)=>{
+    //     res.send(data);
+    // })
+    // .catch((err)=>{
+    //     res.status(500).send({
+    //         message:
+    //         err.message || "some error occured in findAll"
+    //     })
+    // })
 }
 
 

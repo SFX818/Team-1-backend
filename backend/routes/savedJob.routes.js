@@ -2,7 +2,7 @@ const savedJob  = require('../controllers/savedJob.controller')
 
 module.exports = app =>{
     
-    //retriever all tutorials
+    //retrieve all saved jobs
     app.get("/savedJob", savedJob.findAll)
     
     
@@ -14,5 +14,6 @@ module.exports = app =>{
     app.delete("/savedjob/:id", savedJob.delete)
 
 
-
+    // retrieve all the jobs that I have heard back from
+    app.get("/heardback", savedJob.findAllHeardBack)
 }

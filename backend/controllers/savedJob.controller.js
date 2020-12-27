@@ -70,3 +70,62 @@ exports.delete = (req, res) =>{
         });
       });
   };
+
+
+
+        //GET by heardback: true  (working)
+exports.findAllHeardBack = (req, res)=>{
+    SavedJob.find({"heardBack.status": true} )
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: "Cannot find all heard back jobs!"
+          });
+        } else res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error finding jobs by status heard back true" 
+        });
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        //GET (by heardback: true)
+//   exports.findAllHeardBack = (req, res)=>{
+//     SavedJob.find({location:"boston"})
+//     .then(data => {
+//         if (!data) {
+//           res.status(404).send({
+//             message: "Cannot find all heard back jobs!"
+//           });
+//         } else res.send(data);
+//       })
+//       .catch(err => {
+//         res.status(500).send({
+//           message: "Error finding jobs by status heard back true" 
+//         });
+//       });
+//     }

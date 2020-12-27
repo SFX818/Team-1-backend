@@ -11,15 +11,15 @@ exports.create = (req, res) =>{
         company: req.body.company,
         jobTitle: req.body.jobTitle,
         heardBack: {
-            status: req.body.status,
-            scheduledInterview: req.body.scheduledInterview,
-            closed: req.body.closed,
+            status: req.body.heardBack.status,
+            scheduledInterview: req.body.heardBack.scheduledInterview,
+            closed: req.body.heardBack.closed,
         },
         appliedTo: {
-            appStatus: req.body.appStatus,
-            date: req.body.date,
+            appStatus: req.body.appliedTo.appStatus,
+            date: req.body.appliedTo.date,
             notes: [
-                req.body.notes
+                req.body.appliedTo.notes
             ]
         }
     })

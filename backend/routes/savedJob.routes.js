@@ -6,12 +6,12 @@ module.exports = app =>{
     app.get("/savedJob", savedJob.findAll)
     
     
-    //route that saves a job to db
+    //saves a job to db
     app.post("/newsavedjob", savedJob.create)
 
 
-
-
+    //delete a saved job
+    app.delete("/savedjob/:id", savedJob.delete)
 
 
 

@@ -149,6 +149,7 @@ function initial() {
 
 
   const savedJob4 = new SavedJob({
+    location: "boston",
     language: "CSS",
     company: "google",
     jobTitle: "junior software developer",

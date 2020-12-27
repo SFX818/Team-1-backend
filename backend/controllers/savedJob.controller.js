@@ -4,9 +4,9 @@ const SavedJob = db.savedJob
 
 
 exports.create = (req, res) =>{
-                                    //POST ROUTE
+                                    //POST (working)
     const savedJob = new SavedJob({
-        location: req.body.title,
+        location: req.body.location,
         language: req.body.language,
         company: req.body.company,
         jobTitle: req.body.jobTitle,
@@ -26,18 +26,18 @@ exports.create = (req, res) =>{
     savedJob.save(savedJob)
     .then((data)=>{
         res.send(data)
-})
-.catch((err)=>{
-    res.status(500).send({
-        message:
-        err.message || "some error occured"
+    })
+    .catch((err)=>{
+        res.status(500).send({
+            message:
+            err.message || "some error occured"
+        });
     });
-});
 }
 
 
 
-                    // GET ROUTE 
+                    // GET   (working) 
 exports.findAll = (req, res) =>{
     SavedJob.find()
     .then((data)=>{
@@ -51,3 +51,22 @@ exports.findAll = (req, res) =>{
     })
 }
 
+
+            //DELETE   (working)
+exports.delete = (req, res) =>{
+    const id = req.params.id
+    SavedJob.remove(
+        {_id: id},
+    ).then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot delete id=${id}. fix the delete controller!`
+          });
+        } else res.send({ message: "saved job was updated successfully." });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error deleting Tutorial with id=" + id
+        });
+      });
+  };

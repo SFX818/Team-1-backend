@@ -3,8 +3,12 @@ const db = require('../models/index')
 const SavedJob = db.savedJob
 
 
+   
+
+
+
+                //POST (working)
 exports.create = (req, res) =>{
-                                    //POST (working)
     const savedJob = new SavedJob({
         location: req.body.location,
         language: req.body.language,
@@ -37,7 +41,7 @@ exports.create = (req, res) =>{
 
 
 
-                    // GET all jobs  (working) 
+                // GET all jobs  (working) 
 exports.findAll = (req, res) =>{
     SavedJob.find()
     .then((data)=>{
@@ -156,9 +160,22 @@ exports.updateNote = (req, res)=>{
 
 
 
-
-
-
+        // GET closed: true (working)
+exports.findAllRejected = (req, res)=>{
+    SavedJob.find({"heardBack.closed": true} )
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: "Cannot find all rejected jobs!"
+          });
+        } else res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error finding all rejected jobs" 
+        });
+    });
+}        
 
 
 

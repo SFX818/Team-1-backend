@@ -22,4 +22,7 @@ module.exports = app =>{
 
     // retrieve a job by its id
     app.get("/findjob/:id", savedJob.findJobById)
+
+    //retrieve all jobs user was rejected from
+    app.get("/rejected", savedJob.findAllRejected)
 }

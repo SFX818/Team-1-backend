@@ -111,8 +111,27 @@ exports.findAllAppliedTo = (req, res)=>{
 }
 
 
+        //PUT   update note array
+exports.updateNote = (req, res)=>{
+    const id= req.params.id
 
-
+    SavedJob.update(
+        {_id: id},
+        // {language: req.body.language}
+        {"appliedTo.notes": req.body.notes}
+    ).then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot update notes with id=${id}.`
+          });
+        } else res.send({ message: "note was updated successfully." });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating notes with id=" + id
+        });
+      });
+  };
 
 
 

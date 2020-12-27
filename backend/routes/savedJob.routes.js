@@ -17,7 +17,8 @@ module.exports = app =>{
     // retrieve all the jobs user has applied for
     app.get("/appliedto", savedJob.findAllAppliedTo)
 
-
+    //update the note 
+    app.put("/updatenote/:id", savedJob.updateNote)
 
 
 }

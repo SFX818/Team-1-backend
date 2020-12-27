@@ -83,7 +83,7 @@ function initial() {
 
 
 
-  // THIS IS TESTING THE SAVED JOB ROUTE.
+  // THIS IS TESTING THE SAVED JOB ROUTE.   ... POST?
   // const savedJob1 = new SavedJob({
   //   language: "english",
   //   company: "google",
@@ -104,7 +104,68 @@ function initial() {
   // console.log("THIS IS THE SAVED JOB", savedJob1)
 
 
-  
+  // const savedJob2 = new SavedJob({
+  //   language: "javaScript",
+  //   company: "Amazon",
+  //   jobTitle: "Sr. software developer",
+  //   heardBack: {
+  //     status: "false",
+  //     scheduledInterview: "",
+  //     closed: "false",
+  // },
+  //   appliedTo: {
+  //     appStatus: "true",
+  //     date: "12-26-2020",
+  //     notes: ["this is second test"],
+  //   }
+  // })
+
+  // savedJob2.save()
+  // console.log("THIS IS THE SAVED JOB", savedJob2)
+
+
+
+
+
+  // const savedJob3 = new SavedJob({
+  //   language: "java",
+  //   company: "Youtube",
+  //   jobTitle: "Software developer",
+  //   heardBack: {
+  //     status: "true",
+  //     scheduledInterview: "4/20/21",
+  //     closed: "false",
+  // },
+  //   appliedTo: {
+  //     appStatus: "true",
+  //     date: "12-31-2020",
+  //     notes: ["this is the third test"],
+  //   }
+  // })
+
+  // savedJob3.save()
+  // console.log("THIS IS THE SAVED JOB", savedJob3)
+
+
+
+  const savedJob4 = new SavedJob({
+    language: "CSS",
+    company: "google",
+    jobTitle: "junior software developer",
+    heardBack: {
+      status: "true",
+      scheduledInterview: "1-20-2021",
+      closed: "true",
+  },
+    appliedTo: {
+      appStatus: "true",
+      date: "12-21-2020",
+      notes: ["this is terminal test"],
+    }
+  })
+
+    savedJob4.save()
+  console.log("THIS IS THE SAVED JOB", savedJob4)
 
 
 

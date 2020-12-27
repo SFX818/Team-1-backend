@@ -1,13 +1,14 @@
 const savedJob  = require('../controllers/savedJob.controller')
-let router = require("express").Router();
 
 module.exports = app =>{
-
-    //route that saves a job to db
-    router.post("/", savedJob.create)
-
+    
     //retriever all tutorials
-    // router.get("/", savedJob.findAll)
+    app.get("/savedJob", savedJob.findAll)
+    
+    
+    //route that saves a job to db
+    app.post("/newsavedjob", savedJob.create)
+
 
 
 

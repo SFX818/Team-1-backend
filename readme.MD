@@ -23,9 +23,9 @@ In addition, our application helps the user stay organized and track their progr
 
 
 
-### User Story: PAOLA IS TESTING GITHUB
+### User Story: 
 
-As a user: TEST TEST TEST
+As a user: 
 * Be able to view and choose jobs by specific coding language(s) and location.
 * Be able to save favorite jobs.
 * Be able to set and keep track of weekly goals.

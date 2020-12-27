@@ -93,6 +93,24 @@ exports.findAllHeardBack = (req, res)=>{
 
 
 
+        //GET by applied: true  (working)
+exports.findAllAppliedTo = (req, res)=>{
+    SavedJob.find({"appliedTo.appStatus": true} )
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: "Cannot find all heard back jobs!"
+          });
+        } else res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error finding jobs by status heard back true" 
+        });
+    });
+}
+
+
 
 
 

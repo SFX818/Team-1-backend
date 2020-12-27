@@ -5,7 +5,7 @@ module.exports = app =>{
     //retrieve all saved jobs
     app.get("/savedJob", savedJob.findAll)
     
-    //saves a job to db
+    //save job to db
     app.post("/newsavedjob", savedJob.create)
 
     //delete a saved job
@@ -17,8 +17,9 @@ module.exports = app =>{
     // retrieve all the jobs user has applied for
     app.get("/appliedto", savedJob.findAllAppliedTo)
 
-    //update the note 
+    //update the note array inside appliedTo Object
     app.put("/updatenote/:id", savedJob.updateNote)
 
-
+    // retrieve a job by its id
+    app.get("/findjob/:id", savedJob.findJobById)
 }

@@ -37,7 +37,7 @@ exports.create = (req, res) =>{
 
 
 
-                    // GET   (working) 
+                    // GET all jobs  (working) 
 exports.findAll = (req, res) =>{
     SavedJob.find()
     .then((data)=>{
@@ -52,7 +52,7 @@ exports.findAll = (req, res) =>{
 }
 
 
-            //DELETE   (working)
+            //DELETE based on :id   (working)
 exports.delete = (req, res) =>{
     const id = req.params.id
     SavedJob.remove(
@@ -73,7 +73,7 @@ exports.delete = (req, res) =>{
 
 
 
-        //GET by heardback: true  (working)
+        //GET  heardback: true  (working)
 exports.findAllHeardBack = (req, res)=>{
     SavedJob.find({"heardBack.status": true} )
     .then(data => {
@@ -93,7 +93,7 @@ exports.findAllHeardBack = (req, res)=>{
 
 
 
-        //GET by applied: true  (working)
+        //GET  applied: true  (working)
 exports.findAllAppliedTo = (req, res)=>{
     SavedJob.find({"appliedTo.appStatus": true} )
     .then(data => {
@@ -111,7 +111,28 @@ exports.findAllAppliedTo = (req, res)=>{
 }
 
 
-        //PUT   update note array
+
+
+            //GET  by :id (working)
+exports.findJobById = (req, res) =>{
+    const id = req.params.id
+    SavedJob.findById(
+        {_id: id}
+    ).then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+        res.status(500).send({
+            message:
+            err.message || "some error occured in findAll"
+        })
+    })
+}
+
+
+
+
+        //PUT   update note array (working)
 exports.updateNote = (req, res)=>{
     const id= req.params.id
 
@@ -126,12 +147,12 @@ exports.updateNote = (req, res)=>{
           });
         } else res.send({ message: "note was updated successfully." });
       })
-      .catch(err => {
+    .catch(err => {
         res.status(500).send({
           message: "Error updating notes with id=" + id
         });
-      });
-  };
+    });
+};
 
 
 

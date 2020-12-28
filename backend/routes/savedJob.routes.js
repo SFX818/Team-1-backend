@@ -3,10 +3,7 @@ const { verifySignup } = require('../middlewares/')
 const { authJwt } = require('../middlewares')
 
 
-module.exports = app =>{
-    
-    //retrieve all saved jobs
-    app.get("/savedJob", savedJob.findAll)
+module.exports = app => {
     
     //POST route that creates a new saved job and assigns it to the current user
     app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)

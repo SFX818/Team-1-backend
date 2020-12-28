@@ -54,24 +54,6 @@ exports.delete = (req, res) =>{
   };
 
 
-
-//         //GET  heardback: true  (working)
-// exports.findAllHeardBack = (req, res)=>{
-//     SavedJob.find({"heardBack.status": true} )
-//     .then(data => {
-//         if (!data) {
-//           res.status(404).send({
-//             message: "Cannot find all heard back jobs!"
-//           });
-//         } else res.send(data);
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Error finding jobs by status heard back true" 
-//         });
-//     });
-// }
-
 //GET route to see all the jobs user has heard back from.
 //created an empty array and pushed only the jobs that status was true 
 exports.findAllHeardBack = (req, res) => {

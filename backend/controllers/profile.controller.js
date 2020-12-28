@@ -14,19 +14,9 @@ exports.displayAll = (req, res) => {
     })
 }
 
+//the PUT route for editting todos
 exports.editTodos = (req, res) => {
-    console.log('reach route');
-    console.log(req.userId);
-    console.log(req.body.todos);
-    // User.updateOne({_id: req.body.id}, {todos: req.body.todos})
-    // .then(updatedUser => {
-    //     res.send(updatedUser);
-    //     console.log('UPDATED USER', updatedUser);
-    // })
-    // .catch(err => {
-    //     console.log('ERROR IN EDITTODOS');
-    //     res.send({message: err});
-    // })
+    //findOneAndUpdate is passed {new: true, upsert: true} tells mongoose to return the updated document (without it it will return the document before it was updated)
     User.findOneAndUpdate({_id: req.userId}, {$set: {todos: req.body.todos}}, {new: true, upsert: true}, (err, updatedUser) => {
         if(err){
             res.send({message: 'Error when trying to update users todos'})

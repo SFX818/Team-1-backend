@@ -1,12 +1,15 @@
 const savedJob  = require('../controllers/savedJob.controller')
+const { verifySignup } = require('../middlewares/')
+const { authJwt } = require('../middlewares')
+
 
 module.exports = app =>{
     
     //retrieve all saved jobs
     app.get("/savedJob", savedJob.findAll)
     
-    //save job to db
-    app.post("/newsavedjob", savedJob.create)
+    //POST route that creates a new saved job and assigns it to the current user
+    app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)
 
     //delete a saved job
     app.delete("/savedjob/:id", savedJob.delete)

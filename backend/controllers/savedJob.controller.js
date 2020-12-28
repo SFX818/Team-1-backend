@@ -4,44 +4,21 @@ const SavedJob = db.savedJob
 const User = db.user
 
 
-   
 
-
-
-                //POST (working)
-exports.create = (req, res) =>{
-    const savedJob = new SavedJob({
-        location: req.body.location,
-        language: req.body.language,
-        company: req.body.company,
-        jobTitle: req.body.jobTitle,
-        heardBack: {
-            status: req.body.heardBack.status,
-            scheduledInterview: req.body.heardBack.scheduledInterview,
-            closed: req.body.heardBack.closed,
-        },
-        appliedTo: {
-            appStatus: req.body.appliedTo.appStatus,
-            date: req.body.appliedTo.date,
-            notes: [
-                req.body.appliedTo.notes
-            ]
-        }
-    })
-    savedJob.save(savedJob)
-    .then((data)=>{
-        res.send(data)
-    })
-    .catch((err)=>{
-        res.status(500).send({
-            message:
-            err.message || "some error occured"
-        });
-    });
+//POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
+exports.saveAJob = (req, res) => {
+  const savedJob = new SavedJob(req.body);
+  savedJob.save();
+  User.findById({_id: req.userId})
+  .then(foundUser => {
+      foundUser.savedJobs.push(savedJob);
+      foundUser.save();
+      res.send(foundUser);
+  })
+  .catch(err => {
+      res.send({message: err})
+  })   
 }
-
-
-
                 // GET all jobs  (working) 
 exports.findAll = (req, res) =>{
   console.log("AHHHHHHHHHHHHHHHHHH", req.userId)

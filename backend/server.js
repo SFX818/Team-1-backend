@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 // SETUP MONGOOSE
 const db = require('./models/')
 const Role = db.role
+const Network = db.network
 
 //access the models
 const SavedJob = db.savedJob;
@@ -47,7 +48,7 @@ app.get('/', (req,res) => {
 require('./routes/auth.routes')(app)
 require('./routes/user.routes')(app)
 require('./routes/savedJob.routes')(app)
-
+require('./routes/network.routes')(app)
 
 // set the port, listen for request
 const PORT = process.env.PORT || 8080

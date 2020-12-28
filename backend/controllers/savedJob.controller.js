@@ -1,11 +1,13 @@
 const { savedJob } = require('../models/index');
-const db = require('../models/index')
+const db = require('../models/index');
+const { populate } = require('../models/user.model');
 const SavedJob = db.savedJob
 const User = db.user
 
 
 
 //POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
+//(THIS IS WORKING, LEAVE IT ALONE)
 exports.saveAJob = (req, res) => {
   const savedJob = new SavedJob(req.body);
   savedJob.save();
@@ -19,7 +21,9 @@ exports.saveAJob = (req, res) => {
       res.send({message: err})
   })   
 }
-                // GET all jobs  (working) 
+
+// GET all jobs  (working) 
+//(THIS IS WORKING, LEAVE IT ALONE)
 exports.findAll = (req, res) =>{
   console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
   User.findOne({
@@ -31,24 +35,6 @@ exports.findAll = (req, res) =>{
     res.send(user.savedJobs)
   })
 }
-   
-
-
-
-
-// Terminal.
-// findById('5fde5d6e589d7b424eea7f1b').
-// populate('flights').
-// exec(function (err, terminal) {
-//   if (err) {console.log(err)};
-//   console.log(terminal)
-// });
-
-
-
-
-
-
 
             //DELETE based on :id   (working)
 exports.delete = (req, res) =>{
@@ -68,8 +54,6 @@ exports.delete = (req, res) =>{
         });
       });
   };
-
-
 
         //GET  heardback: true  (working)
 exports.findAllHeardBack = (req, res)=>{

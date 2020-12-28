@@ -31,6 +31,7 @@ module.exports = function(app) {
     app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
 
     //route to see all todos GET
+    app.put("/profile/goals", [authJwt.verifyWebToken], profileController.setGoals);
    
     //NOTE: dont need a delete route because that will just be in the update
     //route to set/edit a coding goal PUT 

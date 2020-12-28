@@ -11,18 +11,21 @@ module.exports = app => {
     //delete a saved job
     app.delete("/savedjob/:id", savedJob.delete)
 
+    //PLAN: REFACTOR ALL THE BELOW 3 ROUTES INTO THE ALLJOBS ROUTE
     // retrieve all the jobs user heard back from
-    app.get("/heardback", [authJwt.verifyWebToken], savedJob.findAllHeardBack)
+    // app.get("/heardback", [authJwt.verifyWebToken], savedJob.findAllHeardBack)
 
-    // retrieve all the jobs user has applied for
-    app.get("/appliedto", savedJob.findAllAppliedTo)
+    // // retrieve all the jobs user has applied for
+    // app.get("/appliedto", [authJwt.verifyWebToken], savedJob.findAllAppliedTo)
+
+    // //retrieve all jobs user was rejected from
+    // app.get("/rejected", [authJwt.verifyWebToken], savedJob.findAllRejected)
+
+
 
     //update the note array inside appliedTo Object
     app.put("/updatenote/:id", savedJob.updateNote)
 
     // retrieve a job by its id
     app.get("/findjob/:id", savedJob.findJobById)
-
-    //retrieve all jobs user was rejected from
-    app.get("/rejected", savedJob.findAllRejected)
 }

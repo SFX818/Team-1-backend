@@ -21,18 +21,115 @@ exports.saveAJob = (req, res) => {
   })   
 }
 
-// GET all jobs  (working) 
-exports.findAll = (req, res) =>{
-  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
+
+// GET all jobs (working), attached to GET route in user.routes
+exports.findAllJobs = (req, res) =>{
   User.findOne({
     _id:req.userId
   })
   .populate('savedJobs').
   exec(function(err, user){
-    if (err) return handleError(err)
-    res.send(user.savedJobs)
+    if (err) return handleError(err);
+    //res.send(user.savedJobs)
+
+    //object that will store all jobs and also separate them out 
+    const usersJobs = {
+      allJobs: [],
+      appliedToJobs: [],
+      heardBackJobs: [],
+      deniedFromJobs: [],
+      needActionJobs: []
+    }
+
+    user.savedJobs.map(job => {
+      //push all jobs so we have access to all saved jobs to display
+      usersJobs.allJobs.push(job);
+
+      //separating jobs user has applied to: if yes, check if they have heard back or if they were denied, else put them in the need action array
+      if(job.appliedTo.appStatus === true){
+        usersJobs.appliedToJobs.push(job);
+
+        //if user has applied, check if they have heard back
+        if(job.heardBack.status === true) {
+          usersJobs.heardBackJobs.push(job)
+        }
+
+        //if user has applied, check if they have been denied
+        //NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT THIS IF INSIDE OF THE ABOVE HEARD.BACK.STATUS IF STATEMENT BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
+        if(job.heardBack.closed === true){
+          usersJobs.deniedFromJobs.push(job)
+        }
+
+      } else {
+        usersJobs.needActionJobs.push(job);
+      }
+    })
+    res.send(usersJobs);
+    // console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
+    // console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
+    // console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
+    // console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
+    // console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
   })
 }
+
+// //GET route to see all the jobs user has heard back from.
+// //created an empty array and pushed only the jobs that status was true 
+// exports.findAllHeardBack = (req, res) => {
+//   User.findOne({
+//     _id: req.userId
+//   })
+//   .populate('savedJobs').
+//   exec(function(err, user) {
+//     if (err) return handleError(err);
+    
+//     const heardBackJobs = [];
+//     user.savedJobs.map(job => {
+//       if(job.heardBack.status === true) {
+//         heardBackJobs.push(job)
+//       }
+//     })
+//     res.send(heardBackJobs)
+//   })
+// }
+
+
+//         //GET  applied: true  (working)
+// exports.findAllAppliedTo = (req, res)=>{
+//     SavedJob.find({"appliedTo.appStatus": true} )
+//     .then(data => {
+//         if (!data) {
+//           res.status(404).send({
+//             message: "Cannot find all heard back jobs!"
+//           });
+//         } else res.send(data);
+//       })
+//       .catch(err => {
+//         res.status(500).send({
+//           message: "Error finding jobs by status heard back true" 
+//         });
+//     });
+// }
+
+
+
+// // GET closed: true (working)
+// exports.findAllRejected = (req, res)=>{
+//   SavedJob.find({"heardBack.closed": true} )
+//   .then(data => {
+//       if (!data) {
+//         res.status(404).send({
+//           message: "Cannot find all rejected jobs!"
+//         });
+//       } else res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message: "Error finding all rejected jobs" 
+//       });
+//   });
+// }      
+
                 
             //DELETE based on :id   (working)
 exports.delete = (req, res) =>{
@@ -52,46 +149,6 @@ exports.delete = (req, res) =>{
         });
       });
   };
-
-
-//GET route to see all the jobs user has heard back from.
-//created an empty array and pushed only the jobs that status was true 
-exports.findAllHeardBack = (req, res) => {
-  User.findOne({
-    _id: req.userId
-  })
-  .populate('savedJobs').
-  exec(function(err, user) {
-    if (err) return handleError(err);
-    
-    const heardBackJobs = [];
-    user.savedJobs.map(job => {
-      if(job.heardBack.status === true) {
-        heardBackJobs.push(job)
-      }
-    })
-    res.send(heardBackJobs)
-  })
-}
-
-
-        //GET  applied: true  (working)
-exports.findAllAppliedTo = (req, res)=>{
-    SavedJob.find({"appliedTo.appStatus": true} )
-    .then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: "Cannot find all heard back jobs!"
-          });
-        } else res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error finding jobs by status heard back true" 
-        });
-    });
-}
-
 
 
 
@@ -136,49 +193,4 @@ exports.updateNote = (req, res)=>{
     });
 };
 
-
-
-        // GET closed: true (working)
-exports.findAllRejected = (req, res)=>{
-    SavedJob.find({"heardBack.closed": true} )
-    .then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: "Cannot find all rejected jobs!"
-          });
-        } else res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error finding all rejected jobs" 
-        });
-    });
-}        
-
-
-
-
-
-
-
-
-
-
-
-
-                        //GET (by heardback: true)
-//   exports.findAllHeardBack = (req, res)=>{
-//     SavedJob.find({location:"boston"})
-//     .then(data => {
-//         if (!data) {
-//           res.status(404).send({
-//             message: "Cannot find all heard back jobs!"
-//           });
-//         } else res.send(data);
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Error finding jobs by status heard back true" 
-//         });
-//       });
-//     }
+  

@@ -12,7 +12,7 @@ module.exports = app => {
     app.delete("/savedjob/:id", savedJob.delete)
 
     // retrieve all the jobs user heard back from
-    app.get("/heardback", savedJob.findAllHeardBack)
+    app.get("/heardback", [authJwt.verifyWebToken], savedJob.findAllHeardBack)
 
     // retrieve all the jobs user has applied for
     app.get("/appliedto", savedJob.findAllAppliedTo)

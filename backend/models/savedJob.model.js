@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+
 const SavedJob = mongoose.model(
     "SavedJob",
     new mongoose.Schema({

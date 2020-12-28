@@ -25,21 +25,29 @@ exports.findAll = (req, res) =>{
   User.findOne({
     _id:req.userId
   })
-  .then((user) => {
-    console.log("THIS IS THE TEST FOR THE USER ID")
-    res.send(user)
+  .populate('savedJobs').
+  exec(function(err, user){
+    if (err) return handleError(err)
+    res.send(user.savedJobs)
   })
-    // SavedJob.find()
-    // .then((data)=>{
-    //     res.send(data);
-    // })
-    // .catch((err)=>{
-    //     res.status(500).send({
-    //         message:
-    //         err.message || "some error occured in findAll"
-    //     })
-    // })
 }
+   
+
+
+
+
+// Terminal.
+// findById('5fde5d6e589d7b424eea7f1b').
+// populate('flights').
+// exec(function (err, terminal) {
+//   if (err) {console.log(err)};
+//   console.log(terminal)
+// });
+
+
+
+
+
 
 
             //DELETE based on :id   (working)

@@ -21,14 +21,17 @@ exports.saveAJob = (req, res) => {
 }
                 // GET all jobs  (working) 
 exports.findAll = (req, res) =>{
-  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
-  User.findOne({
-    _id:req.userId
-  })
-  .then((user) => {
-    console.log("THIS IS THE TEST FOR THE USER ID")
-    res.send(user)
-  })
+  // console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
+  // User.findOne({
+  //   _id:req.userId
+  // })
+  // .then((user) => {
+  //   console.log("THIS IS THE TEST FOR THE USER ID")
+  //   res.send(user)
+  // })
+    SavedJob.find().then((data)=>{
+      res.send(data)
+    })
     // SavedJob.find()
     // .then((data)=>{
     //     res.send(data);

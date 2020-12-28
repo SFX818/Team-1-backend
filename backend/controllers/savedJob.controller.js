@@ -1,5 +1,6 @@
 const { savedJob } = require('../models/index');
-const db = require('../models/index')
+const db = require('../models/index');
+const { populate } = require('../models/user.model');
 const SavedJob = db.savedJob
 const User = db.user
 
@@ -20,28 +21,18 @@ exports.saveAJob = (req, res) => {
   })   
 }
                 // GET all jobs  (working) 
-exports.findAll = (req, res) =>{
-  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
-  User.findOne({
-    _id:req.userId
-  })
-  .then((user) => {
-    console.log("THIS IS THE TEST FOR THE USER ID")
-    res.send(user.savedJobs)
-  })
-    // SavedJob.find()
-    // .then((data)=>{
-    //     res.send(data);
-    // })
-    // .catch((err)=>{
-    //     res.status(500).send({
-    //         message:
-    //         err.message || "some error occured in findAll"
-    //     })
-    // })
-}
-
-
+                exports.findAll = (req, res) =>{
+                  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
+                  User.findOne({
+                    _id:req.userId
+                  })
+                  .populate('savedJobs').
+                  exec(function(err, user){
+                    if (err) return handleError(err)
+                    res.send(user.savedJobs)
+                  })
+                }
+                
             //DELETE based on :id   (working)
 exports.delete = (req, res) =>{
     const id = req.params.id

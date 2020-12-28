@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-​
+
 const SavedJob = mongoose.model(
     "SavedJob",
     new mongoose.Schema({
@@ -9,15 +9,15 @@ const SavedJob = mongoose.model(
        jobTitle: String,
        heardBack: {
             status: {type: Boolean, default: false},
-            scheduledInterview: {type: Date, default: null},
+            scheduledInterview: Date,
             closed: {type: Boolean, default: false}
         }, 
         appliedTo: {
             appStatus: {type: Boolean, default: false},
-            date: {type: Date, default: null},
-            notes: [],
+            date: Date,
+            notes: []
         }
     })
 )
-​
+
 module.exports = SavedJob

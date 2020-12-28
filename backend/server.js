@@ -23,7 +23,6 @@ const Role = db.role
 //access the models
 const SavedJob = db.savedJob;
 
-
 // connect to mongo database
 db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
@@ -37,6 +36,7 @@ db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
     console.error("Connection error", err);
     process.exit();
   });
+
 
 // simple route, do I work?
 app.get('/', (req,res) => {

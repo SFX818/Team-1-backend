@@ -1,6 +1,7 @@
 const { authJwt } = require('../middlewares')
 const controller = require('../controllers/user.controller')
 const savedJobController = require('../controllers/savedJob.controller')
+const profileController = require('../controllers/profile.controller')
 
 module.exports = function(app) {
     app.use( (req,res, next) => {
@@ -21,4 +22,18 @@ module.exports = function(app) {
     app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],
     controller.adminBoard
     )
+
+    //NOTE: do we need this if we are able to access it in the front end via getCurrentUser?
+    //route that will provide the front end with the info it needs to display on the profile home page: todos, app and coding goals 
+    app.get("/profile", [authJwt.verifyWebToken], profileController.displayAll);
+
+     //route to edit todos PUT 
+    app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
+
+    //route to see all todos GET
+   
+    //NOTE: dont need a delete route because that will just be in the update
+    //route to set/edit a coding goal PUT 
+    //route to set/edit an application goal PUT
+    //route to get goals (2 in one?)
 }

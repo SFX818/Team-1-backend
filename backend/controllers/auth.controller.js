@@ -117,12 +117,18 @@ exports.signin = (req, res) => {
             authorities.push("ROLE_" + user.roles[i].name.toUpperCase())
         }
         // seding that response back
+        //sending all this info will make it available in local storage, this way we can display it on the front end in the profile component
         res.status(200).send({
             id: user._id,
             username: user.username,
             email: user.email,
             roles: authorities,
-            accessToken: token
+            accessToken: token,
+            todos: user.todos,
+            savedJobs: user.savedJobs,
+            codingGoal: user.codingGoal,
+            appGoal: user.appGoal,
+            network: user.network
         })
 
     })

@@ -24,7 +24,7 @@ exports.displayAll = (req, res) => {
 }
 
 
-//the PUT route for editting todos
+//the PUT route for editing todos
 exports.editTodos = (req, res) => {
     //findOneAndUpdate is passed {new: true, upsert: true} tells mongoose to return the updated document (without it it will return the document before it was updated)
     User.findOneAndUpdate({_id: req.userId}, {$set: {todos: req.body.todos}}, {new: true, upsert: true}, (err, updatedUser) => {
@@ -36,6 +36,7 @@ exports.editTodos = (req, res) => {
     })
 }
 
+//PUT route for editing goals, it is a 2 in one, the if statement will check which is being sent and update accordingly 
 exports.setGoals = (req, res) => {
     if(req.body.codingGoal){
         User.findOneAndUpdate({_id: req.userId}, {$set: {codingGoal: req.body.codingGoal}}, {new: true, upsert: true}, (err, updatedUser) => {

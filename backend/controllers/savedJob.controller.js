@@ -23,7 +23,6 @@ exports.saveAJob = (req, res) => {
 }
 
 // GET all jobs  (working) 
-//(THIS IS WORKING, LEAVE IT ALONE)
 exports.findAll = (req, res) =>{
   console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
   User.findOne({
@@ -35,7 +34,7 @@ exports.findAll = (req, res) =>{
     res.send(user.savedJobs)
   })
 }
-
+                
             //DELETE based on :id   (working)
 exports.delete = (req, res) =>{
     const id = req.params.id

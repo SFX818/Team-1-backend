@@ -27,7 +27,7 @@ exports.findAll = (req, res) =>{
   })
   .then((user) => {
     console.log("THIS IS THE TEST FOR THE USER ID")
-    res.send(user)
+    res.send(user.savedJobs)
   })
     // SavedJob.find()
     // .then((data)=>{

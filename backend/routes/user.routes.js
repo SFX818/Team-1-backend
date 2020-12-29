@@ -13,11 +13,15 @@ module.exports = function(app) {
         next();
     })
 
+<<<<<<< HEAD
     //route that gets all saved jobs for current user
     app.get("/savedjobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
 
     //route that is able to grab and save updated statuses on their saved jobs
     app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJobController.updateStatus)
+=======
+    app.get("/profile/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
+>>>>>>> 034af9510abef444b38c802797a03ca9d895cb5f
 
     app.get("/api/test/all", controller.allAccess)
 

@@ -5,17 +5,27 @@ const Network = db.network
 
 // POST Add a Network
 exports.createNetwork = (req,res) =>{
-const network = new Network (req.body);
-network.save();
-User.findById({_id: req.userId})
-.then(foundUser=>{
-    foundUser.network.push(network);
-    foundUser.save()
-    res.send(foundUser);
-})
-.catch(err=>{
-    res.send({message:err})
-})
-    }
+    const network = new Network (req.body);
+    network.save();
+    User.findById({_id: req.userId})
+    .then(foundUser=>{
+        foundUser.network.push(network);
+        foundUser.save()
+        res.send(foundUser);
+    })
+    .catch(err=>{
+        res.send({message:err})
+    })
+}
 
-    
+exports.findNetwork = (req, res) =>{
+    console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
+    User.findOne({
+      _id:req.userId
+    })
+    .populate('network').
+    exec(function(err, user){
+      if (err) return handleError(err)
+      res.send(user.network)
+    })
+  }    

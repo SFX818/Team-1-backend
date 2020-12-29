@@ -149,25 +149,25 @@ function initial() {
 
 
 
-  const savedJob4 = new SavedJob({
-    location: "boston",
-    language: "CSS",
-    company: "google",
-    jobTitle: "junior software developer",
-    heardBack: {
-      status: "true",
-      scheduledInterview: "1-20-2021",
-      closed: "true",
-  },
-    appliedTo: {
-      appStatus: "true",
-      date: "12-21-2020",
-      notes: ["this is terminal test"],
-    }
-  })
+  // const savedJob4 = new SavedJob({
+  //   location: "boston",
+  //   language: "CSS",
+  //   company: "google",
+  //   jobTitle: "junior software developer",
+  //   heardBack: {
+  //     status: "true",
+  //     scheduledInterview: "1-20-2021",
+  //     closed: "true",
+  // },
+  //   appliedTo: {
+  //     appStatus: "true",
+  //     date: "12-21-2020",
+  //     notes: ["this is terminal test"],
+  //   }
+  // })
 
-    savedJob4.save()
-  console.log("THIS IS THE SAVED JOB", savedJob4)
+  //   savedJob4.save()
+  // console.log("THIS IS THE SAVED JOB", savedJob4)
 
 
 

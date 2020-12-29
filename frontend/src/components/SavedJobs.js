@@ -10,10 +10,10 @@ const SavedJobs = () => {
 
     //use useEffect to run the getJobs function 
     useEffect(() => {
-        let allJobs = getJobs();
-        console.log(allJobs);
+        let jobs = getJobs();
+        console.log(jobs);
         console.log('use effect')
-        //setAllJobs(allJobs);
+        setAllJobs(jobs);
     }, []);
 
 

@@ -18,4 +18,14 @@ User.findById({_id: req.userId})
 })
     }
 
-    
+// GET Find a Network
+exports.findNetwork = (req, res) =>{
+    User.findOne({
+      _id:req.userId
+    })
+    .populate('network').
+    exec(function(err, user){
+      if (err) return handleError(err)
+      res.send(user.network)
+    })
+  }

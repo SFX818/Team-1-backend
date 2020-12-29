@@ -45,19 +45,4 @@ exports.findNetwork = (req, res) =>{
             }
             res.send(updatedNetwork)
         })
-    // ).then(data => {
-    //   console.log("THIS IS THE DATAAAA", data)
-    //     if (!data) {
-    //       res.status(404).send({
-    //         message: `Cannot update network with id=${id}.`
-    //       });
-    //     } else {
-    //       res.send({ message: "network was updated successfully." });
-    //     } 
-    // })
-    // .catch(err => {
-    //     res.status(500).send({
-    //       message: "Error updating notes with id=" + id
-    //     });
-    // });
   }

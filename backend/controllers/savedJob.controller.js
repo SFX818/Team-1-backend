@@ -55,8 +55,11 @@ exports.findAllJobs = (req, res) =>{
           usersJobs.heardBackJobs.push(job)
         }
 
-        //if user has applied, check if they have been denied
-        //NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT THIS IF INSIDE OF THE ABOVE HEARD.BACK.STATUS IF STATEMENT BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
+        // If user has applied, check if they have been denied
+        // NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT
+        // THIS IF INSIDE OF THE
+        // ABOVE HEARD.BACK.STATUS IF STATEMENT 
+        // BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
         if(job.heardBack.closed === true){
           usersJobs.deniedFromJobs.push(job)
         }
@@ -94,8 +97,8 @@ exports.delete = (req, res) =>{
     });
 };
 
-// //GET route to see all the jobs user has heard back from.
-// //created an empty array and pushed only the jobs that status was true 
+// GET route to see all the jobs user has heard back from
+// created an empty array and pushed only the jobs that status was true 
 // exports.findAllHeardBack = (req, res) => {
 //   User.findOne({
 //     _id: req.userId
@@ -155,7 +158,6 @@ exports.delete = (req, res) =>{
 
 
 
-
             //GET  by :id (working)
 exports.findJobById = (req, res) =>{
     const id = req.params.id
@@ -172,18 +174,39 @@ exports.findJobById = (req, res) =>{
     })
 }
 
-
+//route that will save the changes user makes to various statuses in appliedJob document PUT
+//what will be updated: heardBack.status, heardBack.closed, appliedTo.appStatus, heardBack.scheduledInterview and appliedTo.date
+//NOTE: values that are being passed in may need to change depending on how we decide to set up the button/form on the front end
+//NOTE: all three status changes (and two dates) will be together and updated at the same time, need to make sure the previous value is in place when submitting the change 
+exports.updateStatus = (req, res) => {
+  const id = req.params.id;
+  SavedJob.findOneAndUpdate(
+    {_id: id},
+    {$set: {
+      "heardBack.status": req.body.heardBack.status,
+      "heardBack.scheduledInterview": req.body.heardBack.scheduledInterview,
+      "heardBack.closed": req.body.heardBack.closed,
+      "appliedTo.appStatus": req.body.appliedTo.appStatus,
+      "appliedTo.date": req.body.appliedTo.date
+    }},
+    {new: true, upsert: true}, (err, updatedJob) => {
+      if(err){
+          res.send({message: 'Error when trying to update savedJob status'})
+      }
+      res.send(updatedJob);
+    })
+ }
 
 
         //PUT   update note array (working)
 exports.updateNote = (req, res)=>{
+  
     const id= req.params.id
-    console.log("THIS IS THE REQQQQQQQ", req.body)
     SavedJob.updateOne(
         {_id: id},
         {"appliedTo.notes": req.body.appliedTo.notes}
     ).then(data => {
-      console.log("THIS IS THE DATAAAA", data)
+      //console.log("THIS IS THE DATA", data)
         if (!data) {
           res.status(404).send({
             message: `Cannot update notes with id=${id}.`
@@ -200,28 +223,5 @@ exports.updateNote = (req, res)=>{
 };
 
 
-
-//this route updates the heardBack status 
-// exports.updateStatus = (req, res)=>{
-//   const id= req.params.id
-//   SavedJob.updateOne(
-//     {_id: id},
-//     {$set:{"heardBack.status": true}})
-//   .then(data => {
-//     console.log("THIS IS THE DATAAAA", data)
-//       if (!data) {
-//         res.status(404).send({
-//           message: `Cannot update notes with id=${id}.`
-//         });
-//       } else {
-//         res.send({ message: "note was updated successfully." });
-//       } 
-//   })
-//   .catch(err => {
-//       res.status(500).send({
-//         message: "Error updating notes with id=" + id
-//       });
-//   });
-// };
 
 

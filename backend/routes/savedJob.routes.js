@@ -1,10 +1,14 @@
 const savedJob  = require('../controllers/savedJob.controller')
 const { verifySignup } = require('../middlewares/')
 const { authJwt } = require('../middlewares')
+const SavedJob = require('../models/savedJob.model')
 
 
 module.exports = app => {
-    
+
+    //GET route that will get all savedJobs specific to user and organize them by status
+    app.get("/savedJobs", [authJwt.verifyWebToken], savedJob.findAllJobs)
+
     //POST route that creates a new saved job and assigns it to the current user
     app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)
 
@@ -17,5 +21,8 @@ module.exports = app => {
     // retrieve a job by its id (working)
     app.get("/findjob/:id", savedJob.findJobById)
 
-    // app.put("/updatestatus/:id", savedJob.updateStatus)
+    //route that is able to grab and save updated statuses on their saved jobs
+    app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJob.updateStatus)
 }
+
+

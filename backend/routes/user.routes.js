@@ -1,6 +1,5 @@
 const { authJwt } = require('../middlewares')
 const controller = require('../controllers/user.controller')
-const savedJobController = require('../controllers/savedJob.controller')
 const profileController = require('../controllers/profile.controller')
 
 module.exports = function(app) {
@@ -13,17 +12,13 @@ module.exports = function(app) {
         next();
     })
 
-    app.get("/profile/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
-
+    //test route
     app.get("/api/test/all", controller.allAccess)
-
+    // user
     app.get("/api/test/user", [authJwt.verifyWebToken], controller.userBoard)
+    //admin
+    app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],controller.adminBoard)
 
-    app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],
-    controller.adminBoard
-    )
-
-    //NOTE: do we need this if we are able to access it in the front end via getCurrentUser?
     //route that will provide the front end with the info it needs to display on the profile home page: todos, app and coding goals 
     app.get("/profile", [authJwt.verifyWebToken], profileController.displayAll);
 

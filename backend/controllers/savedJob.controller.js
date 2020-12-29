@@ -22,7 +22,8 @@ exports.saveAJob = (req, res) => {
   })   
 }
 
-// GET all jobs  (working) 
+// GET all jobs  (working)
+//(THIS IS WORKING, LEAVE IT ALONE) 
 exports.findAll = (req, res) =>{
   console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
   User.findOne({
@@ -35,7 +36,8 @@ exports.findAll = (req, res) =>{
   })
 }
                 
-            //DELETE based on :id   (working)
+//DELETE based on :id   (working)
+//(THIS IS WORKING, LEAVE IT ALONE)
 exports.delete = (req, res) =>{
     const id = req.params.id
     SavedJob.remove(
@@ -54,41 +56,46 @@ exports.delete = (req, res) =>{
       });
   };
 
-        //GET  heardback: true  (working)
+//GET  heardback: true
+//(THIS IS WORKING, LEAVE IT ALONE)  
 exports.findAllHeardBack = (req, res)=>{
-    SavedJob.find({"heardBack.status": true} )
-    .then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: "Cannot find all heard back jobs!"
-          });
-        } else res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error finding jobs by status heard back true" 
-        });
-    });
+  User.findOne({
+    _id:req.userId
+  })
+  .populate('savedJobs').
+  exec(function(err, user){
+    if (err) return handleError(err)
+    // res.send(user.savedJobs.heardBack===true)
+    const heardBackJobs = []
+    user.savedJobs.map(job=>{
+      console.log('THIS IS THE JOBBBBBBB', job)
+    if(job.heardBack.status===true){
+      heardBackJobs.push(job)
+    }
+    })
+    res.send(heardBackJobs)
+  })
 }
 
-
-
-
-        //GET  applied: true  (working)
+ //GET  applied: true  (working)
+//WORKING ROUTE, LEAVE IT ALONE XOXOXOXO
 exports.findAllAppliedTo = (req, res)=>{
-    SavedJob.find({"appliedTo.appStatus": true} )
-    .then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: "Cannot find all heard back jobs!"
-          });
-        } else res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error finding jobs by status heard back true" 
-        });
-    });
+  User.findOne({
+    _id:req.userId
+  })
+  .populate('savedJobs').
+  exec(function(err, user){
+    if (err) return handleError(err)
+    // res.send(user.savedJobs.heardBack===true)
+    const appliedJobs = []
+    user.savedJobs.map(applied=>{
+      console.log('WE APPLIED FOR THIS', applied)
+    if(applied.appliedTo.appStatus===true){
+      appliedJobs.push(applied)
+    }
+    })
+    res.send(appliedJobs)
+  })
 }
 
 

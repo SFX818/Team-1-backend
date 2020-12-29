@@ -13,7 +13,7 @@ module.exports = function(app) {
         next();
     })
 
-    //retrieves all the users saved jobs
+    //retrieves all the users saved jobs (WORKING)
     app.get("/savedJob", [authJwt.verifyWebToken], savedJobController.findAll)
 
     app.get("/api/test/all", controller.allAccess)

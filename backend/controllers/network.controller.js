@@ -40,7 +40,7 @@ exports.deleteNetwork = (req, res) =>{
           res.status(404).send({
             message: `Cannot delete id=${id}. fix the delete controller!`
           });
-        } else res.send({ message: "saved job was updated successfully." });
+        } else res.send({ message: "network was deleted successfully." });
       })
       .catch(err => {
         res.status(500).send({
@@ -48,4 +48,9 @@ exports.deleteNetwork = (req, res) =>{
         });
       });
   };
-  
+
+  //PUT Edit a Network
+  exports.editNetwork = (req,res) => {
+      const id = req.params.id
+      Network
+  }

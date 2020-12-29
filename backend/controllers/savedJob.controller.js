@@ -55,8 +55,11 @@ exports.findAllJobs = (req, res) =>{
           usersJobs.heardBackJobs.push(job)
         }
 
-        //if user has applied, check if they have been denied
-        //NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT THIS IF INSIDE OF THE ABOVE HEARD.BACK.STATUS IF STATEMENT BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
+        // If user has applied, check if they have been denied
+        // NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT
+        // THIS IF INSIDE OF THE
+        // ABOVE HEARD.BACK.STATUS IF STATEMENT 
+        // BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
         if(job.heardBack.closed === true){
           usersJobs.deniedFromJobs.push(job)
         }
@@ -94,8 +97,8 @@ exports.delete = (req, res) =>{
     });
 };
 
-// //GET route to see all the jobs user has heard back from.
-// //created an empty array and pushed only the jobs that status was true 
+// GET route to see all the jobs user has heard back from
+// created an empty array and pushed only the jobs that status was true 
 // exports.findAllHeardBack = (req, res) => {
 //   User.findOne({
 //     _id: req.userId

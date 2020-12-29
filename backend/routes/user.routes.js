@@ -19,7 +19,9 @@ module.exports = function(app) {
     //route that will get all savedJobs specific to user and organize them by status
     app.get("/profile/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
 
+    //test route
     app.get("/api/test/all", controller.allAccess)
+
 
     app.get("/api/test/user", [authJwt.verifyWebToken], controller.userBoard)
 

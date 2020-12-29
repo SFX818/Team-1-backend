@@ -22,10 +22,6 @@ exports.saveAJob = (req, res) => {
   })   
 }
 
-// GET all jobs  (working)
-//(THIS IS WORKING, LEAVE IT ALONE) 
-exports.findAll = (req, res) =>{
-  console.log("AHHHHHHHHHHHHHHHHHH", req.userId)
 
 // GET all jobs (working), attached to GET route in user.routes
 exports.findAllJobs = (req, res) =>{
@@ -77,6 +73,26 @@ exports.findAllJobs = (req, res) =>{
     // console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
   })
 }
+
+//DELETE based on :id   (working)
+//(THIS IS WORKING, LEAVE IT ALONE)
+exports.delete = (req, res) =>{
+  const id = req.params.id
+  SavedJob.remove(
+      {_id: id},
+  ).then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete id=${id}. fix the delete controller!`
+        });
+      } else res.send({ message: "saved job was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error deleting Tutorial with id=" + id
+      });
+    });
+};
 
 // //GET route to see all the jobs user has heard back from.
 // //created an empty array and pushed only the jobs that status was true 
@@ -136,25 +152,7 @@ exports.findAllJobs = (req, res) =>{
 // }      
 
                 
-//DELETE based on :id   (working)
-//(THIS IS WORKING, LEAVE IT ALONE)
-exports.delete = (req, res) =>{
-    const id = req.params.id
-    SavedJob.remove(
-        {_id: id},
-    ).then(data => {
-        if (!data) {
-          res.status(404).send({
-            message: `Cannot delete id=${id}. fix the delete controller!`
-          });
-        } else res.send({ message: "saved job was updated successfully." });
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error deleting Tutorial with id=" + id
-        });
-      });
-  };
+
 
 
 
@@ -180,18 +178,20 @@ exports.findJobById = (req, res) =>{
         //PUT   update note array (working)
 exports.updateNote = (req, res)=>{
     const id= req.params.id
-
-    SavedJob.update(
+    console.log("THIS IS THE REQQQQQQQ", req.body)
+    SavedJob.updateOne(
         {_id: id},
-        // {language: req.body.language}
-        {"appliedTo.notes": req.body.notes}
+        {"appliedTo.notes": req.body.appliedTo.notes}
     ).then(data => {
+      console.log("THIS IS THE DATAAAA", data)
         if (!data) {
           res.status(404).send({
             message: `Cannot update notes with id=${id}.`
           });
-        } else res.send({ message: "note was updated successfully." });
-      })
+        } else {
+          res.send({ message: "note was updated successfully." });
+        } 
+    })
     .catch(err => {
         res.status(500).send({
           message: "Error updating notes with id=" + id
@@ -199,4 +199,3 @@ exports.updateNote = (req, res)=>{
     });
 };
 
-}

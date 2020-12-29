@@ -1,6 +1,5 @@
 const { authJwt } = require('../middlewares')
 const controller = require('../controllers/user.controller')
-const savedJobController = require('../controllers/savedJob.controller')
 const profileController = require('../controllers/profile.controller')
 
 module.exports = function(app) {
@@ -12,12 +11,6 @@ module.exports = function(app) {
         );
         next();
     })
-
-    //route that is able to grab and save updated statuses on their saved jobs
-    app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJobController.updateStatus)
-
-    //route that will get all savedJobs specific to user and organize them by status
-    app.get("/profile/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
 
     //test route
     app.get("/api/test/all", controller.allAccess)

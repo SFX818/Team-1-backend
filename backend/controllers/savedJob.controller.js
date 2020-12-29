@@ -168,16 +168,19 @@ exports.findJobById = (req, res) =>{
 }
 
 //route that will save the changes user makes to various statuses in appliedJob document PUT
-//what will be updated: heardBack.status, heardBack.closed, appliedTo.appStatus
-//OTHER THINGS THAT NEED TO BE UPDATED: dates for heardBack.scheduledInterview and appliedTo.date
+//what will be updated: heardBack.status, heardBack.closed, appliedTo.appStatus, heardBack.scheduledInterview and appliedTo.date
+//NOTE: values that are being passed in may need to change depending on how we decide to set up the button/form on the front end
+//NOTE: all three status changes (and two dates) will be together and updated at the same time, need to make sure the previous value is in place when submitting the change 
 exports.updateStatus = (req, res) => {
   const id = req.params.id;
   SavedJob.findOneAndUpdate(
     {_id: id},
     {$set: {
       "heardBack.status": req.body.heardBack.status,
+      "heardBack.scheduledInterview": req.body.heardBack.scheduledInterview,
       "heardBack.closed": req.body.heardBack.closed,
-      "appliedTo.appStatus": req.body.appliedTo.appStatus
+      "appliedTo.appStatus": req.body.appliedTo.appStatus,
+      "appliedTo.date": req.body.appliedTo.date
     }},
     {new: true, upsert: true}, (err, updatedJob) => {
       if(err){

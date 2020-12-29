@@ -9,3 +9,6 @@ const Landing = () => {
 }
 
 export default Landing
+
+
+//App.js >> goes here

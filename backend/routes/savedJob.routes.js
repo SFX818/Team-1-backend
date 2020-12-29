@@ -17,5 +17,5 @@ module.exports = app => {
     // retrieve a job by its id (working)
     app.get("/findjob/:id", savedJob.findJobById)
 
-    app.put("/updatestatus/:id", savedJob.updateStatus)
+    // app.put("/updatestatus/:id", savedJob.updateStatus)
 }

@@ -19,15 +19,15 @@ exports.createNetwork = (req,res) =>{
 }
 
 // GET Find a Network
-    exports.findNetwork = (req,res) =>{
-    User.findOne({
-      _id:req.userId
-    })
-    .populate('network').
-    exec(function(err, user){
-      if (err) return handleError(err)
-      res.send(user.network)
-    })
+  exports.findNetwork = (req,res) =>{
+  User.findOne({
+    _id:req.userId
+  })
+  .populate('network').
+  exec(function(err, user){
+    if (err) return handleError(err)
+    res.send(user.network)
+  })
 }
 
 // DELETE Delete a Network
@@ -49,22 +49,46 @@ exports.deleteNetwork = (req, res) =>{
       });
   };
 
-  //PUT Edit a Network
-  exports.updateNetwork = (req,res) => {
-         const id= req.params.id
-        Network.findOneAndUpdate(
-            {_id: id},
-            {$set:{name: req.body.name,
-            company: req.body.company,
-            phone: req.body.phone,
-            email: req.body.email,
-            notes: req.body.notes}},{new: true, upsert: true},(error, updatedNetwork)=>{
-                if (error){
-                    res.send(error)
-                }
-                res.send(updatedNetwork)
-            })
-    }
+//PUT Edit a Network
+//this updated version of the editNetwork function/route was written to avoid overwriting values to null when nothing is passed in req.body. First grabbing the values that were in the database with the initial findOne, and then doing an Update with changing variables depending 
+exports.editNetwork = (req,res) => {
+  const id= req.params.id;
+  Network.findOne({_id: id})
+  .then(foundNetwork => {
+    //res.send(foundNetwork);
+    const name = (req.body.name === undefined) ? foundNetwork.name : req.body.name;
+    const company = (req.body.company === undefined) ? foundNetwork.company: req.body.company;
+    const phone = (req.body.phone === undefined) ? foundNetwork.phone: req.body.phone;
+    const email = (req.body.email === undefined) ? foundNetwork.email: req.body.email;
+    const notes = (req.body.notes === undefined) ? foundNetwork.notes: req.body.notes;
+    Network.findOneAndUpdate(
+      {_id: id}, 
+      {$set:
+        {
+        name: name,
+        company: company,
+        phone: phone,
+        email: email,
+        notes: notes
+        }
+      }, {new: true, upsert: true}, (error, updatedNetwork) => {
+        if (error) res.send(error)
+        res.send(updatedNetwork);
+      })
+    })
+  // Network.findOneAndUpdate(
+  //     {_id: id},
+  //     {$set:{name: req.body.name,
+  //     company: req.body.company,
+  //     phone: req.body.phone,
+  //     email: req.body.email,
+  //     notes: req.body.notes}},{new: true, upsert: true},(error, updatedNetwork)=>{
+  //         if (error){
+  //             res.send(error)
+  //         }
+  //         res.send(updatedNetwork)
+  //     })
+  }
 
     
     

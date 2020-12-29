@@ -13,7 +13,11 @@ module.exports = function(app) {
         next();
     })
 
-    app.get("/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
+    //route that gets all saved jobs for current user
+    app.get("/savedjobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
+
+    //route that is able to grab and save updated statuses on their saved jobs
+    app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJobController.updateStatus)
 
     app.get("/api/test/all", controller.allAccess)
 
@@ -23,7 +27,6 @@ module.exports = function(app) {
     controller.adminBoard
     )
 
-    //NOTE: do we need this if we are able to access it in the front end via getCurrentUser?
     //route that will provide the front end with the info it needs to display on the profile home page: todos, app and coding goals 
     app.get("/profile", [authJwt.verifyWebToken], profileController.displayAll);
 

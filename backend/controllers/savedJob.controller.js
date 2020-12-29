@@ -151,7 +151,6 @@ exports.delete = (req, res) =>{
   };
 
 
-
             //GET  by :id (working)
 exports.findJobById = (req, res) =>{
     const id = req.params.id
@@ -168,7 +167,25 @@ exports.findJobById = (req, res) =>{
     })
 }
 
-
+//route that will save the changes user makes to various statuses in appliedJob document PUT
+//what will be updated: heardBack.status, heardBack.closed, appliedTo.appStatus
+//OTHER THINGS THAT NEED TO BE UPDATED: dates for heardBack.scheduledInterview and appliedTo.date
+exports.updateStatus = (req, res) => {
+  const id = req.params.id;
+  SavedJob.findOneAndUpdate(
+    {_id: id},
+    {$set: {
+      "heardBack.status": req.body.heardBack.status,
+      "heardBack.closed": req.body.heardBack.closed,
+      "appliedTo.appStatus": req.body.appliedTo.appStatus
+    }},
+    {new: true, upsert: true}, (err, updatedJob) => {
+      if(err){
+          res.send({message: 'Error when trying to update savedJob status'})
+      }
+      res.send(updatedJob);
+    })
+ }
 
 
         //PUT   update note array (working)

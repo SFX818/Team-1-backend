@@ -7,6 +7,9 @@ import Layout from './components/common/Layout'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Profile from './components/Profile'
+import Landing from './components/Landing'
+import SavedJobs from './components/SavedJobs'
+import Network from './components/Network'
 
 // CSS imports
 import "./css/App.css";
@@ -19,6 +22,9 @@ const App = () => {
        <Route exact path="/login" component={Login}/>
        <Route exact path="/register" component={Signup}/>
        <Route exact path="/profile" component={Profile}/>
+       <Route exact path="/landing" component={Landing}/>
+       <Route exact path="/savedjobs" component={SavedJobs}/>
+       <Route exact path="/savedjobs" component={Network}/>
      </Switch>
     </Layout>
   );

@@ -14,13 +14,10 @@ module.exports = function(app) {
 
     //test route
     app.get("/api/test/all", controller.allAccess)
-
-
+    // user
     app.get("/api/test/user", [authJwt.verifyWebToken], controller.userBoard)
-
-    app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],
-    controller.adminBoard
-    )
+    //admin
+    app.get("/api/test/admin", [authJwt.verifyWebToken, authJwt.isAdmin],controller.adminBoard)
 
     //route that will provide the front end with the info it needs to display on the profile home page: todos, app and coding goals 
     app.get("/profile", [authJwt.verifyWebToken], profileController.displayAll);

@@ -49,7 +49,7 @@ const Login = (props) => {
 
       login(username, password).then(
         () =>{
-          props.history.push('/profile')
+          props.history.push('/landing')
           window.location.reload()
         },
         (error) => {

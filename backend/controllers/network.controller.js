@@ -28,4 +28,4 @@ exports.findNetwork = (req, res) =>{
       if (err) return handleError(err)
       res.send(user.network)
     })
-  }    
+  }

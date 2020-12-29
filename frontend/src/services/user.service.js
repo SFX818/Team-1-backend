@@ -17,11 +17,11 @@ export const getPublicContent = () => {
 
 // 	access User's content
 export const getUserBoard = () => {
-    return axios.get(API_URL + "user", {header: authHeader()})
+    return axios.get(API_URL + "user", {headers: authHeader()})
 }
 
 // 	access Admins content
 export const getAdminBoard = () => {
-    return axios.get(API_URL + "admin", {header: authHeader()})
+    return axios.get(API_URL + "admin", {headers: authHeader()})
 }
 

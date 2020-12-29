@@ -13,8 +13,7 @@ module.exports = function(app) {
         next();
     })
 
-    //retrieves all the users saved jobs (WORKING)
-    app.get("/savedJob", [authJwt.verifyWebToken], savedJobController.findAll)
+    app.get("/savedJobs", [authJwt.verifyWebToken], savedJobController.findAllJobs)
 
     app.get("/api/test/all", controller.allAccess)
 
@@ -31,10 +30,6 @@ module.exports = function(app) {
      //route to edit todos PUT 
     app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
 
-    //route to see all todos GET
-   
-    //NOTE: dont need a delete route because that will just be in the update
-    //route to set/edit a coding goal PUT 
-    //route to set/edit an application goal PUT
-    //route to get goals (2 in one?)
+    //route to edit goals: both app and coding
+    app.put("/profile/goals", [authJwt.verifyWebToken], profileController.setGoals);
 }

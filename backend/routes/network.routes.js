@@ -9,4 +9,6 @@ module.exports = app =>{
     app.get("/findnetwork",[authJwt.verifyWebToken], network.findNetwork )
     //This route deletes an exsiting user's network. 
     app.delete("/deletenetwork/:id", [authJwt.verifyWebToken], network.deleteNetwork )
+    // This route edits the network
+    app.put("/updatenetwork/:id",[authJwt.verifyWebToken], network.updateNetwork)
 }

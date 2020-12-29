@@ -51,6 +51,27 @@ exports.deleteNetwork = (req, res) =>{
 
   //PUT Edit a Network
   exports.editNetwork = (req,res) => {
-      const id = req.params.id
-      Network
-  }
+         const id= req.params.id
+        Network.findOneAndUpdate(
+            {_id: id},
+            {$set:{name: req.body.name,
+            company: req.body.company,
+            phone: req.body.phone,
+            email: req.body.email,
+            notes: req.body.notes}},{new: true, upsert: true},(error, updatedNetwork)=>{
+                if (error){
+                    res.send(error)
+                }
+                res.send(updatedNetwork)
+            })
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    

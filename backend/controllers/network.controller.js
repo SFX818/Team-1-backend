@@ -50,7 +50,7 @@ exports.deleteNetwork = (req, res) =>{
   };
 
   //PUT Edit a Network
-  exports.editNetwork = (req,res) => {
+  exports.updateNetwork = (req,res) => {
          const id= req.params.id
         Network.findOneAndUpdate(
             {_id: id},

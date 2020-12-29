@@ -206,7 +206,7 @@ exports.updateNote = (req, res)=>{
         {_id: id},
         {"appliedTo.notes": req.body.appliedTo.notes}
     ).then(data => {
-      console.log("THIS IS THE DATAAAA", data)
+      //console.log("THIS IS THE DATA", data)
         if (!data) {
           res.status(404).send({
             message: `Cannot update notes with id=${id}.`
@@ -223,28 +223,5 @@ exports.updateNote = (req, res)=>{
 };
 
 
-//NOTE: this error messages are about notes not update status
-// //this route updates the heardBack status 
-// exports.updateStatus = (req, res)=>{
-//   const id= req.params.id
-//   SavedJob.updateOne(
-//     {_id: id},
-//     {$set:{"heardBack.status": true}})
-//   .then(data => {
-//     console.log("THIS IS THE DATAAAA", data)
-//       if (!data) {
-//         res.status(404).send({
-//           message: `Cannot update notes with id=${id}.`
-//         });
-//       } else {
-//         res.send({ message: "note was updated successfully." });
-//       } 
-//   })
-//   .catch(err => {
-//       res.status(500).send({
-//         message: "Error updating notes with id=" + id
-//       });
-//   });
-// };
 
 

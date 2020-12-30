@@ -2,6 +2,7 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 
 export default function JobsPagination({ page, setPage, hasNextPage }) {
+    //Helper function that sets the prev page +1 amount and agives the functionaliity of the buttons actually changing through pages.
     function adjustPage(amount) {
       setPage(prevPage => prevPage + amount)
     }

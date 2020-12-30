@@ -34,6 +34,11 @@ const Layout = (props) => {
               Home
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/landing"} className="nav-link">
+              JobSearch
+            </Link>
+          </li>
           {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">

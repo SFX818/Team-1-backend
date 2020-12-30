@@ -7,7 +7,7 @@ const SavedJob = require('../models/savedJob.model')
 module.exports = app => {
 
     //GET route that will get all savedJobs specific to user and organize them by status
-    app.get("/savedJobs", [authJwt.verifyWebToken], savedJob.findAllJobs)
+    app.get("/profile/savedJobs", [authJwt.verifyWebToken], savedJob.findAllJobs)
 
     //POST route that creates a new saved job and assigns it to the current user
     app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)

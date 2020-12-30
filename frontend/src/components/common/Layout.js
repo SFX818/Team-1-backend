@@ -39,6 +39,11 @@ const Layout = (props) => {
               JobSearch
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/profile/network"} className="nav-link">
+              My Network
+            </Link>
+          </li>
           {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">

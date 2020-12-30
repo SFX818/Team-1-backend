@@ -8,19 +8,19 @@ import {getJobs} from '../services/savedjob.service'
 //component that renders on the page when the link is clicked undered saved jobs on the profile home page
 const SavedJobs = () => {
     //setting a state that will hold the saved jobs
-    const [allJobs, setAllJobs] = useState([]);
+     const [allJobs, setAllJobs] = useState([]);
     
-    //use useEffect to run the getJobs function 
-    useEffect(() => {
-        jobGrabber()
-    }, []);
+    // //use useEffect to run the getJobs function 
+    // useEffect(() => {
+    //     jobGrabber()
+    // }, []);
 
-    const jobGrabber =  () => {
-        const jobData = axios.get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
-        .then( jobData => 
-            setAllJobs(jobData.data))
-        // .catch(err => console.log(err.message))
-    }
+    // const jobGrabber =  () => {
+    //     const jobData = axios.get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
+    //     .then( jobData => 
+    //         setAllJobs(jobData.data))
+    //     // .catch(err => console.log(err.message))
+    // }
     
     
 
@@ -52,9 +52,10 @@ const SavedJobs = () => {
 
                 <div className = 'closed slide-box'>
                     <h2>REJECTED:</h2>
-
+                
                 </div>
             </div>
+            
         </div>
     )
 }

@@ -21,12 +21,19 @@ const Network = () => {
 
   console.log(setNetworkData)
     return (
+        // {currentUser.roles &&
+        //     currentUser.roles.map((role, index)=> <li key={index}> {role} </li>)
+        // }
+        
        
          <div>
-                    <h2>Name:{networkData[0].name}</h2>
-                    <h2>Company:{networkData[1].company}</h2>
-                    
-            
+            <ul> 
+                {networkData.map((network, index) =>(
+                    <li 
+                        key={index}> {network.name} {network.company} {network.phone} {network.email} {network.notes} 
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }

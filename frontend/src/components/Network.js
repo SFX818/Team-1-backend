@@ -27,10 +27,11 @@ const Network = () => {
         
        
          <div>
+              <h1 style = {{textAlign: "center"}}>  Network: </h1>
             <ul> 
                 {networkData.map((network, index) =>(
                     <li 
-                        key={index}> {network.name} {network.company} {network.phone} {network.email} {network.notes} 
+                        key={index}> <b> Name:</b> {network.name} <b> Company:</b>  {network.company} <b> Phone:</b> {network.phone} <b> Email:</b> {network.email} <b> Notes:</b> {network.notes} 
                     </li>
                 ))}
             </ul>

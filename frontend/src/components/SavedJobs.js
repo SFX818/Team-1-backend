@@ -19,9 +19,16 @@ const SavedJobs = () => {
         const jobData = axios.get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
         .then( jobData => 
             setAllJobs(jobData.data))
-        // .catch(err => console.log(err.message))
+        .catch(err => console.log(err.message))
     }
     
+    console.log('all jobs', allJobs.allJobs);
+
+    const displayAllJobs = () => {
+        allJobs.allJobs.map( job => (
+            job.name
+        ))
+    }
     
 
     return (

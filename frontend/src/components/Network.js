@@ -19,10 +19,12 @@ const Network = () => {
     }
   console.log(networkData)
 
+  console.log(setNetworkData)
     return (
        
          <div>
                     <h2>Name:{networkData[0].name}</h2>
+                    <h2>Company:{networkData[1].company}</h2>
                     
             
         </div>

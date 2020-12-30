@@ -6,9 +6,10 @@ import StatusForm from '../StatusForm'
 
 
 //UserJob component will display the Job (card) component but also a form component allowing user to change the status 
-function UserJob() {
+function UserJob({ job }) {
     return (
         <div>
+            {job.title}
             <Job/>
             <StatusForm/>
         </div>

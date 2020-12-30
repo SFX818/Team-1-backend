@@ -5,6 +5,9 @@ import authHeader from '../utilities/authHeader.utilities'
 //backend function import 
 import {getJobs} from '../services/savedjob.service'
 
+//component import
+import UserJob from '../components/common/UserJob';
+
 //component that renders on the page when the link is clicked undered saved jobs on the profile home page
 const SavedJobs = () => {
     //setting a state that will hold the saved jobs
@@ -26,7 +29,7 @@ const SavedJobs = () => {
 
     const displayAllJobs = () => {
         allJobs.allJobs.map( job => (
-            job.name
+            <UserJob job = {job}/>
         ))
     }
     
@@ -37,6 +40,7 @@ const SavedJobs = () => {
             <div className = 'outer-div'>
                 <div className = 'all-jobs'>
                     <h2>All Jobs:</h2>
+                    {displayAllJobs()}
                 
 
                 </div>

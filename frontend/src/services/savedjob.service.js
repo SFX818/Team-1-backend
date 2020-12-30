@@ -44,3 +44,8 @@ import authHeader from '../utilities/authHeader.utilities'
 //     setAllJobs(jobsResponse.data)
 //     console.log(jobsR)
 // }
+
+// export const saveAJob = (location, company, jobTitle) => {
+//     return axios
+//     .post('http://localhost:8080/newsavedjob', {headers: authHeader(), location, company, jobTitle})
+// }

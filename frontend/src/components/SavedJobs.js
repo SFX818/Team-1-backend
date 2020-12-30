@@ -18,19 +18,51 @@ const SavedJobs = () => {
         jobGrabber()
     }, []);
 
+    //function that connects to the get route in the backend
     const jobGrabber =  () => {
         const jobData = axios.get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
-        .then( jobData => 
-            setAllJobs(jobData.data))
-        .catch(err => console.log(err.message))
+        .then( jobData => {
+            setAllJobs(jobData.data)
+        })
+        .catch(err => console.log('ERROR ON JOB GET CALL', err.message))
     }
-    
-    console.log('all jobs', allJobs.allJobs);
 
+    //function that grabs ALL of the user's saved jobs 
     const displayAllJobs = () => {
-        allJobs.allJobs.map( job => (
-            <UserJob job = {job}/>
-        ))
+        if(allJobs != undefined && allJobs.length != 0){
+            return allJobs.allJobs.map((job, index) => (
+                <UserJob job = {job} key = {index}/>
+            ))
+        }
+        else {
+            return <h1>Loading...</h1>
+        }
+    }
+
+    //function that will render a UserJob component for every job separated by its application status
+    const displayJobs = (section) => {
+        if(allJobs != undefined && allJobs.length != 0){
+            if(section === 'NeedAction'){
+                return allJobs.needActionJobs.map((job, index) => (
+                    <UserJob job = {job} key = {index}/>
+                ))
+            } else if(section === 'AppliedTo') {
+                return allJobs.appliedToJobs.map((job, index) => (
+                    <UserJob job = {job} key = {index}/>
+                ))
+            } else if(section === 'HeardBack') {
+                return allJobs.heardBackJobs.map((job, index) => (
+                    <UserJob job = {job} key = {index}/>
+                ))
+            } else if(section === 'Rejected'){
+                return allJobs.deniedFromJobs.map((job, index) => (
+                    <UserJob job = {job} key = {index}/>
+                ))
+            }
+        }
+        else {
+            return <h1>Loading...</h1>
+        }
     }
     
 
@@ -46,24 +78,27 @@ const SavedJobs = () => {
                 </div>
 
                 <div className = 'need-action slide-box'>
-                    <h2>Applied To:{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company }</h2>
+                    <h2>Need Action:</h2>
+                    {displayJobs('NeedAction')}
                     
 
                 </div>
 
                 <div className = 'applied-to slide-box'>
                     <h2>Applied To:</h2>
+                    {displayJobs('AppliedTo')}
 
                 </div>
 
                 <div className = 'heard-back slide-box'>
                     <h2>Heard Back:</h2>
+                    {displayJobs('HeardBack')}
 
                 </div>
 
                 <div className = 'closed slide-box'>
                     <h2>REJECTED:</h2>
-
+                    {displayJobs('Rejected')}
                 </div>
             </div>
         </div>

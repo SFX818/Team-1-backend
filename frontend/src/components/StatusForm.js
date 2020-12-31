@@ -10,19 +10,6 @@ function StatusForm({ job }) {
 
     //NOTE: This is the order things are sent to req through the put route: id, hbStatus, hbSchInt, hbClosed, atStatus, atDate
     //our put route function expects 6 params, send in null if nothing is changed
-    //function that toggles the heardback status btwn true and false when button is clicked
-    const heardBack = (job) => {
-        console.log('job before heardback change', job)
-        let id = job._id;
-        //let atStatus;
-        //if the status of the heardBack.status is already true, switch it to false. if its false, switch to true
-        let hbStatus = job.heardBack.status == true ? false : true;
-
-        //if user heardback, make sure their applied to is true
-        let atStatus = hbStatus == true ? true : job.appliedTo.appStatus;
-        //call updateJobStatus function that connects frontend to backend
-        updateJobStatus(id, hbStatus, null, null, atStatus, null);
-    }
 
     const appliedTo = (job) => {
         console.log('job before appliedTo change', job)
@@ -33,11 +20,37 @@ function StatusForm({ job }) {
         updateJobStatus(id, null, null, null, atStatus, null);
     }
 
+    //function that toggles the heardback status btwn true and false when button is clicked
+    const heardBack = (job) => {
+        console.log('job before heardback change', job)
+        let id = job._id;
+        //let atStatus;
+        //if the status of the heardBack.status is already true, switch it to false. if its false, switch to true
+        let hbStatus = job.heardBack.status === true ? false : true;
+
+        //if user heardback, make sure their applied to is true
+        let atStatus = hbStatus === true ? true : job.appliedTo.appStatus;
+        //call updateJobStatus function that connects frontend to backend
+        updateJobStatus(id, hbStatus, null, null, atStatus, null);
+    }
+
+    //function that toggles the closed status of the job
+    const rejectedFrom = (job) => {
+        console.log('job before', job.heardBack.closed)
+        let id = job._id;
+        let hbClosed = job.heardBack.closed === true ? false : true;
+        //if user got rejected, make sure their applied to is true
+        let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
+        //if user got rejected that means they heard back 
+        let hbStatus = hbClosed === true ? true : job.heardBack.status;
+        updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
+    }
+
     return (
         <div>
-            <Button onClick= {() => heardBack(job)} >Heard Back</Button>
             <Button onClick= {() => appliedTo(job)}>Applied To</Button>
-            <Button>Rejected</Button>
+            <Button onClick= {() => heardBack(job)} >Heard Back</Button>
+            <Button onClick= {() => rejectedFrom(job)}> Rejected</Button>
             <Button>Remove Job</Button>
         </div>
     )

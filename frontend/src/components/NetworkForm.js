@@ -19,7 +19,6 @@ const [phone, setPhone] = useState("");
 const [note, setNote] = useState("");
 
 let currentUser = getCurrentUser()
-console.log("Hi I am the ", currentUser)
 currentUser = currentUser.id
 
 

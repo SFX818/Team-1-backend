@@ -9,9 +9,9 @@ import StatusForm from '../StatusForm'
 function UserJob({ job }) {
     return (
         <div>
-            {job.jobTitle}
+            {job.jobTitle} {job.company}
             {/* <Job/> */}
-            <StatusForm/>
+            <StatusForm job = {job}/>
         </div>
     )
 }

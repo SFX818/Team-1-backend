@@ -45,7 +45,24 @@ import authHeader from '../utilities/authHeader.utilities'
 //     console.log(jobsR)
 // }
 
-// export const saveAJob = (location, company, jobTitle) => {
-//     return axios
-//     .post('http://localhost:8080/newsavedjob', {headers: authHeader(), location, company, jobTitle})
-// }
+export const saveAJob = (location, company, jobTitle) => {
+    return axios
+    .post('http://localhost:8080/newsavedjob', {headers: authHeader()})
+    .then(response => {
+        console.log('post response', response);
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const updateJobStatus = (id, hbStatus, hbSchInt, hbClosed, atStatus, atDate) => {
+    return axios
+    .put('http://localhost:8080/changestatus/' + id, {hbStatus, hbSchInt, hbClosed, atStatus, atDate})
+    .then(response => {
+        console.log('update job response', response)
+    })
+    .catch(err => {
+        console.log('update job route front end error', err)
+    })
+}

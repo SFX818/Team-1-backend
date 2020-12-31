@@ -4,17 +4,17 @@ import ReactMarkdown from 'react-markdown'
 import { useState } from 'react'
 
 //import functions 
-import saveAJob from '../services/savedjob.service'
+import { saveAJob } from '../services/savedjob.service'
 
 export default function Job({ job }) {
     const [open,setOpen] = useState(false)
 
-    // const saveThisJob = (job) => {
-    //     const location = job.location;
-    //     const company = job.company;
-    //     const jobTitle = job.title;
-    //     saveAJob(location, company, jobTitle)
-    // }
+    const saveThisJob = (job) => {
+        const location = job.location;
+        const company = job.company;
+        const jobTitle = job.title;
+        saveAJob(location, company, jobTitle)
+    }
 
     return (
         <Card>
@@ -41,7 +41,7 @@ export default function Job({ job }) {
                         onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
                             {open ? 'Hide Details' : 'View Details'}
                     </Button>
-                    {/* <Button onClick={(job) => saveThisJob()}>SAVE TO FAVS</Button> */}
+                    <Button onClick={() => saveThisJob(job)}>SAVE TO FAVS</Button>
                  </Card.Text>
                  <Collapse in={open}>
                     <div className="mt-4">

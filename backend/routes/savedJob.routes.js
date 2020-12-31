@@ -11,7 +11,7 @@ module.exports = app => {
 
     //POST route that creates a new saved job and assigns it to the current user
     app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)
-
+   
     //delete a saved job (working)
     app.delete("/savedjob/:id", savedJob.delete)
 
@@ -22,7 +22,8 @@ module.exports = app => {
     app.get("/findjob/:id", savedJob.findJobById)
 
     //route that is able to grab and save updated statuses on their saved jobs
-    app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJob.updateStatus)
+    // app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJob.updateStatus)
+    app.put("/changestatus/:id", savedJob.updateStatus)
 }
 
 

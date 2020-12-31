@@ -9,6 +9,8 @@ const User = db.user
 //POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
 //(THIS IS WORKING, LEAVE IT ALONE)
 exports.saveAJob = (req, res) => {
+  console.log('hit saveajob route')
+  console.log('req ', req.body)
   const savedJob = new SavedJob(req.body);
   savedJob.save();
   User.findById({_id: req.userId})
@@ -88,7 +90,7 @@ exports.delete = (req, res) =>{
         res.status(404).send({
           message: `Cannot delete id=${id}. fix the delete controller!`
         });
-      } else res.send({ message: "saved job was updated successfully." });
+      } else res.send({ message: "saved job was deleted successfully." });
     })
     .catch(err => {
       res.status(500).send({
@@ -178,23 +180,34 @@ exports.findJobById = (req, res) =>{
 //what will be updated: heardBack.status, heardBack.closed, appliedTo.appStatus, heardBack.scheduledInterview and appliedTo.date
 //NOTE: values that are being passed in may need to change depending on how we decide to set up the button/form on the front end
 //NOTE: all three status changes (and two dates) will be together and updated at the same time, need to make sure the previous value is in place when submitting the change 
+//changed the set values to what were passing from the front end 
 exports.updateStatus = (req, res) => {
   const id = req.params.id;
-  SavedJob.findOneAndUpdate(
-    {_id: id},
-    {$set: {
-      "heardBack.status": req.body.heardBack.status,
-      "heardBack.scheduledInterview": req.body.heardBack.scheduledInterview,
-      "heardBack.closed": req.body.heardBack.closed,
-      "appliedTo.appStatus": req.body.appliedTo.appStatus,
-      "appliedTo.date": req.body.appliedTo.date
-    }},
-    {new: true, upsert: true}, (err, updatedJob) => {
-      if(err){
-          res.send({message: 'Error when trying to update savedJob status'})
-      }
-      res.send(updatedJob);
-    })
+
+  SavedJob.findOne({_id: id})
+  .then(theJob => {
+    const hbStatus = req.body.hbStatus === undefined ? theJob.heardBack.status : req.body.hbStatus;
+    const hbSchInt = req.body.hbSchInt === undefined ? theJob.heardBack.scheduledInterview : req.body.hbSchInt;
+    const hbClosed = req.body.hbClosed === undefined ? theJob.heardBack.closed : req.body.hbClosed;
+    const atStatus = req.body.atStatus === undefined ? theJob.appliedTo.appStatus : req.body.atStatus;
+    const atDate = req.body.atDate === undefined ? theJob.appliedTo.date : req.body.atDate;
+
+    SavedJob.findOneAndUpdate(
+      {_id: id},
+      {$set: {
+        "heardBack.status": hbStatus,
+        "heardBack.scheduledInterview": hbSchInt,
+        "heardBack.closed": hbClosed,
+        "appliedTo.appStatus": atStatus,
+        "appliedTo.date": atDate
+      }},
+      {new: true, upsert: true}, (err, updatedJob) => {
+        if(err){
+            res.send({message: 'Error when trying to update savedJob status'})
+        }
+        res.send(updatedJob);
+      })
+  })
  }
 
 

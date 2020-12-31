@@ -50,10 +50,10 @@ const SavedJobs = () => {
                 return allJobs.appliedToJobs.map((job, index) => (
                     <UserJob job = {job} key = {index}/>
                 ))
-            } else if(section === 'HeardBack') {
+           /* } else if(section === 'HeardBack') {
                 return allJobs.heardBackJobs.map((job, index) => (
                     <UserJob job = {job} key = {index}/>
-                ))
+                )) */
             } else if(section === 'Rejected'){
                 return allJobs.deniedFromJobs.map((job, index) => (
                     <UserJob job = {job} key = {index}/>
@@ -90,11 +90,11 @@ const SavedJobs = () => {
 
                 </div>
 
-                <div className = 'heard-back slide-box'>
+                {/* <div className = 'heard-back slide-box'>
                     <h2>Heard Back:</h2>
                     {displayJobs('HeardBack')}
 
-                </div>
+                </div> */}
 
                 <div className = 'closed slide-box'>
                     <h2>REJECTED:</h2>

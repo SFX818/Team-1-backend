@@ -4,10 +4,30 @@ import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 //import function
 import { updateJobStatus } from '../services/savedjob.service'
 
+//css import 
+import '../css/App.css'
+
 //status form needs 3 buttons (and maybe allowing users to set dates for interviews)
 
 function StatusForm({ job }) {
+    let appStatus = job.appliedTo.appStatus;
+    let responseStatus = job.heardBack.status;
+    let rejectStatus = job.heardBack.closed;
 
+    console.log('appstatus', appStatus)
+    console.log()
+    // if(appStatus == true){
+    //     appStatus = 'green'
+    // } else {
+    //     appStatus = 'red'
+    // }
+
+    appStatus = appStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
+    responseStatus = responseStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
+    rejectStatus = rejectStatus == true ? ' rgb(236, 24, 24)' : 'rgb(70, 242, 101)';
+
+
+    
     //NOTE: This is the order things are sent to req through the put route: id, hbStatus, hbSchInt, hbClosed, atStatus, atDate
     //our put route function expects 6 params, send in null if nothing is changed
 
@@ -50,9 +70,9 @@ function StatusForm({ job }) {
 
     return (
         <div>
-            <Button onClick= {() => appliedTo(job)}>Applied To</Button>
-            <Button onClick= {() => heardBack(job)} >Heard Back</Button>
-            <Button onClick= {() => rejectedFrom(job)}> Rejected</Button>
+            <button onClick= {() => appliedTo(job)} className='form-btn' style={{background: appStatus}}>Applied To</button>
+            <button onClick= {() => heardBack(job)} className='form-btn'style={{background: responseStatus}} >Heard Back</button>
+            <button onClick= {() => rejectedFrom(job)} className='form-btn' style={{background: rejectStatus}}> Rejected</button>
             <Button>Remove Job</Button>
         </div>
     )

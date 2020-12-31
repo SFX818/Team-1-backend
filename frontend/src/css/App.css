@@ -30,3 +30,15 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.form-btn {
+  border-radius: 30px;
+}
+
+.true {
+  background: green;
+}
+
+.false {
+  background: red;
+}

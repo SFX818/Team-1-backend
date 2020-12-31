@@ -30,3 +30,49 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+#pie{
+  font-size:.5vw;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Goldman', cursive;
+  display:flex;
+  flex-direction: column;
+  /* border:2px solid red; */
+  width:50%;
+}
+#bigPie{
+  display:flex;
+  justify-items: flex-start;
+}
+#pie2{
+  font-size:.5vw;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Goldman', cursive;
+  display:flex;
+  flex-direction: column;
+  /* border:2px solid pink; */
+  width:50%;
+}
+#applied{
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Goldman', cursive;
+  margin-top:5vw;
+
+}
+
+#heardBack{
+  font-family: 'Roboto', sans-serif;
+  margin-top:5vw;
+  font-family: 'Goldman', cursive;
+  /* border:2px solid blue; */
+}
+
+#card{
+  width:50%;
+  height:50%;
+}
+
+
+
+#Card{
+color:red;
+}

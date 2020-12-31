@@ -13,11 +13,15 @@ function StatusForm({ job }) {
     //function that toggles the heardback status btwn true and false when button is clicked
     const heardBack = (job) => {
         console.log('job before heardback change', job)
+        let id = job._id;
+        //let atStatus;
         //if the status of the heardBack.status is already true, switch it to false. if its false, switch to true
         let hbStatus = job.heardBack.status == true ? false : true;
-        let id = job._id;
+
+        //if user heardback, make sure their applied to is true
+        let atStatus = hbStatus == true ? true : job.appliedTo.appStatus;
         //call updateJobStatus function that connects frontend to backend
-        updateJobStatus(id, hbStatus, null, null, null, null);
+        updateJobStatus(id, hbStatus, null, null, atStatus, null);
     }
 
     const appliedTo = (job) => {

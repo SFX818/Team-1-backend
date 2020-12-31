@@ -186,11 +186,24 @@ exports.updateStatus = (req, res) => {
 
   SavedJob.findOne({_id: id})
   .then(theJob => {
-    const hbStatus = req.body.hbStatus === undefined ? theJob.heardBack.status : req.body.hbStatus;
-    const hbSchInt = req.body.hbSchInt === undefined ? theJob.heardBack.scheduledInterview : req.body.hbSchInt;
-    const hbClosed = req.body.hbClosed === undefined ? theJob.heardBack.closed : req.body.hbClosed;
-    const atStatus = req.body.atStatus === undefined ? theJob.appliedTo.appStatus : req.body.atStatus;
-    const atDate = req.body.atDate === undefined ? theJob.appliedTo.date : req.body.atDate;
+    const hbStatus = req.body.hbStatus === null ? theJob.heardBack.status : req.body.hbStatus;
+    const hbSchInt = req.body.hbSchInt === null ? theJob.heardBack.scheduledInterview : req.body.hbSchInt;
+    let hbClosed = req.body.hbClosed === null ? theJob.heardBack.closed : req.body.hbClosed;
+    let atStatus = req.body.atStatus === null ? theJob.appliedTo.appStatus : req.body.atStatus;
+    const atDate = req.body.atDate === null ? theJob.appliedTo.date : req.body.atDate;
+
+    //if hbStatus is true, auto change atStatus to true
+    //if hbClosed is true, auto change atStatus to true
+    if(hbStatus == true || hbClosed == true){
+      atStatus = true;
+      console.log('change')
+    }
+    //if hbClosed is true, auto change hbStatus to true
+    if(hbClosed == true){
+      hbStatus = true;
+      atStatus = true;
+    }
+    console.log(atStatus);
 
     SavedJob.findOneAndUpdate(
       {_id: id},

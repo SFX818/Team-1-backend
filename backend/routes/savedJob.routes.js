@@ -13,7 +13,7 @@ module.exports = app => {
     app.post("/newsavedjob", [authJwt.verifyWebToken], savedJob.saveAJob)
    
     //delete a saved job (working)
-    app.delete("/savedjob/:id", savedJob.delete)
+    app.delete("/deletejob/:id", savedJob.delete)
 
     //update the note array inside appliedTo Object (working)
     app.put("/updatenote/:id", savedJob.updateNote)

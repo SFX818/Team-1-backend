@@ -27,6 +27,9 @@ const Profile = () => {
   };
   console.log("THIS IS ALL JOBS", allJobs);
 
+
+
+  <a rel="wobble-horizontal" class="button wobble-horizontal">Wobble Horizontal</a>
   const listJobs = () => {
     if (allJobs.length > 0) {
       return allJobs[0].allJobs.map((job, index) => (

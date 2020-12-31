@@ -27,6 +27,9 @@ const Profile = () => {
   };
   console.log("THIS IS ALL JOBS", allJobs);
 
+
+
+  <a rel="wobble-horizontal" class="button wobble-horizontal">Wobble Horizontal</a>
   const listJobs = () => {
     if (allJobs.length > 0) {
       return allJobs[0].allJobs.map((job, index) => (
@@ -35,7 +38,7 @@ const Profile = () => {
             <ul>
               <li key={index}>
                 {" "}
-                <b> Company:</b> {job.company} <b> Job Title:</b> {job.jobTitle}
+                <b> Company:</b> {job.company} <br></br> <b> Job Title:</b> {job.jobTitle}
               </li>
             </ul>
           </Card>
@@ -48,7 +51,7 @@ const Profile = () => {
     return (
       <div className="container">
         <header className="jumbotron">
-          <h3>
+          <h3 id="user">
             <strong> Welcome {currentUser.username} </strong>
           </h3>
         </header>
@@ -60,8 +63,11 @@ const Profile = () => {
         <h3>Heard Back: {allJobs[0].heardBackJobs.length} </h3>
         <h3>Denied: {allJobs[0].deniedFromJobs.length} </h3> */}
 
-        <h2> Saved Jobs: </h2>
-        {listJobs()}
+        <h2 id="savedJobs"> Saved Jobs: </h2>
+        <div id="container">
+       <div id="jobList">
+       {listJobs()}
+           </div>
 
         <div id="bigPie">
           <div id="pie">
@@ -117,6 +123,7 @@ const Profile = () => {
               }
             />
           </div>
+        </div>
         </div>
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}

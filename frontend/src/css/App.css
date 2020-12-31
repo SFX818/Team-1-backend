@@ -1,18 +1,22 @@
 label {
   display: block;
   margin-top: 10px;
+  
 }
 
+
+/* THE CARD BELOW IS FOR THE PROFILE SAVED JOBS */
 .card-container.card {
   max-width: 350px !important;
-  padding: 40px 40px;
+  padding: 1vw 1vw;
+  /* background-color: #3988d3c5; */
 }
 
 .card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
+  background-color: #f7f7f7c5;
+  padding: 1vw 1vw 1vw;
+  margin: 0 auto .1vw;
+  margin-top: 1vw;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -20,6 +24,20 @@ label {
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
+
+#card:hover{
+  /* background-color: white;
+  border:2px solid royalblue;
+  background: rgba(0,0,0,0);
+	color: #3a7999;
+  box-shadow: inset 0 0 0 3px #3a7999; */
+  /* -webkit-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  transform: scale(1.25); */
+	color: #3a7999;
+}
+
 
 .profile-img-card {
   width: 96px;
@@ -30,49 +48,94 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+/* PIE CHART CODE */
 #pie{
   font-size:.5vw;
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Goldman', cursive;
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction: column;
   /* border:2px solid red; */
   width:50%;
 }
+
 #bigPie{
   display:flex;
-  justify-items: flex-start;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  /* border:2px solid red; */
+  width:70%;
+  padding-left: 5vw;
+  margin-left:3vw;
 }
+
 #pie2{
   font-size:.5vw;
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Goldman', cursive;
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction: column;
-  /* border:2px solid pink; */
   width:50%;
 }
-#applied{
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Goldman', cursive;
-  margin-top:5vw;
 
+/* HEADER FOR THE PIE CHARTS */
+#applied{
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Roboto', sans-serif;
+  margin-top:5vw;
+}
+
+#savedJobs{
+  font-family: 'Roboto', sans-serif;
+  font-size:2vw;
 }
 
 #heardBack{
   font-family: 'Roboto', sans-serif;
   margin-top:5vw;
-  font-family: 'Goldman', cursive;
-  /* border:2px solid blue; */
+  /* font-family: 'Goldman', cursive; */
 }
 
 #card{
-  width:50%;
-  height:50%;
+  font-size:1vw;
+  width:100%;
+  margin-top: 0px;
+  /* background-color: rgb(64, 190, 240); */
+  border-radius: 10%;
 }
 
 
-
-#Card{
-color:red;
+ul{
+  padding-left: 0px;
+  
 }
+
+/* THIS IS THE CONTAINER FOR JUST THE SAVED JOBS */
+#jobList{
+  display:flex;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+  height:60vw;
+  width:30%;
+  overflow: scroll;
+}
+
+/* CONTAINER FOR THE SAVED JOB AND PIE CHART  */
+#container {
+  display:flex;
+  justify-content: flex-start;
+  /* border:2px solid yellow; */
+}
+
+#user{
+  font-family: 'Roboto', sans-serif;
+  margin-left: 300px;
+}
+
+#logo{
+  height:9vw;
+  margin-bottom: -2.5vw;
+  margin-top: -2.5vw;
+}
+

@@ -9,9 +9,10 @@ const User = db.user
 //POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
 //(THIS IS WORKING, LEAVE IT ALONE)
 exports.saveAJob = (req, res) => {
+  console.log(req.body)
   const savedJob = new SavedJob(req.body);
   savedJob.save();
-  User.findById({_id: req.userId})
+  User.findById({_id: req.body.id})
   .then(foundUser => {
       foundUser.savedJobs.push(savedJob);
       foundUser.save();

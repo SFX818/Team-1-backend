@@ -9,11 +9,10 @@ const User = db.user
 //POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
 //(THIS IS WORKING, LEAVE IT ALONE)
 exports.saveAJob = (req, res) => {
-  console.log('hit saveajob route')
-  console.log('req ', req.body)
+  console.log(req.body)
   const savedJob = new SavedJob(req.body);
   savedJob.save();
-  User.findById({_id: req.userId})
+  User.findById({_id: req.body.id})
   .then(foundUser => {
       foundUser.savedJobs.push(savedJob);
       foundUser.save();
@@ -45,6 +44,7 @@ exports.findAllJobs = (req, res) =>{
     }
 
     user.savedJobs.map(job => {
+      console.log(job._id)
       //push all jobs so we have access to all saved jobs to display
       usersJobs.allJobs.push(job);
 
@@ -71,11 +71,11 @@ exports.findAllJobs = (req, res) =>{
       }
     })
     res.send(usersJobs);
-    // console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
-    // console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
-    // console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
-    // console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
-    // console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
+    console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
+    console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
+    console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
+    console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
+    console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
   })
 }
 
@@ -98,66 +98,6 @@ exports.delete = (req, res) =>{
       });
     });
 };
-
-// GET route to see all the jobs user has heard back from
-// created an empty array and pushed only the jobs that status was true 
-// exports.findAllHeardBack = (req, res) => {
-//   User.findOne({
-//     _id: req.userId
-//   })
-//   .populate('savedJobs').
-//   exec(function(err, user) {
-//     if (err) return handleError(err);
-    
-//     const heardBackJobs = [];
-//     user.savedJobs.map(job => {
-//       if(job.heardBack.status === true) {
-//         heardBackJobs.push(job)
-//       }
-//     })
-//     res.send(heardBackJobs)
-//   })
-// }
-
-
-//         //GET  applied: true  (working)
-// exports.findAllAppliedTo = (req, res)=>{
-//     SavedJob.find({"appliedTo.appStatus": true} )
-//     .then(data => {
-//         if (!data) {
-//           res.status(404).send({
-//             message: "Cannot find all heard back jobs!"
-//           });
-//         } else res.send(data);
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Error finding jobs by status heard back true" 
-//         });
-//     });
-// }
-
-
-
-// // GET closed: true (working)
-// exports.findAllRejected = (req, res)=>{
-//   SavedJob.find({"heardBack.closed": true} )
-//   .then(data => {
-//       if (!data) {
-//         res.status(404).send({
-//           message: "Cannot find all rejected jobs!"
-//         });
-//       } else res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message: "Error finding all rejected jobs" 
-//       });
-//   });
-// }      
-
-                
-
 
 
             //GET  by :id (working)

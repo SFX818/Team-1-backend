@@ -11,7 +11,7 @@ import UserJob from '../components/common/UserJob';
 //component that renders on the page when the link is clicked undered saved jobs on the profile home page
 const SavedJobs = () => {
     //setting a state that will hold the saved jobs
-    const [allJobs, setAllJobs] = useState([]);
+     const [allJobs, setAllJobs] = useState([]);
     
     //use useEffect to run the getJobs function 
     useEffect(() => {
@@ -101,6 +101,7 @@ const SavedJobs = () => {
                     {displayJobs('Rejected')}
                 </div>
             </div>
+            
         </div>
     )
 }

@@ -24,9 +24,9 @@ const Layout = (props) => {
  
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav id="nav" className="navbar navbar-expand navbar-dark bg-primary">
         <Link to="/" className="navbar-brand">
-          .find(career)
+         <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -39,6 +39,11 @@ const Layout = (props) => {
               JobSearch
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/profile/network"} className="nav-link">
+              My Network
+            </Link>
+          </li>
           {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">
@@ -49,9 +54,9 @@ const Layout = (props) => {
 
           {currentUser && (
             <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
+              {/* <Link to={"/user"} className="nav-link">
                 User
-              </Link>
+              </Link> */}
             </li>
           )}
         </div>

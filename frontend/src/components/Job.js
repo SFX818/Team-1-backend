@@ -1,11 +1,31 @@
 import React from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { saveAJob } from '../services/savedjob.service'
+import { getCurrentUser } from '../services/auth.service'
+
+
 
 
 export default function Job({ job }) {
     const [open,setOpen] = useState(false)
+  
+
+    const [currentUser,setCurrentUser] = useState(getCurrentUser())
+    useEffect(() => {
+        setCurrentUser(currentUser.id)
+    },[])
+    console.log(currentUser)
+    
+
+    const saveThisJob = (job) => {
+        const location = job.location;
+        const company = job.company;
+        const jobTitle = job.title;
+        saveAJob(currentUser, location, company, jobTitle)
+    }
+    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAA", job, "LOCATION", job.location, job.company, job.title)
 
     return (
         <Card>
@@ -32,6 +52,7 @@ export default function Job({ job }) {
                         onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
                             {open ? 'Hide Details' : 'View Details'}
                     </Button>
+                    <Button onClick={() => saveThisJob(job)}>SAVE TO FAVS</Button>
                  </Card.Text>
                  <Collapse in={open}>
                     <div className="mt-4">

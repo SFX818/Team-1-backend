@@ -4,9 +4,10 @@ const Network = db.network;
 
 // POST Add a Network
 exports.createNetwork = (req, res) => {
+  console.log("Hit create network route")
   const network = new Network(req.body);
   network.save();
-  User.findById({ _id: req.userId })
+  User.findById({ _id: req.body.currentUser })
     .then((foundUser) => {
       foundUser.network.push(network);
       foundUser.save();

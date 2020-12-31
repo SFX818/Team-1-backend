@@ -28,6 +28,7 @@ export const login = (username, password) => {
     })
 }
 
+
 // logout the user
 export const logout = () => {
     removeItem('user')

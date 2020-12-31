@@ -44,6 +44,7 @@ exports.findAllJobs = (req, res) =>{
     }
 
     user.savedJobs.map(job => {
+      console.log(job._id)
       //push all jobs so we have access to all saved jobs to display
       usersJobs.allJobs.push(job);
 
@@ -70,11 +71,11 @@ exports.findAllJobs = (req, res) =>{
       }
     })
     res.send(usersJobs);
-    // console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
-    // console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
-    // console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
-    // console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
-    // console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
+    console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
+    console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
+    console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
+    console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
+    console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
   })
 }
 

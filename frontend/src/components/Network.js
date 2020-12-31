@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import authHeader from '../utilities/authHeader.utilities'
 import NetworkForm from './NetworkForm'
+import {Card, ListGroup} from 'react-bootstrap'
 
 const Network = () => {
     
@@ -24,19 +25,22 @@ const Network = () => {
 
     return (
 
+
+
+
         <div>
             <div className = "showsavednetwork">
-              <h1 style = {{textAlign: "center"}}>Network Roledex</h1>
+              <h1 style = {{textAlign: "center"}}>My Contacts</h1>
                 <ul> 
-                    {networkData.map((network, index) =>(
-                        <li 
-                            key={index}> 
-                            <b> Name:</b> {network.name} <br></br>
-                            <b> Company:</b>{network.company}<br></br>
-                            <b> Phone:</b> {network.phone}<br></br>
-                            <b> Email:</b> {network.email}<br></br>
-                            <b> Notes:</b> {network.notes} <br></br>
-                        </li>
+                    {networkData.map((network) =>(
+                        <Card style={{ width: '18rem' }}>
+                            <ListGroup variant="flush">
+                                <ListGroup.Item><b> Name:</b> {network.name}</ListGroup.Item>
+                                <ListGroup.Item><b> Company:</b>{network.company}</ListGroup.Item>
+                                <ListGroup.Item>  <b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
+                                <ListGroup.Item> <b> Email:</b> {network.email}<br></br></ListGroup.Item>
+                                <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
+                            </ListGroup></Card>
                     ))}
                 </ul>
             </div>

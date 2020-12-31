@@ -16,7 +16,7 @@ const [email, setEmail] = useState("");
 //stores the phone number
 const [phone, setPhone] = useState("");
 // if any errors, we want to show the error msg
-const [note, setNote] = useState("");
+// const [note, setNote] = useState("");
 
 let currentUser = getCurrentUser()
 currentUser = currentUser.id

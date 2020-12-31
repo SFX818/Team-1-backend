@@ -56,3 +56,14 @@ export const updateJobStatus = (id, hbStatus, hbSchInt, hbClosed, atStatus, atDa
         console.log('update job route front end error', err)
     })
 }
+
+export const deleteJob = (id) => {
+    return axios
+    .delete('http://localhost:8080/deletejob/' + id)
+    .then(response => {
+        console.log('delete saved job repsonse', response)
+    })
+    .catch(err => {
+        console.log('delete saved job error', err)
+    })
+}

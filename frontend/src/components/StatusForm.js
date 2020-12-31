@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 
 //import function
-import { updateJobStatus } from '../services/savedjob.service'
+import { updateJobStatus, deleteJob } from '../services/savedjob.service'
 
 //css import 
 import '../css/App.css'
@@ -68,12 +68,17 @@ function StatusForm({ job }) {
         updateJobStatus(id, null, null, hbClosed, null, null);
     }
 
+    const removeJob = (job) => {
+        let id = job._id;
+        deleteJob(id);
+    }
+
     return (
         <div>
             <button onClick= {() => appliedTo(job)} className='form-btn' style={{background: appStatus}}>Applied To</button>
             <button onClick= {() => heardBack(job)} className='form-btn'style={{background: responseStatus}} >Heard Back</button>
             <button onClick= {() => rejectedFrom(job)} className='form-btn' style={{background: rejectStatus}}> Rejected</button>
-            <Button>Remove Job</Button>
+            <Button onClick= {() => removeJob(job)}>Remove Job</Button>
         </div>
     )
 }

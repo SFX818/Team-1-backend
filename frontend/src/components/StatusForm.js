@@ -31,7 +31,8 @@ function StatusForm({ job }) {
         //if user heardback, make sure their applied to is true
         let atStatus = hbStatus === true ? true : job.appliedTo.appStatus;
         //call updateJobStatus function that connects frontend to backend
-        updateJobStatus(id, hbStatus, null, null, atStatus, null);
+        // updateJobStatus(id, hbStatus, null, null, atStatus, null);
+        updateJobStatus(id, hbStatus, null, null, null, null);
     }
 
     //function that toggles the closed status of the job
@@ -39,11 +40,12 @@ function StatusForm({ job }) {
         console.log('job before', job.heardBack.closed)
         let id = job._id;
         let hbClosed = job.heardBack.closed === true ? false : true;
-        //if user got rejected, make sure their applied to is true
-        let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
-        //if user got rejected that means they heard back 
-        let hbStatus = hbClosed === true ? true : job.heardBack.status;
-        updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
+        // //if user got rejected, make sure their applied to is true
+        // let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
+        // //if user got rejected that means they heard back 
+        // let hbStatus = hbClosed === true ? true : job.heardBack.status;
+        //updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
+        updateJobStatus(id, null, null, hbClosed, null, null);
     }
 
     return (

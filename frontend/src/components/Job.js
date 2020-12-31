@@ -7,13 +7,6 @@ import { useState } from 'react'
 export default function Job({ job }) {
     const [open,setOpen] = useState(false)
 
-    const saveThisJob = (job) => {
-        const location = job.location;
-        const company = job.company;
-        const jobTitle = job.title;
-        saveAJob(location, company, jobTitle)
-    }
-
     return (
         <Card>
             <Card.Body>

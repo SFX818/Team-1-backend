@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import authHeader from '../utilities/authHeader.utilities'
-import { Form, Button } from 'react-bootstrap'
+import NetworkForm from './NetworkForm'
 
 const Network = () => {
     
     // Setting state to hold the saved networks
     const [networkData, setNetworkData] = useState([])
-
+    
     useEffect (()=>{
         getNetwork()
     },[])
@@ -19,6 +19,8 @@ const Network = () => {
             setNetworkData(network.data))
          
     }
+
+    
 
     return (
 
@@ -38,42 +40,9 @@ const Network = () => {
                     ))}
                 </ul>
             </div>
-
-            <div>
-            <br></br>
-            <br></br>
-                <h3>Add a new contact:</h3>
-                <Form>
-                    <Form.Group controlId="formBasicName">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control type="name" placeholder="Name" />
-                        <Form.Text className="text-muted">
-                            
-                        </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicCompany">
-                        <Form.Label>Company</Form.Label>
-                        <Form.Control type="company" placeholder="company" />
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPhone">
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control type="phone" placeholder="phone number" />
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="email" />
-                    </Form.Group>
-                       
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                </Form>
-            </div>
+            <NetworkForm/>
         </div>
-
+            
                     
 
     )

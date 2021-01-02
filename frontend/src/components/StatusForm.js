@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 
 //import function
@@ -9,7 +9,9 @@ import '../css/App.css'
 
 //status form needs 3 buttons (and maybe allowing users to set dates for interviews)
 
-function StatusForm({ job }) {
+function StatusForm({ job, appliedTo }) {
+    //const [currentJob, setCurrentJob] = useState('');
+
     let appStatus = job.appliedTo.appStatus;
     let responseStatus = job.heardBack.status;
     let rejectStatus = job.heardBack.closed;
@@ -24,21 +26,21 @@ function StatusForm({ job }) {
 
     appStatus = appStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
     responseStatus = responseStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
-    rejectStatus = rejectStatus == true ? ' rgb(236, 24, 24)' : 'rgb(70, 242, 101)';
+    rejectStatus = rejectStatus == true ? 'black' : 'rgb(255, 221, 0)';
 
 
     
     //NOTE: This is the order things are sent to req through the put route: id, hbStatus, hbSchInt, hbClosed, atStatus, atDate
     //our put route function expects 6 params, send in null if nothing is changed
-
-    const appliedTo = (job) => {
-        console.log('job before appliedTo change', job)
-        let id = job._id;
-        console.log(job.appliedTo.appStatus);
-        let atStatus = job.appliedTo.appStatus == true ? false : true;
-        console.log('AT STATUS', atStatus)
-        updateJobStatus(id, null, null, null, atStatus, null);
-    }
+    // const appliedTo = (job) => {
+    //     //setCurrentJob(job);
+    //     console.log('job before appliedTo change', job)
+    //     let id = job._id;
+    //     console.log(job.appliedTo.appStatus);
+    //     let atStatus = job.appliedTo.appStatus == true ? false : true;
+    //     console.log('AT STATUS', atStatus)
+    //     updateJobStatus(id, null, null, null, atStatus, null);
+    // }
 
     //function that toggles the heardback status btwn true and false when button is clicked
     const heardBack = (job) => {

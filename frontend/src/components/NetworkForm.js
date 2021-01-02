@@ -15,8 +15,8 @@ const [company, setCompany] = useState("");
 const [email, setEmail] = useState("");
 //stores the phone number
 const [phone, setPhone] = useState("");
-// //stores the notes about the contact
-// const [notes, setNotes] = useState("");
+//stores the notes about the contact
+const [notes, setNote] = useState("");
 
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
@@ -46,11 +46,11 @@ currentUser = currentUser.id
      setPhone(phone)
  };
 
-//  // Store the notes in our notes array
-//  const onChangeNote = (e) => {
-//   const notes = e.target.value
-//   setNotes(notes)
-// };
+ // Store the notes in our notes array
+ const onChangeNote = (e) => {
+  const notes = e.target.value
+  setNote(notes)
+};
 
  const handleSubmit = (e) =>{
      e.preventDefault()
@@ -110,7 +110,7 @@ return (
             />
         </FormGroup>
 
-        {/* <FormGroup text="note">
+        <FormGroup text="note">
             <Form.Control
               type="text"
               placeholder="note" 
@@ -118,7 +118,7 @@ return (
               value={notes}
               onChange={onChangeNote}
             />
-        </FormGroup> */}
+        </FormGroup>
         
        <Button onClick={handleSubmit}>Submit</Button>
     </Form>

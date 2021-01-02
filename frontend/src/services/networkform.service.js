@@ -6,13 +6,14 @@ const API_URL = "http://localhost:8080/"
 
 
 // Function to add a new network
-export const addNetwork = (currentUser, name, company, email, phone) => {
+export const addNetwork = (currentUser, name, company, email, phone, notes) => {
     return axios.post( API_URL + "newnetwork", {
         currentUser,
         name,
         company,
         email,
-        phone
+        phone, 
+        notes
     })
     .then(res =>{
         console.log("adding network response", res)

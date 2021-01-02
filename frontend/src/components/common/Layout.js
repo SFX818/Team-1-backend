@@ -24,7 +24,7 @@ const Layout = (props) => {
  
   return (
     <div>
-      <nav id="nav" className="navbar navbar-expand navbar-dark bg-primary">
+      <nav id="nav" className="navbar navbar-expand navbar-dark bg-dark">
         <Link to="/" className="navbar-brand">
          <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
         </Link>

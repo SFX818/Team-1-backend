@@ -131,6 +131,7 @@ ul{
 #user{
   font-family: 'Roboto', sans-serif;
   margin-left: 300px;
+
 }
 
 #logo{
@@ -139,3 +140,6 @@ ul{
   margin-top: -2.5vw;
 }
 
+.jumbotron{
+  background-color: white;
+}

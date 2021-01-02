@@ -5,6 +5,7 @@ import authHeader from "../utilities/authHeader.utilities";
 import { Link } from "react-router-dom";
 import { PieChart } from "react-minimal-pie-chart";
 import "../css/App.css";
+import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
 
 //backend function import

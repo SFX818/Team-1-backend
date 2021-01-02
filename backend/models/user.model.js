@@ -19,8 +19,15 @@ const User = mongoose.model(
             ref: "SavedJob"
             }
        ],
-       codingGoal: {type: Number, default: 0},
-       appGoal: {type: Number, default: 0},
+       codingGoal: {
+          goal: {type: Number, default: 0},
+          progress: {type: Number, default: 0}
+
+       },
+       appGoal: {
+            goal: {type: Number, default: 0},
+            progress: {type: Number, default: 0}
+       },
        network: [
             {
             type: mongoose.Schema.Types.ObjectId,

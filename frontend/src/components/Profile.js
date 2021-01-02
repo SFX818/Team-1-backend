@@ -5,6 +5,7 @@ import authHeader from "../utilities/authHeader.utilities";
 import { Link } from "react-router-dom";
 import { PieChart } from "react-minimal-pie-chart";
 import "../css/App.css";
+import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
 
 //backend function import
@@ -29,6 +30,26 @@ const Profile = () => {
 
 
 
+  //code for the goals below:
+  const [allGoals, setAllGoals] = useState([]);
+
+  useEffect(() => {
+    goalGrabber();
+  }, []);
+
+  const goalGrabber = () => {
+    const goalData = axios
+      .get("http://localhost:8080/profile", { headers: authHeader() })
+      .then((gData) => setAllGoals([gData.data]));
+    // .catch(err => console.log(err.message))
+  };
+  console.log("THIS IS ALL goals", allGoals);
+
+
+
+
+
+  //end of the coding api call starts below:
   <a rel="wobble-horizontal" class="button wobble-horizontal">Wobble Horizontal</a>
   const listJobs = () => {
     if (allJobs.length > 0) {
@@ -128,6 +149,9 @@ const Profile = () => {
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
+        <h2> coding Goals: {allGoals[0].codingGoal.goal}</h2>
+        {/* <h2> App Goals: {allGoals[0].appGoal}</h2>
+        <h2> To do's Left: {allGoals[0].todos.length}</h2> */}
       </div>
     );
   }

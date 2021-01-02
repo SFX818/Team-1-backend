@@ -9,8 +9,7 @@ import '../css/App.css'
 
 //status form needs 3 buttons (and maybe allowing users to set dates for interviews)
 
-function StatusForm({ job, appliedTo }) {
-    //const [currentJob, setCurrentJob] = useState('');
+function StatusForm({ job, jobGrabber }) {
 
     let appStatus = job.appliedTo.appStatus;
     let responseStatus = job.heardBack.status;
@@ -26,48 +25,45 @@ function StatusForm({ job, appliedTo }) {
     
     //NOTE: This is the order things are sent to req through the put route: id, hbStatus, hbSchInt, hbClosed, atStatus, atDate
     //our put route function expects 6 params, send in null if nothing is changed
-    // const appliedTo = (job) => {
-    //     //setCurrentJob(job);
-    //     console.log('job before appliedTo change', job)
-    //     let id = job._id;
-    //     console.log(job.appliedTo.appStatus);
-    //     let atStatus = job.appliedTo.appStatus == true ? false : true;
-    //     //if applied to is false, heard back has to be false
-    //     let hbStatus = atStatus == false ? false : job.heardBack.status;
-    //     console.log('AT STATUS', atStatus)
-    //     updateJobStatus(id, hbStatus, null, null, atStatus, null);
-    // }
+    const appliedTo = (job) => {
+        let id = job._id;
+        let atStatus = job.appliedTo.appStatus == true ? false : true;
+        //if applied to is false, heard back has to be false
+        let hbStatus = atStatus == false ? false : job.heardBack.status;
+        //call updateJobStatus function that connects frontend to backend
+        updateJobStatus(id, hbStatus, null, null, atStatus, null);
+        //passing in jobGrabber (the function responsible for retrieving data from the backend) to all the button functions will allow the components to rerender when changed
+        jobGrabber();
+    }
 
     //function that toggles the heardback status btwn true and false when button is clicked
     const heardBack = (job) => {
-        console.log('job before heardback change', job)
         let id = job._id;
-        //let atStatus;
         //if the status of the heardBack.status is already true, switch it to false. if its false, switch to true
         let hbStatus = job.heardBack.status === true ? false : true;
-
         //if user heardback, make sure their applied to is true
         let atStatus = hbStatus === true ? true : job.appliedTo.appStatus;
-        //call updateJobStatus function that connects frontend to backend
         updateJobStatus(id, hbStatus, null, null, atStatus, null);
+        jobGrabber();
     }
 
     //function that toggles the closed status of the job
     const rejectedFrom = (job) => {
-        console.log('job before', job.heardBack.closed)
         let id = job._id;
         let hbClosed = job.heardBack.closed === true ? false : true;
-        // //if user got rejected, make sure their applied to is true
+        //if user got rejected, make sure their applied to is true
         let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
         //if user got rejected that means they heard back 
         let hbStatus = hbClosed === true ? true : job.heardBack.status;
         //updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
         updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
+        jobGrabber();
     }
 
     const removeJob = (job) => {
         let id = job._id;
         deleteJob(id);
+        jobGrabber();
     }
 
     return (

@@ -35,11 +35,6 @@ const Layout = (props) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/landing"} className="nav-link">
-              JobSearch
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link to={"/profile/network"} className="nav-link">
               My Network
             </Link>
@@ -67,6 +62,11 @@ const Layout = (props) => {
                 {currentUser.username}
               </Link>
             </li>
+            <li className="nav-item">
+            <Link to={"/landing"} className="nav-link">
+              JobSearch
+            </Link>
+          </li>
             <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
                   Logout

@@ -4,13 +4,14 @@ import ReactMarkdown from 'react-markdown'
 import { useState, useEffect } from 'react'
 import { saveAJob } from '../services/savedjob.service'
 import { getCurrentUser } from '../services/auth.service'
+import Heart from "react-animated-heart";
 
 
 
 
 export default function Job({ job }) {
     const [open,setOpen] = useState(false)
-  
+    const [isClick, setClick] = useState(false);
 
     const [currentUser,setCurrentUser] = useState(getCurrentUser())
     useEffect(() => {
@@ -44,16 +45,20 @@ export default function Job({ job }) {
                         <ReactMarkdown source={job.how_to_apply} />
                         </div>
                     </div>
-                
                     <img className="d-none d-md-block" height="50" alt={job.company} src={job.company_logo} />
                 </div>
+                
                 <Card.Text>
-                    <Button
+                    <Button className='float-right mt-5'
                         onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
                             {open ? 'Hide Details' : 'View Details'}
                     </Button>
-                    <Button onClick={() => saveThisJob(job)}>SAVE TO FAVS</Button>
+                    <Heart isClick={isClick} onClick={() => {
+                        saveThisJob(job) 
+                        setClick(!isClick)}}>
+                        </Heart>
                  </Card.Text>
+                 
                  <Collapse in={open}>
                     <div className="mt-4">
                      <ReactMarkdown source={job.description} />

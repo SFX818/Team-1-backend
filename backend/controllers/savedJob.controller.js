@@ -40,7 +40,8 @@ exports.findAllJobs = (req, res) =>{
       appliedToJobs: [],
       heardBackJobs: [],
       deniedFromJobs: [],
-      needActionJobs: []
+      needActionJobs: [],
+      inProgressJobs: []
     }
 
     user.savedJobs.map(job => {
@@ -58,12 +59,11 @@ exports.findAllJobs = (req, res) =>{
         }
 
         // If user has applied, check if they have been denied
-        // NOTE: IF YOU GOT DENIED IT MEANS YOU HEARD BACK. MIGHT PUT
-        // THIS IF INSIDE OF THE
-        // ABOVE HEARD.BACK.STATUS IF STATEMENT 
-        // BUT IT ALSO MIGHT BE TOO MUCH TO ASK OF THE USER 
+        //all the jobs that user is in progress: have applied and havent been rejected
         if(job.heardBack.closed === true){
           usersJobs.deniedFromJobs.push(job)
+        } else if(job.heardBack.closed === false){
+          usersJobs.inProgressJobs.push(job)
         }
 
       } else {
@@ -71,11 +71,12 @@ exports.findAllJobs = (req, res) =>{
       }
     })
     res.send(usersJobs);
-    console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
-    console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
-    console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
-    console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
-    console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
+    // console.log("usersJobs.allJobs.length", usersJobs.allJobs.length);
+    // console.log("usersJobs.appliedToJobs.length", usersJobs.appliedToJobs.length);
+    // console.log("usersJobs.heardBackJobs.length", usersJobs.heardBackJobs.length);
+    // console.log("usersJobs.deniedFromJobs.length", usersJobs.deniedFromJobs.length);
+    // console.log("usersJobs.needActionJobs.length", usersJobs.needActionJobs.length);
+    // console.log('usersJobs.inProgressJobs.length', usersJobs.inProgressJobs.length);
   })
 }
 
@@ -122,28 +123,16 @@ exports.findJobById = (req, res) =>{
 //NOTE: all three status changes (and two dates) will be together and updated at the same time, need to make sure the previous value is in place when submitting the change 
 //changed the set values to what were passing from the front end 
 exports.updateStatus = (req, res) => {
+  console.log('HITT BACK END')
   const id = req.params.id;
 
   SavedJob.findOne({_id: id})
   .then(theJob => {
-    const hbStatus = req.body.hbStatus === null ? theJob.heardBack.status : req.body.hbStatus;
-    const hbSchInt = req.body.hbSchInt === null ? theJob.heardBack.scheduledInterview : req.body.hbSchInt;
+    let hbStatus = req.body.hbStatus === null ? theJob.heardBack.status : req.body.hbStatus;
+    let hbSchInt = req.body.hbSchInt === null ? theJob.heardBack.scheduledInterview : req.body.hbSchInt;
     let hbClosed = req.body.hbClosed === null ? theJob.heardBack.closed : req.body.hbClosed;
     let atStatus = req.body.atStatus === null ? theJob.appliedTo.appStatus : req.body.atStatus;
-    const atDate = req.body.atDate === null ? theJob.appliedTo.date : req.body.atDate;
-
-    //if hbStatus is true, auto change atStatus to true
-    //if hbClosed is true, auto change atStatus to true
-    if(hbStatus == true || hbClosed == true){
-      atStatus = true;
-      console.log('change')
-    }
-    //if hbClosed is true, auto change hbStatus to true
-    if(hbClosed == true){
-      hbStatus = true;
-      atStatus = true;
-    }
-    console.log(atStatus);
+    let atDate = req.body.atDate === null ? theJob.appliedTo.date : req.body.atDate;
 
     SavedJob.findOneAndUpdate(
       {_id: id},

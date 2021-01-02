@@ -1,3 +1,4 @@
+const { user } = require('../models/index')
 const db = require('../models/index')
 const User = db.user
 
@@ -55,4 +56,23 @@ exports.setGoals = (req, res) => {
             //console.log('UPDATED USER', updatedUser);
         })
     }
+    // User.findById({_id: req.userId})
+    // .then(user => {
+    //     let codingGoal = req.body.codingGoal === undefined ? user.codingGoal.goal : req.body.codingGoal;
+    //     let codingProg = req.body.codingProg === undefined ? user.codingGoal.progress : req.body.codingProg;
+    //     let appGoal = req.body.appGoal === undefined ? user.appGoal.goal : req.body.appGoal;
+    //     let appProg = req.body.appProg === undefined ? user.appGoal.progress : req.body.appProg;
+
+    //     User.findOneAndUpdate({_id: req.userId}, {$set: {
+    //         "codingGoal.goal": codingGoal,
+    //         "codingGoal.progress": codingProg,
+    //         "appGoal.goal": appGoal,
+    //         "appGoal.progress": appProg
+    //     }}, {new: true, upsert: true}, (err, updatedUser) => {
+    //         if(err){
+    //             res.send({message: 'Error when trying to update savedJob status'})
+    //         }
+    //         res.send(updatedUser);
+    //       })
+    // })
 }

@@ -103,12 +103,8 @@ label {
   border-radius: 10%;
 }
 
-<<<<<<< HEAD
-ul {
-=======
 
 ul{
->>>>>>> c750aa02cdf6e67e6859c1b5bbbcc3adbc7eefd4
   padding-left: 0px;
 }
 
@@ -131,16 +127,12 @@ ul{
 
 #user {
   font-family: 'Roboto', sans-serif;
-<<<<<<< HEAD
 }
 
 .btncontainer {
   display: flex;
   flex-direction: row;
-}
-=======
   margin-left: 300px;
-
 }
 
 #logo{
@@ -149,10 +141,7 @@ ul{
   margin-top: -2.5vw;
 }
 
-<<<<<<< HEAD
->>>>>>> c750aa02cdf6e67e6859c1b5bbbcc3adbc7eefd4
-=======
+
 .jumbotron{
   background-color: white;
 }
->>>>>>> 99a4d3f3498325f646b16576b75b8c47280227ab

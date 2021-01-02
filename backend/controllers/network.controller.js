@@ -43,7 +43,7 @@ exports.deleteNetwork = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Tutorial with id=" + id,
+        message: "Error deleting network with id=" + id,
       });
     });
 };

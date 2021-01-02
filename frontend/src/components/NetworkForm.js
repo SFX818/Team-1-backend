@@ -15,8 +15,8 @@ const [company, setCompany] = useState("");
 const [email, setEmail] = useState("");
 //stores the phone number
 const [phone, setPhone] = useState("");
-// if any errors, we want to show the error msg
-// const [note, setNote] = useState("");
+//stores the notes about the contact
+const [notes, setNote] = useState("");
 
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
@@ -46,10 +46,22 @@ currentUser = currentUser.id
      setPhone(phone)
  };
 
+ // Store the notes in our notes array
+ const onChangeNote = (e) => {
+  const notes = e.target.value
+  setNote(notes)
+};
+
  const handleSubmit = (e) =>{
      e.preventDefault()
-     addNetwork(currentUser, name,company,email,phone)
+     addNetwork(currentUser,name,company,email,phone,notes)
  }
+
+  // // Grabbing the delete functioin in networkservices, 
+  // const handleDelete = (e) => {
+  //   e.preventDefault()
+  //   deleteNetwork(currentUser, name,company,email,phone)
+  //  }
 
 return (
  <div>
@@ -61,6 +73,7 @@ return (
         <FormGroup text="name">
             <Form.Control
               type="text"
+              placeholder="name" 
               name="name"
               value={name}
               onChange={onChangeName}
@@ -70,6 +83,7 @@ return (
         <FormGroup text="company">
             <Form.Control
               type="text"
+              placeholder="company" 
               name="company"
               value={company}
               onChange={onChangeCompany}
@@ -79,6 +93,7 @@ return (
         <FormGroup text="email">
             <Form.Control
               type="email"
+              placeholder="email" 
               name="email"
               value={email}
               onChange={onChangeEmail}
@@ -88,12 +103,23 @@ return (
         <FormGroup text="phone">
             <Form.Control
               type="number"
+              placeholder="phone number" 
               name="phone"
               value={phone}
               onChange={onChangePhone}
             />
         </FormGroup>
 
+        <FormGroup text="note">
+            <Form.Control
+              type="text"
+              placeholder="note" 
+              name="note"
+              value={notes}
+              onChange={onChangeNote}
+            />
+        </FormGroup>
+        
        <Button onClick={handleSubmit}>Submit</Button>
     </Form>
             </div>

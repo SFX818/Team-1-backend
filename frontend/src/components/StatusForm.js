@@ -17,15 +17,9 @@ function StatusForm({ job, appliedTo }) {
     let rejectStatus = job.heardBack.closed;
 
     console.log('appstatus', appStatus)
-    console.log()
-    // if(appStatus == true){
-    //     appStatus = 'green'
-    // } else {
-    //     appStatus = 'red'
-    // }
 
     appStatus = appStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
-    responseStatus = responseStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
+    responseStatus = responseStatus == true ? 'rgb(53, 54, 54)' : 'rgb(0, 251, 255)';
     rejectStatus = rejectStatus == true ? 'black' : 'rgb(255, 221, 0)';
 
 
@@ -38,8 +32,10 @@ function StatusForm({ job, appliedTo }) {
     //     let id = job._id;
     //     console.log(job.appliedTo.appStatus);
     //     let atStatus = job.appliedTo.appStatus == true ? false : true;
+    //     //if applied to is false, heard back has to be false
+    //     let hbStatus = atStatus == false ? false : job.heardBack.status;
     //     console.log('AT STATUS', atStatus)
-    //     updateJobStatus(id, null, null, null, atStatus, null);
+    //     updateJobStatus(id, hbStatus, null, null, atStatus, null);
     // }
 
     //function that toggles the heardback status btwn true and false when button is clicked
@@ -53,8 +49,7 @@ function StatusForm({ job, appliedTo }) {
         //if user heardback, make sure their applied to is true
         let atStatus = hbStatus === true ? true : job.appliedTo.appStatus;
         //call updateJobStatus function that connects frontend to backend
-        // updateJobStatus(id, hbStatus, null, null, atStatus, null);
-        updateJobStatus(id, hbStatus, null, null, null, null);
+        updateJobStatus(id, hbStatus, null, null, atStatus, null);
     }
 
     //function that toggles the closed status of the job
@@ -63,11 +58,11 @@ function StatusForm({ job, appliedTo }) {
         let id = job._id;
         let hbClosed = job.heardBack.closed === true ? false : true;
         // //if user got rejected, make sure their applied to is true
-        // let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
-        // //if user got rejected that means they heard back 
-        // let hbStatus = hbClosed === true ? true : job.heardBack.status;
+        let atStatus = hbClosed === true ? true : job.appliedTo.appStatus;
+        //if user got rejected that means they heard back 
+        let hbStatus = hbClosed === true ? true : job.heardBack.status;
         //updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
-        updateJobStatus(id, null, null, hbClosed, null, null);
+        updateJobStatus(id, hbStatus, null, hbClosed, atStatus, null);
     }
 
     const removeJob = (job) => {

@@ -47,8 +47,10 @@ const SavedJobs = () => {
         let id = job._id;
         console.log(job.appliedTo.appStatus);
         let atStatus = job.appliedTo.appStatus == true ? false : true;
+        //if applied to is false, heard back has to be false
+        let hbStatus = atStatus == false ? false : job.heardBack.status;
         console.log('AT STATUS', atStatus)
-        updateJobStatus(id, null, null, null, atStatus, null);
+        updateJobStatus(id, hbStatus, null, null, atStatus, null);
     }
 
 

@@ -21,3 +21,26 @@ export const addNetwork = (currentUser, name, company, email, phone) => {
         console.log("oh no no no, error in addNetwork", err)
     })
 }
+
+export const deleteNetwork = (id) => {
+    console.log()
+    return axios
+    .delete('http://localhost:8080/deletenetwork/'+ id)
+    .then(response => {
+        console.log('deleted network', response)
+    })
+    .catch(err => {
+        console.log('error with delete network', err)
+    })
+}
+
+// export const editNetwork = (id) => {
+//     return axios
+//     .put('http://localhost:8080/editnetwork/' +id)
+//     .then(response => {
+//         console.log('edited network successfull', response)
+//     })
+//     .catch(err => {
+//         console.log('error with edit network', err)
+//     })
+// }

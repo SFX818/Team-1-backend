@@ -21,7 +21,7 @@ module.exports = (app) => {
     app.post("/newsavedjob", savedJob.saveAJob)
 
     //delete a saved job (working)
-    app.delete("/savedjob/:id", savedJob.delete)
+    app.delete("/deletejob/:id", savedJob.delete)
 
     //update the note array inside appliedTo Object (working)
     app.put("/updatenote/:id", savedJob.updateNote)
@@ -30,7 +30,8 @@ module.exports = (app) => {
     app.get("/findjob/:id", savedJob.findJobById)
 
     //route that is able to grab and save updated statuses on their saved jobs
-    app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJob.updateStatus)
+    // app.put("/changestatus/:id", [authJwt.verifyWebToken], savedJob.updateStatus)
+    app.put("/changestatus/:id", savedJob.updateStatus)
 }
 
 

@@ -8,6 +8,7 @@ import Heart from "react-animated-heart";
 
 
 
+
 export default function Job({ job }) {
     const [open,setOpen] = useState(false)
     const [isClick, setClick] = useState(false);

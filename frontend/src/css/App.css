@@ -1,9 +1,7 @@
 label {
   display: block;
   margin-top: 10px;
-  
 }
-
 
 /* THE CARD BELOW IS FOR THE PROFILE SAVED JOBS */
 .card-container.card {
@@ -15,7 +13,7 @@ label {
 .card {
   background-color: #f7f7f7c5;
   padding: 1vw 1vw 1vw;
-  margin: 0 auto .1vw;
+  margin: 0 auto 0.1vw;
   margin-top: 1vw;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -36,83 +34,87 @@ label {
 }
 
 /* PIE CHART CODE */
-#pie{
-  font-size:.5vw;
+#pie {
+  font-size: 0.5vw;
   /* font-family: 'Goldman', cursive; */
   font-family: 'Roboto', sans-serif;
-  display:flex;
+  display: flex;
   flex-direction: column;
   /* border:2px solid red; */
-  width:50%;
+  width: 50%;
 }
 
-#bigPie{
-  display:flex;
+#bigPie {
+  display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
   /* border:2px solid red; */
-  width:70%;
+  width: 70%;
   padding-left: 5vw;
-  margin-left:3vw;
+  margin-left: 3vw;
 }
 
-#pie2{
-  font-size:.5vw;
+#pie2 {
+  font-size: 0.5vw;
   /* font-family: 'Goldman', cursive; */
   font-family: 'Roboto', sans-serif;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  width:50%;
+  width: 50%;
 }
 
 /* HEADER FOR THE PIE CHARTS */
-#applied{
+#applied {
   /* font-family: 'Goldman', cursive; */
   font-family: 'Roboto', sans-serif;
-  margin-top:5vw;
+  margin-top: 5vw;
 }
 
-#savedJobs{
+#savedJobs {
   font-family: 'Roboto', sans-serif;
-  font-size:2vw;
+  font-size: 2vw;
 }
 
-#heardBack{
+#heardBack {
   font-family: 'Roboto', sans-serif;
-  margin-top:5vw;
+  margin-top: 5vw;
   /* font-family: 'Goldman', cursive; */
 }
 
-#card{
-  font-size:1vw;
-  width:100%;
+#card {
+  font-size: 1vw;
+  width: 100%;
   margin-top: 0px;
   background-color: rgb(57, 120, 236);
   border-radius: 10%;
 }
 
-ul{
+ul {
   padding-left: 0px;
-  
 }
 
 /* THIS IS THE CONTAINER FOR JUST THE SAVED JOBS */
-#jobList{
-  display:flex;
+#jobList {
+  display: flex;
   flex-direction: column;
   /* border: 2px solid blue; */
-  height:60vw;
-  width:30%;
+  height: 60vw;
+  width: 30%;
   overflow: scroll;
 }
 
 /* CONTAINER FOR THE SAVED JOB AND PIE CHART  */
 #container {
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   /* border:2px solid yellow; */
 }
 
-#user{
+#user {
   font-family: 'Roboto', sans-serif;
+}
+
+.btncontainer {
+  display: flex;
+  flex-direction: row;
 }

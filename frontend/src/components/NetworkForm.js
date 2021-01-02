@@ -1,8 +1,9 @@
 import React,{useState, useEffect} from 'react'
 import authHeader from '../utilities/authHeader.utilities'
 import { Form, FormGroup, Button } from 'react-bootstrap'
-import {addNetwork} from '../services/networkform.service'
+import {addNetwork,editNetwork} from '../services/networkform.service'
 import {getCurrentUser} from '../services/auth.service'
+
 
 
 const NetworkForm = () => {
@@ -21,8 +22,6 @@ const [notes, setNote] = useState("");
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
 
-
-
 // Stores the name in our name state
   const onChangeName = (e) => {
     const name = e.target.value;
@@ -40,94 +39,89 @@ currentUser = currentUser.id
       setEmail(email)
  };
 
-// Store the phone-number in our phone-number
+// Stores the phone-number in our phone-number
  const onChangePhone = (e) => {
      const phone = e.target.value
      setPhone(phone)
  };
 
- // Store the notes in our notes array
+// Stores the notes in our notes array
  const onChangeNote = (e) => {
   const notes = e.target.value
   setNote(notes)
 };
-
+// Adds a new network onClick{handleSubmit} with the help of the addNetwork function created in networkform.services.js
  const handleSubmit = (e) =>{
      e.preventDefault()
      addNetwork(currentUser,name,company,email,phone,notes)
  }
 
-  // // Grabbing the delete functioin in networkservices, 
-  // const handleDelete = (e) => {
-  //   e.preventDefault()
-  //   deleteNetwork(currentUser, name,company,email,phone)
-  //  }
+
 
 return (
- <div>
-    <br></br>
-    <br></br>
-    <h3>Add a new contact:</h3>
-    <Form>
+  <div>
+        <br></br>
+        <br></br>
+        <h3>Add a new contact:</h3>
+        <Form>
+            <FormGroup text="name">
+                <Form.Control
+                  type="text"
+                  placeholder="name" 
+                  name="name"
+                  value={name}
+                  onChange={onChangeName}
+                />
+            </FormGroup>
 
-        <FormGroup text="name">
-            <Form.Control
-              type="text"
-              placeholder="name" 
-              name="name"
-              value={name}
-              onChange={onChangeName}
-            />
-        </FormGroup>
+            <FormGroup text="company">
+                <Form.Control
+                  type="text"
+                  placeholder="company" 
+                  name="company"
+                  value={company}
+                  onChange={onChangeCompany}
+                />
+            </FormGroup>
 
-        <FormGroup text="company">
-            <Form.Control
-              type="text"
-              placeholder="company" 
-              name="company"
-              value={company}
-              onChange={onChangeCompany}
-            />
-        </FormGroup>
+            <FormGroup text="email">
+                <Form.Control
+                  type="email"
+                  placeholder="email" 
+                  name="email"
+                  value={email}
+                  onChange={onChangeEmail}
+                />
+            </FormGroup>
 
-        <FormGroup text="email">
-            <Form.Control
-              type="email"
-              placeholder="email" 
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-            />
-        </FormGroup>
+            <FormGroup text="phone">
+                <Form.Control
+                  type="text"
+                  placeholder="phone number" 
+                  name="phone"
+                  value={phone}
+                  onChange={onChangePhone}
+                />
+            </FormGroup>
 
-        <FormGroup text="phone">
-            <Form.Control
-              type="number"
-              placeholder="phone number" 
-              name="phone"
-              value={phone}
-              onChange={onChangePhone}
-            />
-        </FormGroup>
+            <FormGroup text="note">
+                <Form.Control
+                  type="text"
+                  placeholder="note" 
+                  name="note"
+                  value={notes}
+                  onChange={onChangeNote}
+                />
+            </FormGroup>
+    
+          <Button onClick={handleSubmit}>Submit</Button>
+        </Form>
+  </div>
+          
 
-        <FormGroup text="note">
-            <Form.Control
-              type="text"
-              placeholder="note" 
-              name="note"
-              value={notes}
-              onChange={onChangeNote}
-            />
-        </FormGroup>
-        
-       <Button onClick={handleSubmit}>Submit</Button>
-    </Form>
-            </div>
-      
-
-                    
-      
-    )
+                        
+          
+        )
 }
 
 export default NetworkForm

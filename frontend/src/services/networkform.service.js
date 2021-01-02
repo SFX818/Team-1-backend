@@ -35,13 +35,14 @@ export const deleteNetwork = (id) => {
     })
 }
 
-// export const editNetwork = (id) => {
-//     return axios
-//     .put('http://localhost:8080/editnetwork/' +id)
-//     .then(response => {
-//         console.log('edited network successfull', response)
-//     })
-//     .catch(err => {
-//         console.log('error with edit network', err)
-//     })
-// }
+export const editNetwork = (id, name, company, email, phone, notes ) => {
+    return axios
+    .put('http://localhost:8080/editnetwork/' +id, {name,company,email,phone,notes})
+    .then(response => {
+        console.log('edited network successfull', response)
+    })
+    .catch(err => {
+        console.log('error with edit network', err)
+    })
+}
+

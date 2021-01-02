@@ -13,7 +13,8 @@ exports.displayAll = (req, res) => {
             email: user.email,
             todos: user.todos,
             savedJobs: user.savedJobs,
-            codingGoal: user.codingGoal,
+            codingGoal: {goal: user.codingGoal.goal, progress: user.codingGoal.progress},
+            appGoal: {goal: user.appGoal.goal, progress: user.appGoal.progress},
             network: user.network
         })
     })
@@ -38,21 +39,51 @@ exports.editTodos = (req, res) => {
 
 //PUT route for editing goals, it is a 2 in one, the if statement will check which is being sent and update accordingly 
 exports.setGoals = (req, res) => {
-    if(req.body.codingGoal){
-        User.findOneAndUpdate({_id: req.userId}, {$set: {codingGoal: req.body.codingGoal}}, {new: true, upsert: true}, (err, updatedUser) => {
-            if(err){
-                res.send({message: 'Error when trying to update user\'s coding goal'})
-            }
-            res.send(updatedUser);
-            //console.log('UPDATED USER', updatedUser);
-        })
-    } else {
-        User.findOneAndUpdate({_id: req.userId}, {$set: {appGoal: req.body.appGoal}}, {new: true, upsert: true}, (err, updatedUser) => {
-            if(err){
-                res.send({message: 'Error when trying to update user\'s application goal'})
-            }
-            res.send(updatedUser);
-            //console.log('UPDATED USER', updatedUser);
-        })
-    }
-}
+    // if(req.body.codingGoal.goal || req.body.codingGoal.progress){
+    //     User.findOneAndUpdate({_id: req.userId}, {$set: {"codingGoal.goal": req.body.codingGoal.goal}}, {new: true, upsert: true}, (err, updatedUser) => {
+    //         if(err){
+    //             res.send({message: 'Error when trying to update user\'s coding goal'})
+    //         }
+    //         res.send(updatedUser);
+    //         //console.log('UPDATED USER', updatedUser);
+    //     })
+    // } else {
+    //     User.findOneAndUpdate({_id: req.userId}, {$set: {"appGoal.goal": req.body.appGoal.goal}}, {new: true, upsert: true}, (err, updatedUser) => {
+    //         if(err){
+    //             res.send({message: 'Error when trying to update user\'s application goal'})
+    //         }
+    //         res.send(updatedUser);
+    //         //console.log('UPDATED USER', updatedUser);
+    //     })
+    // }
+    // const id = req.params.id;
+
+    User.findOne({_id: req.userId})
+    .then(theGoal =>{
+        console.log("THIS IS THE GOAL", theGoal)
+        // const codingGoal = req.body.codingGoal === null ? theGoal.codingGoal.goal : req.body.codingGoal;
+        // const codingProgress = req.body.codingProgress === null ? theGoal.codingGoal.progress : req.body.codingProgress;
+        // const appGoal = req.body.appGoal === null ? theGoal.appGoal.goal : req.body.appGoal;
+        // const appProgress = req.body.appProgress === null ? theGoal.appGoal.progress : req.body.appProgress;
+        const codingGoal = req.body.codingGoal.goal === undefined ? theGoal.codingGoal.goal : req.body.codingGoal.goal;
+        const codingProgress = req.body.codingGoal.progress === undefined ? theGoal.codingGoal.progress : req.body.codingGoal.progress;
+        const appGoal = req.body.appGoal.goal === undefined ? theGoal.appGoal.goal : req.body.appGoal.goal;
+        const appProgress = req.body.appGoal.progress === undefined ? theGoal.appGoal.progress : req.body.appGoal.progress;
+
+
+        User.findOneAndUpdate(
+            {_id: req.userId},
+            {$set:{
+                "codingGoal.goal": codingGoal,
+                "codingGoal.progress": codingProgress,
+                "appGoal.goal": appGoal,
+                "appGoal.progress": appProgress   
+            }},{new: true, upsert: true }, (err, updatedGoal) => {
+                if(err){
+                    res.send({message: 'Error when trying to update app or coding goal', err})
+                }
+                res.send(updatedGoal);
+              })
+          })
+         }
+

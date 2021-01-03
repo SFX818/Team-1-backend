@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentUser } from "../services/auth.service";
+// import { getCurrentUser } from "../services/auth.service";
 import axios from "axios";
 import authHeader from "../utilities/authHeader.utilities";
 import { Link } from "react-router-dom";
@@ -7,12 +7,12 @@ import { PieChart } from "react-minimal-pie-chart";
 import "../css/App.css";
 import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
-import { Progress } from "react-sweet-progress";
-import "react-sweet-progress/lib/style.css";
+// import { Progress } from "react-sweet-progress";
+// import "react-sweet-progress/lib/style.css";
 import { getProfileInfo, editGoals } from '../services/profile.service'
 //imports for dropdown menu
-import Select from 'react-select';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import Select from 'react-select';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
@@ -29,30 +29,28 @@ const Profile = () => {
   const [appGoal, setAppGoal] = useState('');
   const [appProgress, setAppProgress] = useState('');
 
-  const goalOptions = [
-    {label: '1', value: 1},
-    {label: '2', value: 2},
-    {label: '3', value: 3},
-    {label: '4', value: 4},
-    {label: '5', value: 5},
-    {label: '6', value: 6},
-    {label: '7', value: 7},
-    {label: '8', value: 8},
-    {label: '9', value: 9},
-    {label: '10', value: 10}
-  ]
+  // const goalOptions = [
+  //   {label: '1', value: 1},
+  //   {label: '2', value: 2},
+  //   {label: '3', value: 3},
+  //   {label: '4', value: 4},
+  //   {label: '5', value: 5},
+  //   {label: '6', value: 6},
+  //   {label: '7', value: 7},
+  //   {label: '8', value: 8},
+  //   {label: '9', value: 9},
+  //   {label: '10', value: 10}
+  // ]
 
 
-  //use useEffect to run the getJobs function
+  //use useEffect to make calls to the backend and return users job and profile info
   useEffect(() => {
-    //below two lines are the axios get calls to our backend 
     jobGrabber();
     profileInfoGrabber();
   }, []);
 
-  console.log('CURRENT USER', currentUser);
 
-  //going to our backend and responding with the users savedJobs info
+  //going to our backend and responding with the users savedJobs info and saving it to the jobData state
   const jobGrabber = () => {
     const jobData = axios
       .get("http://localhost:8080/profile/savedJobs", { headers: authHeader() })
@@ -60,7 +58,7 @@ const Profile = () => {
     // .catch(err => console.log(err.message))
   };
 
-  //going to our backend and responsing with the users profile info
+  //going to our backend and responsing with the users profile info and setting the currentUser state and the 4 goal states 
   const profileInfoGrabber = async () => {
     try {
       const profileData = await axios.get('http://localhost:8080/profile', {headers: authHeader()})
@@ -81,15 +79,16 @@ const Profile = () => {
   ////////////code for the goals below:
 
 
-  const result = Math.round((codingProgress / codingGoal) * 100);
-  const result2 = Math.round((appProgress / appGoal) * 100);
+  // const result = Math.round((codingProgress / codingGoal) * 100);
+  // const result2 = Math.round((appProgress / appGoal) * 100);
 
-  //needed this use effect for the editGoals backend route because it was taking state too long to update. It will run the editGoal function everytime there is a change to codingProgress
+  //FOR GOALS: needed this use effect for the editGoals backend route because it was taking state too long to update. It will run the editGoal function everytime there is a change to codingProgress
   useEffect(() => {
     let id = currentUser.id
     editGoals(id, null, codingProgress, null, null)
   }, [codingProgress])
 
+  //FOR GOALS: function that is connected to the + and - buttons in the GoalMeter component to change code goal progress. This change in info will then trigger the useEffect above
   const changeGoalProgress = (type) => {
     if(type==="add"){
         setCodingProgress(codingProgress + 1);
@@ -98,6 +97,7 @@ const Profile = () => {
     }
   }
 
+  //FOR GOALS: function that allows users to set a goal for coding problems
   const changeCodingGoal = (e) => {
     let id = currentUser.id
     setCodingGoal(e.value)
@@ -105,12 +105,13 @@ const Profile = () => {
     editGoals(id, codeGoal, null, null, null)
   }
 
+  //FOR GOALS: useEffect that allows the state change to catch up before doing the call to the backend 
   useEffect(() => {
     let id = currentUser.id
     editGoals(id, null, null, null, appProgress)
   }, [appProgress])
 
-
+  //FOR GOALS: function connected to + and  - buttons in the GoalMeter component to change progress of applications submitted, changed values to be used in the useEffect above
   const changeAppProgress = (type) => {
     if(type==="add"){
         setAppProgress(appProgress + 1);
@@ -119,11 +120,11 @@ const Profile = () => {
     }
   }
 
+  //FOR GOALS: function that allows user to set a goal for the amount of applications they want to submit
   const changeAppGoal = (e) => {
     let id = currentUser.id
     setAppGoal(e.value)
     let appGoal = e.value;
-    console.log('app goal from event', appGoal)
     editGoals(id, null, null, appGoal, null)
   }
 

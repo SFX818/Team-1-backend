@@ -26,7 +26,7 @@ const Profile = () => {
       .then((jobData) => setAllJobs([jobData.data]));
     // .catch(err => console.log(err.message))
   };
-  console.log("THIS IS ALL JOBS", allJobs);
+  console.log("THIS IS THE CURRENT USER", currentUser);
 
 
 

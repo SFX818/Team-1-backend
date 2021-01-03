@@ -15,13 +15,9 @@ function StatusForm({ job, jobGrabber }) {
     let responseStatus = job.heardBack.status;
     let rejectStatus = job.heardBack.closed;
 
-    console.log('appstatus', appStatus)
-
     appStatus = appStatus == true ? 'rgb(70, 242, 101)' : 'rgb(236, 24, 24)';
     responseStatus = responseStatus == true ? 'rgb(53, 54, 54)' : 'rgb(0, 251, 255)';
     rejectStatus = rejectStatus == true ? 'black' : 'rgb(255, 221, 0)';
-
-
     
     //NOTE: This is the order things are sent to req through the put route: id, hbStatus, hbSchInt, hbClosed, atStatus, atDate
     //our put route function expects 6 params, send in null if nothing is changed
@@ -60,6 +56,7 @@ function StatusForm({ job, jobGrabber }) {
         jobGrabber();
     }
 
+    //function that deletes the job from users database when button is clicked
     const removeJob = (job) => {
         let id = job._id;
         deleteJob(id);

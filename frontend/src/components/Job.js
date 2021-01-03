@@ -9,7 +9,7 @@ import Heart from "react-animated-heart";
 
 
 
-export default function Job({ job }) {
+export default function Job({ job, from }) {
     const [open,setOpen] = useState(false)
     const [isClick, setClick] = useState(false);
 
@@ -54,10 +54,12 @@ export default function Job({ job }) {
                         onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
                             {open ? 'Hide Details' : 'View Details'}
                     </Button>
-                    <Heart isClick={isClick} onClick={() => {
+                    {from === 'savedJobs' ? ''
+                    : <Heart isClick={isClick} onClick={() => {
                         saveThisJob(job) 
                         setClick(!isClick)}}>
-                        </Heart>
+                        </Heart> 
+                    }   
                  </Card.Text>
                  
                  <Collapse in={open}>

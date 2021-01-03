@@ -1,8 +1,6 @@
-// import React from 'react'
-import React, { useState, useEffect } from "react";
+import React from 'react'
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import { getProfileInfo, editGoals } from '../services/profile.service'
 
 //imports for dropdown menu
 import Select from 'react-select';

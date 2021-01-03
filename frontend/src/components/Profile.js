@@ -19,6 +19,7 @@ import { getJobs } from "../services/savedjob.service";
 
 //component import 
 import GoalMeter from '../components/GoalMeter';
+import PieCharts from '../components/PieCharts';
 
 
 const Profile = () => {
@@ -167,7 +168,7 @@ const Profile = () => {
           <div id="jobList">{listJobs()}</div>
 
           <div id="bigPie">
-            <div id="pie">
+            {/* <div id="pie">
               <h2 id="applied">
                 {" "}
                 Applied to: {allJobs[0].appliedToJobs.length}{" "}
@@ -193,9 +194,10 @@ const Profile = () => {
                   `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
                 }
               />
-            </div>
+            </div> */}
+            <PieCharts allJobs={allJobs}/>
 
-            <div id="pie2">
+            {/* <div id="pie2">
               <h2 id="heardBack">
                 {" "}
                 Heard Back: {allJobs[0].heardBackJobs.length}{" "}
@@ -205,7 +207,7 @@ const Profile = () => {
                 data={[
                   {
                     title: "Moved Fwrd: ",
-                    value: allJobs[0].appliedToJobs.length,
+                    value: allJobs[0].inProgressJobs.length,
                     color: "#DB7093",
                   },
                   {
@@ -219,7 +221,7 @@ const Profile = () => {
                   `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
                 }
               />
-            </div>
+            </div> */}
           </div>
           <div id="progress">
             <h3 id="goalChart">Goals:</h3>

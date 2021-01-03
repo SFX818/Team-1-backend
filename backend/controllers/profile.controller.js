@@ -1,3 +1,4 @@
+const { user } = require('../models/index')
 const db = require('../models/index')
 const User = db.user
 

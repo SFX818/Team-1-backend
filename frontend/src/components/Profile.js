@@ -149,7 +149,7 @@ const Profile = () => {
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
-        <h2> coding Goals: {allGoals[0].codingGoal.goal}</h2>
+        {/* <h2> coding Goals: {allGoals[0].codingGoal.goal}</h2> */}
         {/* <h2> App Goals: {allGoals[0].appGoal}</h2>
         <h2> To do's Left: {allGoals[0].todos.length}</h2> */}
       </div>

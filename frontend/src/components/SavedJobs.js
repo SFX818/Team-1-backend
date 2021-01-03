@@ -27,36 +27,41 @@ const SavedJobs = () => {
         .catch(err => console.log('ERROR ON JOB GET CALL', err.message))
     }
 
-    //function that grabs ALL of the user's saved jobs 
-    const displayAllJobs = () => {
-        if(allJobs != undefined && allJobs.length != 0){
-            return allJobs.allJobs.map((job, index) => (
-                <UserJob job = {job} key = {index}/>
-            ))
-        }
-        else {
-            return <h1>Loading...</h1>
-        }
-    }
+    // //function that grabs ALL of the user's saved jobs 
+    // const displayAllJobs = () => {
+    //     if(allJobs != undefined && allJobs.length != 0){
+    //         return allJobs.allJobs.map((job, index) => (
+    //             <UserJob job = {job} key = {index} appliedTo = {appliedTo}/>
+    //         ))
+    //     }
+    //     else {
+    //         return <h1>Loading...</h1>
+    //     }
+    // }
+
 
     //function that will render a UserJob component for every job separated by its application status
     const displayJobs = (section) => {
         if(allJobs != undefined && allJobs.length != 0){
             if(section === 'NeedAction'){
                 return allJobs.needActionJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}/>
+                    <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
                 ))
-            } else if(section === 'AppliedTo') {
+            }/* else if(section === 'AppliedTo') {
                 return allJobs.appliedToJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}/>
+                    <UserJob job = {job} key = {index} />
                 ))
-           /* } else if(section === 'HeardBack') {
+            } else if(section === 'HeardBack') {
                 return allJobs.heardBackJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}/>
-                )) */
-            } else if(section === 'Rejected'){
+                    <UserJob job = {job} key = {index} />
+                )) 
+            }*/ else if(section === 'Rejected'){
                 return allJobs.deniedFromJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}/>
+                    <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
+                ))
+            } else if(section === 'InProgress'){
+                return allJobs.inProgressJobs.map((job, index) => (
+                    <UserJob job = {job} key = {index} jobGrabber = {jobGrabber}/>
                 ))
             }
         }
@@ -64,18 +69,20 @@ const SavedJobs = () => {
             return <h1>Loading...</h1>
         }
     }
+
+    
     
 
     return (
         <div className = 'whole-div'>
             <h1>~User's Saved Jobs</h1>
             <div className = 'outer-div'>
-                <div className = 'all-jobs'>
+                {/* <div className = 'all-jobs'>
                     <h2>All Jobs:</h2>
                     {displayAllJobs()}
                 
 
-                </div>
+                </div> */}
 
                 <div className = 'need-action slide-box'>
                     <h2>Need Action:</h2>
@@ -84,20 +91,15 @@ const SavedJobs = () => {
 
                 </div>
 
-                <div className = 'applied-to slide-box'>
-                    <h2>Applied To:</h2>
-                    {displayJobs('AppliedTo')}
+                <h2>Applied To:</h2>
+                <div className = 'heard-back slide-box'>
+                    <h3>In Progress/Waiting:</h3>
+                    {displayJobs('InProgress')}
 
                 </div>
 
-                {/* <div className = 'heard-back slide-box'>
-                    <h2>Heard Back:</h2>
-                    {displayJobs('HeardBack')}
-
-                </div> */}
-
                 <div className = 'closed slide-box'>
-                    <h2>REJECTED:</h2>
+                    <h3>Rejected:</h3>
                     {displayJobs('Rejected')}
                 </div>
             </div>

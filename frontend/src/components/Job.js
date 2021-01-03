@@ -21,10 +21,11 @@ export default function Job({ job }) {
     
 
     const saveThisJob = (job) => {
+        const jobId = job.id
         const location = job.location;
         const company = job.company;
         const jobTitle = job.title;
-        saveAJob(currentUser, location, company, jobTitle)
+        saveAJob(currentUser, jobId, location, company, jobTitle)
     }
     console.log("HAAAAAAAAAAAAAAAAAAAAAAAAA", job, "LOCATION", job.location, job.company, job.title)
 

@@ -3,10 +3,9 @@ import axios from 'axios';
 import { setItem, getItem, removeItem } from '../utilities/localStorage.utilities'
 
 
-export const saveAJob = (id, location, company, jobTitle) => {
+export const saveAJob = (id, jobId, location, company, jobTitle) => {
     return axios
-    .post('http://localhost:8080/newsavedjob', {id, location, company, jobTitle})
-    // .post('http://localhost:8080/newsavedjob', {headers: authHeader()})
+    .post('http://localhost:8080/newsavedjob', {id, jobId, location, company, jobTitle})
     .then(response => {
         console.log('post response', response);
     })
@@ -15,31 +14,8 @@ export const saveAJob = (id, location, company, jobTitle) => {
     })
 }
 
-// export const getSavedJobs = () => {
-//     return getItem("savedJobs")
-// }
-
-// export const getJobs = () => {
-//     return axios
-//     .get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
-//     .then((jobsResponse) => {
-//         console.log('jobsResponse', jobsResponse);
-//         return(jobsResponse)
-//     })
-//     .catch(err => {
-//         console.log('error on getJobs function in service', err)
-//     })
-// }
-
-// export const jobGrabber = async () => {
-//     const jobsResponse = await axios
-//     .get("http://localhost:8080/profile/savedJobs", {headers: authHeader()})
-//     setAllJobs(jobsResponse.data)
-//     console.log(jobsR)
-// }
-
-
 export const updateJobStatus = (id, hbStatus, hbSchInt, hbClosed, atStatus, atDate) => {
+    console.log('hit updatejobstatus')
     return axios
     .put('http://localhost:8080/changestatus/' + id, {hbStatus, hbSchInt, hbClosed, atStatus, atDate})
     .then(response => {

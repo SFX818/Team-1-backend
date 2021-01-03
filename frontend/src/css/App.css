@@ -107,7 +107,8 @@ label {
   border-radius: 10%;
 }
 
-ul {
+
+ul{
   padding-left: 0px;
 }
 
@@ -137,8 +138,10 @@ ul {
 .btncontainer {
   display: flex;
   flex-direction: row;
-  margin-left: 300px;
 }
+
+
+
 
 #logo {
   height: 9vw;
@@ -146,11 +149,11 @@ ul {
   margin-top: -2.5vw;
 }
 
-
 .jumbotron{
   background-color: white;
 }
 
+<<<<<<< HEAD
 
 #progress{
   width:30%;
@@ -168,3 +171,13 @@ ul {
   display:flex;
   justify-content: center;
 }
+=======
+.saved-contacts {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+  height: 60vw;
+  width: 50%;
+  overflow: scroll;
+}
+>>>>>>> 5f8e0a9295874c9e18165302505974fb896c18a7

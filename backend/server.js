@@ -10,11 +10,13 @@ const app = express()
 
 app.use(cors()); /*  Use here   */
 
+
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 
 // parse request of content type = application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}))
+
 
 // SETUP MONGOOSE
 const db = require('./models/')

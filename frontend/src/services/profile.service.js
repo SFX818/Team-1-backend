@@ -27,8 +27,7 @@ export const getProfileInfo = async () => {
 
 
 
-export const setGoals = (id, codingGoal, codingProgress, appGoal, appProgress) => {
-    console.log("this route is hittinggggg profile servicesssss ")
+export const editGoals = (id, codingGoal, codingProgress, appGoal, appProgress) => {
     return axios
     .put('http://localhost:8080/profile/goals' , {id, codingGoal, codingProgress, appGoal, appProgress})
     .then(response => {

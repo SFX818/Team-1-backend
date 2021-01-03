@@ -9,7 +9,7 @@ import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import { getProfileInfo, setGoals } from '../services/profile.service'
+import { getProfileInfo, editGoals } from '../services/profile.service'
 //imports for dropdown menu
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,10 +20,12 @@ import { getJobs } from "../services/savedjob.service";
 
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
-  const [currentUser, setCurrentUser] = useState(getCurrentUser());
-  //const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState('');
   const [codingGoal, setCodingGoal] = useState('');
   const [codingProgress, setCodingProgress] = useState('');
+  const [appGoal, setAppGoal] = useState('');
+  const [appProgress, setAppProgress] = useState('');
+
   const goalOptions = [
     {label: '1', value: 1},
     {label: '2', value: 2},
@@ -43,8 +45,6 @@ const Profile = () => {
     //below two lines are the axios get calls to our backend 
     jobGrabber();
     profileInfoGrabber();
-    // setCodingGoal(currentUser.codingGoal.goal);
-    // setCodingProgress(currentUser.codingGoal.progress);
   }, []);
 
   console.log('CURRENT USER', currentUser);
@@ -58,42 +58,71 @@ const Profile = () => {
   };
 
   //going to our backend and responsing with the users profile info
-  const profileInfoGrabber = () => {
-    axios.get("http://localhost:8080/profile", {headers: authHeader()})
-    .then(profileData => {
+  const profileInfoGrabber = async () => {
+    try {
+      const profileData = await axios.get('http://localhost:8080/profile', {headers: authHeader()})
+      //console.log('getProfileInfo response', profileData.data);
+      //after get call returns profile data, set all states to respective user data
       setCurrentUser(profileData.data)
-    })
+      setCodingGoal(profileData.data.codingGoal.goal);
+      setCodingProgress(profileData.data.codingGoal.progress);
+      setAppGoal(profileData.data.appGoal.goal);
+      setAppProgress(profileData.data.appGoal.progress);
+      
+      //return await response.data;
+    } catch (err){
+      console.log('profile get info route error', err)
+    }
   }
 
   ////////////code for the goals below:
 
 
   const result = Math.round((codingProgress / codingGoal) * 100);
+  const result2 = Math.round((appProgress / appGoal) * 100);
+
+  //needed this use effect for the editGoals backend route because it was taking state too long to update. It will run the editGoal function everytime there is a change to codingProgress
+  useEffect(() => {
+    let id = currentUser.id
+    editGoals(id, null, codingProgress, null, null)
+  }, [codingProgress])
+
+  const changeGoalProgress = (type) => {
+    if(type==="add"){
+        setCodingProgress(codingProgress + 1);
+    }if(type==="subtract"){
+        setCodingProgress(codingProgress - 1); 
+    }
+  }
+
+  const changeCodingGoal = (e) => {
+    let id = currentUser.id
+    setCodingGoal(e.value)
+    let codeGoal = e.value;
+    editGoals(id, codeGoal, null, null, null)
+  }
+
+  useEffect(() => {
+    let id = currentUser.id
+    editGoals(id, null, null, null, appProgress)
+  }, [appProgress])
 
 
-  // const changeGoalProgress = (e, type) =>{
-  //    console.log('EVENT', e)
-  //     let id = currentUser.id
-  //   if(type==="add"){
-  //       setCodingProgress(codingProgress + 1);
-  //       console.log('coding progress', codingProgress)
-  //   }if(type==="subtract"){
-  //       setCodingProgress(codingProgress - 1); 
-  //   }
-  //   setGoals(id, null, codingProgress, null, null)
-  //   setCurrentUser(getCurrentUser());
-  // }
+  const changeAppProgress = (type) => {
+    if(type==="add"){
+        setAppProgress(appProgress + 1);
+    }if(type==="subtract"){
+        setAppProgress(appProgress - 1); 
+    }
+  }
 
-  // const changeCodingGoal = (e) => {
-  //   let id = currentUser.id
-  //   console.log(e.value)
-  //   setCodingGoal(e.value)
-  //   console.log('coding goal', codingGoal)
-  //   let codeGoal = e.value;
-  //   setGoals(id, codeGoal, null, null, null)
-  // }
-
-
+  const changeAppGoal = (e) => {
+    let id = currentUser.id
+    setAppGoal(e.value)
+    let appGoal = e.value;
+    console.log('app goal from event', appGoal)
+    editGoals(id, null, null, appGoal, null)
+  }
 
 
   const listJobs = () => {
@@ -119,7 +148,7 @@ const Profile = () => {
       <div className="container">
         <header className="jumbotron">
           <h3 id="user">
-            {/* <strong> Welcome {currentUser.username} </strong> */}
+            <strong> Welcome {currentUser.username} </strong>
           </h3>
         </header>
 
@@ -189,7 +218,10 @@ const Profile = () => {
             </div>
           </div>
           <div id="progress">
-            <h3 id="goalChart"> Coding Goal:</h3>
+            <h3 id="goalChart">Goals:</h3>
+            <h4>Coding Goals:</h4>
+            Set a Coding Goal:
+            <Select options={goalOptions} onChange={(event)=> {changeCodingGoal(event)}}/>
 
             <Progress
               theme={{
@@ -212,12 +244,39 @@ const Profile = () => {
 
             <div id="goalTextDiv">
               {" "}
-              {/* Goal: {codingGoal} &nbsp; Completed: {codingProgress} */}
-              {/* <button onClick={(event) => {changeGoalProgress(event, "add")}}>{" "}+{" "} </button>
-              <button onClick={(event) => {changeGoalProgress(event, "subtract")}}>{" "}-{" "} </button> */}
-              Set a Coding Goal:
-              {/* <Select options={goalOptions} onChange={(event)=> {changeCodingGoal(event)}}/> */}
+              Goal: {codingGoal} &nbsp; Completed: {codingProgress} 
+              <button onClick={(event) => {changeGoalProgress("subtract")}}>{" "}-{" "} </button>
+              <button onClick={(event) => {changeGoalProgress("add")}}>{" "}+{" "} </button>
+            </div>
 
+            <h4>Job Application Goals:</h4>
+            Set an Application Goal:
+            <Select options={goalOptions} onChange={(event)=> {changeAppGoal(event)}}/>
+
+            <Progress
+              theme={{
+                success: {
+                  symbol: "🎉‍",
+                  color: "rgb(50, 205, 50)",
+                },
+                active: {
+                  symbol: "😀",
+                  color: "#fbc630",
+                },
+                default: {
+                  symbol: "😱",
+                  color: "#FF6347",
+                },
+              }}
+              percent={result2}
+              status="success"
+            />
+
+            <div id="goalTextDiv">
+              {" "}
+              Goal: {appGoal} &nbsp; Completed: {appProgress} 
+              <button onClick={(event) => {changeAppProgress("subtract")}}>{" "}-{" "} </button>
+              <button onClick={(event) => {changeAppProgress("add")}}>{" "}+{" "} </button>
             </div>
           </div>
         </div>

@@ -59,21 +59,22 @@ exports.setGoals = (req, res) => {
     // }
     // const id = req.params.id;
 
-    User.findOne({_id: req.userId})
+    User.findOne({_id: req.body.id})
     .then(theGoal =>{
         console.log("THIS IS THE GOAL", theGoal)
-        // const codingGoal = req.body.codingGoal === null ? theGoal.codingGoal.goal : req.body.codingGoal;
-        // const codingProgress = req.body.codingProgress === null ? theGoal.codingGoal.progress : req.body.codingProgress;
-        // const appGoal = req.body.appGoal === null ? theGoal.appGoal.goal : req.body.appGoal;
-        // const appProgress = req.body.appProgress === null ? theGoal.appGoal.progress : req.body.appProgress;
-        const codingGoal = req.body.codingGoal.goal === undefined ? theGoal.codingGoal.goal : req.body.codingGoal.goal;
-        const codingProgress = req.body.codingGoal.progress === undefined ? theGoal.codingGoal.progress : req.body.codingGoal.progress;
-        const appGoal = req.body.appGoal.goal === undefined ? theGoal.appGoal.goal : req.body.appGoal.goal;
-        const appProgress = req.body.appGoal.progress === undefined ? theGoal.appGoal.progress : req.body.appGoal.progress;
+        const codingGoal = req.body.codingGoal === null ? theGoal.codingGoal.goal : req.body.codingGoal;
+        const codingProgress = req.body.codingProgress === null ? theGoal.codingGoal.progress : req.body.codingProgress;
+        const appGoal = req.body.appGoal === null ? theGoal.appGoal.goal : req.body.appGoal;
+        const appProgress = req.body.appProgress === null ? theGoal.appGoal.progress : req.body.appProgress;
+        //the code below works for postman, the code above is used for the front end.
+        // const codingGoal = req.body.codingGoal.goal === undefined ? theGoal.codingGoal.goal : req.body.codingGoal.goal;
+        // const codingProgress = req.body.codingGoal.progress === undefined ? theGoal.codingGoal.progress : req.body.codingGoal.progress;
+        // const appGoal = req.body.appGoal.goal === undefined ? theGoal.appGoal.goal : req.body.appGoal.goal;
+        // const appProgress = req.body.appGoal.progress === undefined ? theGoal.appGoal.progress : req.body.appGoal.progress;
 
 
         User.findOneAndUpdate(
-            {_id: req.userId},
+            {_id: req.body.id},
             {$set:{
                 "codingGoal.goal": codingGoal,
                 "codingGoal.progress": codingProgress,

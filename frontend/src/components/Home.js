@@ -36,7 +36,7 @@ const Home = () => {
     if (quotes.length > 0 ) {
       return <p> "{quotes[0].text}" 
       <br></br>  
-      by <b> {quotes[0].author} </b></p>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by <b> {quotes[0].author} </b></p>
     }
   }
 
@@ -52,12 +52,15 @@ const Home = () => {
 
 
 
-  return <div>
+  return <div id="homeBigDiv">
     
     <div id="home"> 
     <h3 id="userHome">
       <strong> Welcome {currentUser.username} </strong>
     </h3>
+    <br></br>
+    <br></br>
+  
    <h5> {newQuote()}</h5>
    </div>
   </div>;

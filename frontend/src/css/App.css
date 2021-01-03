@@ -108,6 +108,7 @@ label {
 }
 
 
+
 ul{
   padding-left: 0px;
 }
@@ -140,8 +141,27 @@ ul{
   flex-direction: row;
 }
 
+#userHome{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  /* border-bottom: 2px solid white; */
+  text-decoration: underline;
+  text-decoration-color:white;
+}
 
+#home{
 
+  /* border:2px solid red; */
+  width:50%;
+  align-self: center;
+}
+
+#homeBigDiv{
+  /* border:2px solid blue; */
+  display:flex;
+  justify-content:  center;
+  margin-top:6vw;
+}
 
 #logo {
   height: 9vw;
@@ -160,4 +180,56 @@ ul{
   height: 60vw;
   width: 50%;
   overflow: scroll;
+<<<<<<< HEAD
 }
+=======
+}
+#progress{
+  width:30%;
+  /* border:2px solid red; */
+}
+
+#goalChart{
+  text-align: center;
+  font-size:2vw;
+  font-family: 'Roboto', sans-serif;
+}
+
+#goalTextDiv{
+
+  display:flex;
+  justify-content: center;
+}
+
+
+.whole-div{
+  border: 2px solid red; 
+  display:flex;
+  justify-content:center;
+  
+}
+
+.outer-div{
+  border: 2px solid blue;
+  width:80%;
+  height:50%;
+  
+}
+
+#userSavedJob{
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.categories{
+  font-size:2.5vw;
+  text-align: center;
+  text-decoration-color: royalblue;
+}
+
+
+.categoryDiv{
+  border:2px solid pink;
+  /* height:20%; */
+}
+>>>>>>> deb4cf692ead5005ade537a5cd7a832a1c634295

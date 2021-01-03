@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCurrentUser, logout } from "../../services/auth.service";
+import {Dropdown,NavLink} from 'react-bootstrap'
 
 const Layout = (props) => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -24,6 +25,7 @@ const Layout = (props) => {
  
   return (
     <div>
+
       <nav id="nav" className="navbar navbar-expand navbar-dark bg-dark">
         <Link to="/" className="navbar-brand">
          <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
@@ -90,8 +92,18 @@ const Layout = (props) => {
         )}
       </nav>
       <div className="container mt-3">{props.children}</div>
+      
+
+
     </div>
   );
 };
+
+
+
+
+
+
+
 
 export default Layout;

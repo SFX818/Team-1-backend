@@ -67,7 +67,7 @@ return (
             <FormGroup text="name">
                 <Form.Control
                   type="text"
-                  placeholder="name" 
+                  placeholder="Name" 
                   name="name"
                   value={name}
                   onChange={onChangeName}
@@ -77,7 +77,7 @@ return (
             <FormGroup text="company">
                 <Form.Control
                   type="text"
-                  placeholder="company" 
+                  placeholder="Company" 
                   name="company"
                   value={company}
                   onChange={onChangeCompany}
@@ -87,7 +87,7 @@ return (
             <FormGroup text="email">
                 <Form.Control
                   type="email"
-                  placeholder="email" 
+                  placeholder="Email" 
                   name="email"
                   value={email}
                   onChange={onChangeEmail}
@@ -97,7 +97,7 @@ return (
             <FormGroup text="phone">
                 <Form.Control
                   type="text"
-                  placeholder="phone number" 
+                  placeholder="Phone Number" 
                   name="phone"
                   value={phone}
                   onChange={onChangePhone}
@@ -107,7 +107,7 @@ return (
             <FormGroup text="note">
                 <Form.Control
                   type="text"
-                  placeholder="note" 
+                  placeholder="Note" 
                   name="note"
                   value={notes}
                   onChange={onChangeNote}

@@ -21,7 +21,11 @@ const Landing = () => {
     }
     return (
         <Container>
-            <h1 className= 'mb-4'>.find(career)</h1>
+            <br></br>
+            <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
+            <br></br>
+            <br></br>
+            <br></br>
             <h2 className='mb-4'>returned(results):</h2>
             <SearchForm params={params} onParamChange={handleParamChange} />
             <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />

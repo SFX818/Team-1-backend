@@ -4,7 +4,7 @@ const profileController = require('../controllers/profile.controller')
 
 module.exports = function(app) {
     app.use( (req,res, next) => {
-        // set header and allow use of x access token ( we will use this to pass our token )
+        //set header and allow use of x access token ( we will use this to pass our token )
         res.header(
             "Access-Control-Allow-Headers",
             "x-access-token, Origin, Content-type, Accept"
@@ -26,5 +26,5 @@ module.exports = function(app) {
     app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
 
     //route to edit goals: both app and coding
-    app.put("/profile/goals", [authJwt.verifyWebToken], profileController.setGoals);
+    app.put("/profile/goals", profileController.setGoals);
 }

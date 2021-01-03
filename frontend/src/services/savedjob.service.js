@@ -15,6 +15,7 @@ export const saveAJob = (id, jobId, location, company, jobTitle) => {
 }
 
 export const updateJobStatus = (id, hbStatus, hbSchInt, hbClosed, atStatus, atDate) => {
+    console.log('hit updatejobstatus')
     return axios
     .put('http://localhost:8080/changestatus/' + id, {hbStatus, hbSchInt, hbClosed, atStatus, atDate})
     .then(response => {

@@ -37,7 +37,7 @@ export const deleteNetwork = (id) => {
 
 export const editNetwork = (id, name, company, email, phone, notes ) => {
     return axios
-    .put('http://localhost:8080/editnetwork/' +id, {name,company,email,phone,notes})
+    .put('http://localhost:8080/updatenetwork/' +id, {name,company,email,phone,notes})
     .then(response => {
         console.log('edited network successfull', response)
     })

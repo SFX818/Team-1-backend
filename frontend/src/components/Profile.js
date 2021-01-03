@@ -7,6 +7,10 @@ import { PieChart } from "react-minimal-pie-chart";
 import "../css/App.css";
 import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
+import { setGoals } from '../services/profile.service'
+
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
@@ -14,10 +18,14 @@ import { getJobs } from "../services/savedjob.service";
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
   const currentUser = getCurrentUser();
+  const [codingGoal, setCodingGoal] = useState([]);
+  const [codingProgress, setCodingProgress] = useState([]);
 
   //use useEffect to run the getJobs function
   useEffect(() => {
     jobGrabber();
+    setCodingGoal(currentUser.codingGoal.goal);
+    setCodingProgress(currentUser.codingGoal.progress);
   }, []);
 
   const jobGrabber = () => {
@@ -26,31 +34,29 @@ const Profile = () => {
       .then((jobData) => setAllJobs([jobData.data]));
     // .catch(err => console.log(err.message))
   };
-  console.log("THIS IS THE CURRENT USER", currentUser);
+
+  ////////////code for the goals below:
+
+  console.log("this is the current user stats", currentUser);
+
+  const result = Math.round((codingProgress / codingGoal) * 100);
+
+
+  const changeGoalProgress = (type) =>{
+      let id = currentUser.id
+    if(type==="add"){
+        setCodingProgress(codingProgress + 1);
+        console.log("THIS IS THE CODING PROGRESS FOR +", codingProgress)
+    }if(type==="subtract"){
+        setCodingProgress(codingProgress - 1); 
+        console.log("THIS IS THE CODING PROGRESS FOR -", codingProgress)
+    }
+    setGoals(id, null, codingProgress, null, null)
+  }
 
 
 
-  //code for the goals below:
-  const [allGoals, setAllGoals] = useState([]);
 
-  useEffect(() => {
-    goalGrabber();
-  }, []);
-
-  const goalGrabber = () => {
-    const goalData = axios
-      .get("http://localhost:8080/profile", { headers: authHeader() })
-      .then((gData) => setAllGoals([gData.data]));
-    // .catch(err => console.log(err.message))
-  };
-  console.log("THIS IS ALL goals", allGoals);
-
-
-
-
-
-  //end of the coding api call starts below:
-  <a rel="wobble-horizontal" class="button wobble-horizontal">Wobble Horizontal</a>
   const listJobs = () => {
     if (allJobs.length > 0) {
       return allJobs[0].allJobs.map((job, index) => (
@@ -59,7 +65,8 @@ const Profile = () => {
             <ul>
               <li key={index}>
                 {" "}
-                <b> Company:</b> {job.company} <br></br> <b> Job Title:</b> {job.jobTitle}
+                <b> Company:</b> {job.company} <br></br> <b> Job Title:</b>{" "}
+                {job.jobTitle}
               </li>
             </ul>
           </Card>
@@ -78,7 +85,6 @@ const Profile = () => {
         </header>
 
         <h2>{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company}</h2>
-
         {/* <h3>All Jobs: {allJobs[0].allJobs.length} </h3>
         <h3>Applied: {allJobs[0].appliedToJobs.length} </h3>
         <h3>Heard Back: {allJobs[0].heardBackJobs.length} </h3>
@@ -86,72 +92,96 @@ const Profile = () => {
 
         <h2 id="savedJobs"> Saved Jobs: </h2>
         <div id="container">
-       <div id="jobList">
-       {listJobs()}
-           </div>
+          <div id="jobList">{listJobs()}</div>
 
-        <div id="bigPie">
-          <div id="pie">
-            <h2 id="applied">
-              {" "}
-              Applied to: {allJobs[0].appliedToJobs.length}{" "}
-            </h2>
-            <PieChart
-              style={{ marginLeft: "vw", height: "200px", width: "200px" }}
-              data={[
-                {
-                  title: "Heard Back: ",
-                  value: allJobs[0].heardBackJobs.length,
-                  color: "#20B2AA",
-                },
-                {
-                  title: "Waiting: ",
-                  value:
-                    allJobs[0].appliedToJobs.length -
-                    allJobs[0].heardBackJobs.length,
-                  color: "#90EE90",
-                },
-              ]}
-              //   label={({ dataEntry }) => dataEntry.title}
-              label={({ dataEntry }) =>
-                `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
-              }
-            />
-          </div>
+          <div id="bigPie">
+            <div id="pie">
+              <h2 id="applied">
+                {" "}
+                Applied to: {allJobs[0].appliedToJobs.length}{" "}
+              </h2>
+              <PieChart
+                style={{ marginLeft: "vw", height: "200px", width: "200px" }}
+                data={[
+                  {
+                    title: "Heard Back: ",
+                    value: allJobs[0].heardBackJobs.length,
+                    color: "#20B2AA",
+                  },
+                  {
+                    title: "Waiting: ",
+                    value:
+                      allJobs[0].appliedToJobs.length -
+                      allJobs[0].heardBackJobs.length,
+                    color: "#90EE90",
+                  },
+                ]}
+                //   label={({ dataEntry }) => dataEntry.title}
+                label={({ dataEntry }) =>
+                  `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
+                }
+              />
+            </div>
 
-          <div id="pie2">
-            <h2 id="heardBack">
-              {" "}
-              Heard Back: {allJobs[0].heardBackJobs.length}{" "}
-            </h2>
-            <PieChart
-              style={{ marginLeft: "vw", height: "200px", width: "200px" }}
-              data={[
-                {
-                  title: "Moved Fwrd: ",
-                  value: allJobs[0].appliedToJobs.length,
-                  color: "#DB7093",
-                },
-                {
-                  title: "Rejected: ",
-                  value: allJobs[0].deniedFromJobs.length,
-                  color: "#ff000080",
-                },
-              ]}
-              //   label={({ dataEntry }) => dataEntry.title}
-              label={({ dataEntry }) =>
-                `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
-              }
-            />
+            <div id="pie2">
+              <h2 id="heardBack">
+                {" "}
+                Heard Back: {allJobs[0].heardBackJobs.length}{" "}
+              </h2>
+              <PieChart
+                style={{ marginLeft: "vw", height: "200px", width: "200px" }}
+                data={[
+                  {
+                    title: "Moved Fwrd: ",
+                    value: allJobs[0].appliedToJobs.length,
+                    color: "#DB7093",
+                  },
+                  {
+                    title: "Rejected: ",
+                    value: allJobs[0].deniedFromJobs.length,
+                    color: "#ff000080",
+                  },
+                ]}
+                //   label={({ dataEntry }) => dataEntry.title}
+                label={({ dataEntry }) =>
+                  `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
+                }
+              />
+            </div>
           </div>
-        </div>
+          <div id="progress">
+            <h3 id="goalChart"> Coding Goal:</h3>
+
+            <Progress
+              theme={{
+                success: {
+                  symbol: "🎉‍",
+                  color: "rgb(50, 205, 50)",
+                },
+                active: {
+                  symbol: "😀",
+                  color: "#fbc630",
+                },
+                default: {
+                  symbol: "😱",
+                  color: "#FF6347",
+                },
+              }}
+              percent={result}
+              status="success"
+            />
+
+            <div id="goalTextDiv">
+              {" "}
+              Goal: {codingGoal} &nbsp; Completed: {codingProgress}
+              <button onClick={(event) => {{changeGoalProgress("add")}}}>{" "}+{" "} </button>
+              <button onClick={(event) => {{changeGoalProgress("subtract")}}}>{" "}-{" "} </button>
+            </div>
+          </div>
         </div>
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
-        <h2> coding Goals: {allGoals[0].codingGoal.goal}</h2>
-        {/* <h2> App Goals: {allGoals[0].appGoal}</h2>
-        <h2> To do's Left: {allGoals[0].todos.length}</h2> */}
       </div>
     );
   }

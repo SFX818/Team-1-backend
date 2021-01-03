@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import authHeader from '../utilities/authHeader.utilities'
 import { getCurrentUser } from "../services/auth.service";
+import { Card, Button } from "react-bootstrap";
+
 
 
 //backend function import 
@@ -49,9 +51,16 @@ const SavedJobs = () => {
         if(allJobs != undefined && allJobs.length != 0){
             if(section === 'NeedAction'){
                 return allJobs.needActionJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
-                ))
-            }/* else if(section === 'AppliedTo') {
+                   
+                    <Card>
+                        <Card.Body> 
+                            <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
+                        </Card.Body>
+                  </Card>
+                 
+                ))   
+            }
+            /* else if(section === 'AppliedTo') {
                 return allJobs.appliedToJobs.map((job, index) => (
                     <UserJob job = {job} key = {index} />
                 ))
@@ -61,11 +70,21 @@ const SavedJobs = () => {
                 )) 
             }*/ else if(section === 'Rejected'){
                 return allJobs.deniedFromJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
+                    <Card>
+                        <Card.Body> 
+                            <UserJob job = {job} key = {index}  jobGrabber = {jobGrabber}/>
+                        </Card.Body>
+                    </Card>
+
+                    
                 ))
             } else if(section === 'InProgress'){
                 return allJobs.inProgressJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index} jobGrabber = {jobGrabber}/>
+                    <Card>
+                        <Card.Body> 
+                            <UserJob job = {job} key = {index} jobGrabber = {jobGrabber}/>
+                        </Card.Body>
+                </Card>
                 ))
             }
         }
@@ -84,18 +103,18 @@ const SavedJobs = () => {
       
             <h1 id="userSavedJob">{currentUser.username}'s Saved Jobs: </h1>
             {/* <div className="need-action slide-box"> */}
-            <div className="categoryDiv">
+            <div id="categoryDiv1">
               <h2 className="categories">Need Action:</h2>
               {displayJobs("NeedAction")}
             </div>
       
             <h2 className="categories">Applied To:</h2>
-            <div className="heard-back slide-box">
+            <div id="categoryDiv2">
               <h3 className="categories">In Progress/Waiting:</h3>
               {displayJobs("InProgress")}
             </div>
       
-            <div className="closed slide-box">
+            <div id="categoryDiv3">
               <h3 className="categories">Rejected:</h3>
               {displayJobs("Rejected")}
             </div>

@@ -8,6 +8,7 @@ label {
   max-width: 350px !important;
   padding: 1vw 1vw;
   /* background-color: #3988d3c5; */
+
 }
 
 .card {
@@ -44,6 +45,8 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+
 
 /* PIE CHART CODE */
 #pie {
@@ -108,6 +111,10 @@ label {
 }
 
 
+#card1{
+  width:50%;
+  height:50%;
+}
 
 ul{
   padding-left: 0px;
@@ -128,7 +135,7 @@ ul{
   display: flex;
   width:100%;
   justify-content: center;
-  border:2px solid yellow;
+  /* border:2px solid yellow; */
   align-items: flex-start;
 }
 
@@ -199,19 +206,20 @@ ul{
 }
 
 
-.whole-div{
+/* .whole-div{
   border: 2px solid red; 
   display:flex;
   justify-content:center;
   
-}
+} */
 
 .outer-div{
   border: 2px solid blue;
-  width:80%;
+  width:100%;
   height:50%;
-  
-}
+  display:flex;
+  flex-direction: column;
+} 
 
 #userSavedJob{
   text-align: center;
@@ -221,11 +229,6 @@ ul{
 .categories{
   font-size:2.5vw;
   text-align: center;
-  text-decoration-color: royalblue;
 }
 
 
-.categoryDiv{
-  border:2px solid pink;
-  /* height:20%; */
-}

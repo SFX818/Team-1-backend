@@ -53,7 +53,7 @@ label {
   display: flex;
   flex-direction: column;
   /* border:2px solid red; */
-  width: 50%;
+  width: 30%;
 }
 
 #bigPie {
@@ -61,7 +61,7 @@ label {
   /* flex-wrap: wrap; */
   flex-direction: column;
   /* border:2px solid red; */
-  width: 70%;
+  width: 30%;
   padding-left: 5vw;
   margin-left: 3vw;
 }
@@ -72,14 +72,17 @@ label {
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 30%;
 }
 
 /* HEADER FOR THE PIE CHARTS */
 #applied {
   /* font-family: 'Goldman', cursive; */
   font-family: 'Roboto', sans-serif;
-  margin-top: 5vw;
+  font-size:2vw;
+  text-align: center;
+
+  width:300%;
 }
 
 #savedJobs {
@@ -89,7 +92,10 @@ label {
 
 #heardBack {
   font-family: 'Roboto', sans-serif;
-  margin-top: 5vw;
+  font-size:2vw;
+  text-align: center;
+  width:300%;
+  /* margin-top: 5vw; */
   /* font-family: 'Goldman', cursive; */
 }
 
@@ -118,8 +124,10 @@ ul {
 /* CONTAINER FOR THE SAVED JOB AND PIE CHART  */
 #container {
   display: flex;
-  justify-content: flex-start;
-  /* border:2px solid yellow; */
+  width:100%;
+  justify-content: center;
+  border:2px solid yellow;
+  align-items: flex-start;
 }
 
 #user {
@@ -141,4 +149,22 @@ ul {
 
 .jumbotron{
   background-color: white;
+}
+
+
+#progress{
+  width:30%;
+  /* border:2px solid red; */
+}
+
+#goalChart{
+  text-align: center;
+  font-size:2vw;
+  font-family: 'Roboto', sans-serif;
+}
+
+#goalTextDiv{
+
+  display:flex;
+  justify-content: center;
 }

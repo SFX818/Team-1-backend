@@ -153,25 +153,6 @@ ul{
   background-color: white;
 }
 
-<<<<<<< HEAD
-
-#progress{
-  width:30%;
-  /* border:2px solid red; */
-}
-
-#goalChart{
-  text-align: center;
-  font-size:2vw;
-  font-family: 'Roboto', sans-serif;
-}
-
-#goalTextDiv{
-
-  display:flex;
-  justify-content: center;
-}
-=======
 .saved-contacts {
   display: flex;
   flex-direction: column;
@@ -180,4 +161,3 @@ ul{
   width: 50%;
   overflow: scroll;
 }
->>>>>>> 5f8e0a9295874c9e18165302505974fb896c18a7

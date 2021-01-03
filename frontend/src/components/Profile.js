@@ -17,6 +17,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //backend function import
 import { getJobs } from "../services/savedjob.service";
 
+//component import 
+import GoalMeter from '../components/GoalMeter';
+
 
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
@@ -219,7 +222,8 @@ const Profile = () => {
           </div>
           <div id="progress">
             <h3 id="goalChart">Goals:</h3>
-            <h4>Coding Goals:</h4>
+            <GoalMeter codingGoal={codingGoal} codingProgress={codingProgress} appGoal={appGoal} appProgress={appProgress} changeCodingGoal={changeCodingGoal} changeGoalProgress={changeGoalProgress} changeAppGoal={changeAppGoal} changeAppProgress={changeAppProgress}/>
+            {/* <h4>Coding Goals:</h4>
             Set a Coding Goal:
             <Select options={goalOptions} onChange={(event)=> {changeCodingGoal(event)}}/>
 
@@ -239,7 +243,7 @@ const Profile = () => {
                 },
               }}
               percent={result}
-              status="success"
+              //status="success"
             />
 
             <div id="goalTextDiv">
@@ -277,7 +281,7 @@ const Profile = () => {
               Goal: {appGoal} &nbsp; Completed: {appProgress} 
               <button onClick={(event) => {changeAppProgress("subtract")}}>{" "}-{" "} </button>
               <button onClick={(event) => {changeAppProgress("add")}}>{" "}+{" "} </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <Link to={"/profile/savedjobs"} className="nav-link">

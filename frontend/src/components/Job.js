@@ -27,7 +27,7 @@ export default function Job({ job }) {
         const jobTitle = job.title;
         saveAJob(currentUser, jobId, location, company, jobTitle)
     }
-    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAA", job, "LOCATION", job.location, job.company, job.title)
+    // console.log("HAAAAAAAAAAAAAAAAAAAAAAAAA", job, "LOCATION", job.location, job.company, job.title)
 
     return (
         <Card>

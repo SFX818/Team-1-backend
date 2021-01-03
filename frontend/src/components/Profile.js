@@ -14,6 +14,7 @@ import { getJobs } from "../services/savedjob.service";
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
   const currentUser = getCurrentUser();
+  console.log( "THIS IS THE CURRENT" ,currentUser)
 
   //use useEffect to run the getJobs function
   useEffect(() => {

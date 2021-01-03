@@ -18,12 +18,13 @@ const Profile = () => {
   const currentUser = getCurrentUser();
   const [codingGoal, setCodingGoal] = useState([]);
   const [codingProgress, setCodingProgress] = useState([]);
+  const [allGoals, setAllGoals] = useState([])
 
   //use useEffect to run the getJobs function
   useEffect(() => {
     jobGrabber();
-    setCodingGoal(currentUser.codingGoal.goal)
-    setCodingProgress(currentUser.codingGoal.progress)
+    setCodingGoal(currentUser.codingGoal.goal);
+    setCodingProgress(currentUser.codingGoal.progress);
   }, []);
 
   const jobGrabber = () => {
@@ -33,16 +34,25 @@ const Profile = () => {
     // .catch(err => console.log(err.message))
   };
 
-
   ////////////code for the goals below:
 
-    console.log("this is the current user stats", currentUser)
+  console.log("this is the current user stats", currentUser);
 
-    const result = Math.round((codingProgress / codingGoal) * 100)
-    
-    const add = ()=> {
-        setCodingProgress(codingProgress+1)
-    }
+  const result = Math.round((codingProgress / codingGoal) * 100);
+
+  const add = () => {
+    setCodingProgress(codingProgress + 1);
+  };
+
+  const subtract = () => {
+    setCodingProgress(codingProgress - 1);
+  };
+
+
+
+
+  console.log("THIS IS GOAL DATA", allGoals)
+  //end of goal code
 
   const listJobs = () => {
     if (allJobs.length > 0) {
@@ -139,7 +149,6 @@ const Profile = () => {
           <div id="progress">
             <h3 id="goalChart"> Coding Goal:</h3>
 
-            
             <Progress
               theme={{
                 success: {
@@ -158,16 +167,18 @@ const Profile = () => {
               percent={result}
               status="success"
             />
-           <div id="goalTextDiv" > Goal: {codingGoal} &nbsp;
-         Completed: {codingProgress}
-         <button onClick= {(event)=>{{add(event)}}}> + </button>
-         </div> 
+
+            <div id="goalTextDiv">
+              {" "}
+              Goal: {codingGoal} &nbsp; Completed: {codingProgress}
+              <button onClick={(event) => {{add(event);}}}>{" "}+{" "} </button>
+              <button onClick={(event) => {{subtract(event);}}}>{" "}-{" "} </button>
+            </div>
           </div>
         </div>
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
-    
       </div>
     );
   }

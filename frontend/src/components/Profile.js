@@ -9,6 +9,8 @@ import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import { setGoals } from '../services/profile.service'
+
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
@@ -18,7 +20,6 @@ const Profile = () => {
   const currentUser = getCurrentUser();
   const [codingGoal, setCodingGoal] = useState([]);
   const [codingProgress, setCodingProgress] = useState([]);
-  const [allGoals, setAllGoals] = useState([])
 
   //use useEffect to run the getJobs function
   useEffect(() => {
@@ -40,19 +41,21 @@ const Profile = () => {
 
   const result = Math.round((codingProgress / codingGoal) * 100);
 
-  const add = () => {
-    setCodingProgress(codingProgress + 1);
-  };
 
-  const subtract = () => {
-    setCodingProgress(codingProgress - 1);
-  };
+  const changeGoalProgress = (type) =>{
+      let id = currentUser.id
+    if(type==="add"){
+        setCodingProgress(codingProgress + 1);
+        console.log("THIS IS THE CODING PROGRESS FOR +", codingProgress)
+    }if(type==="subtract"){
+        setCodingProgress(codingProgress - 1); 
+        console.log("THIS IS THE CODING PROGRESS FOR -", codingProgress)
+    }
+    setGoals(id, null, codingProgress, null, null)
+  }
 
 
 
-
-  console.log("THIS IS GOAL DATA", allGoals)
-  //end of goal code
 
   const listJobs = () => {
     if (allJobs.length > 0) {
@@ -171,8 +174,8 @@ const Profile = () => {
             <div id="goalTextDiv">
               {" "}
               Goal: {codingGoal} &nbsp; Completed: {codingProgress}
-              <button onClick={(event) => {{add(event);}}}>{" "}+{" "} </button>
-              <button onClick={(event) => {{subtract(event);}}}>{" "}-{" "} </button>
+              <button onClick={(event) => {{changeGoalProgress("add")}}}>{" "}+{" "} </button>
+              <button onClick={(event) => {{changeGoalProgress("subtract")}}}>{" "}-{" "} </button>
             </div>
           </div>
         </div>

@@ -26,5 +26,5 @@ module.exports = function(app) {
     app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
 
     //route to edit goals: both app and coding
-    app.put("/profile/goals", [authJwt.verifyWebToken], profileController.setGoals);
+    app.put("/profile/goals", profileController.setGoals);
 }

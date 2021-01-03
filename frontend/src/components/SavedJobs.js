@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import authHeader from '../utilities/authHeader.utilities'
+import { getCurrentUser } from "../services/auth.service";
+
 
 //backend function import 
 import {getJobs} from '../services/savedjob.service'
@@ -10,6 +12,8 @@ import UserJob from '../components/common/UserJob';
 
 //component that renders on the page when the link is clicked undered saved jobs on the profile home page
 const SavedJobs = () => {
+
+    const currentUser = getCurrentUser();
     //setting a state that will hold the saved jobs
      const [allJobs, setAllJobs] = useState([]);
     
@@ -69,43 +73,35 @@ const SavedJobs = () => {
             return <h1>Loading...</h1>
         }
     }
-
-    
-    
-
     return (
-        <div className = 'whole-div'>
-            <h1>~User's Saved Jobs</h1>
-            <div className = 'outer-div'>
-                {/* <div className = 'all-jobs'>
-                    <h2>All Jobs:</h2>
-                    {displayAllJobs()}
-                
-
-                </div> */}
-
-                <div className = 'need-action slide-box'>
-                    <h2>Need Action:</h2>
-                    {displayJobs('NeedAction')}
-                    
-
-                </div>
-
-                <h2>Applied To:</h2>
-                <div className = 'heard-back slide-box'>
-                    <h3>In Progress/Waiting:</h3>
-                    {displayJobs('InProgress')}
-
-                </div>
-
-                <div className = 'closed slide-box'>
-                    <h3>Rejected:</h3>
-                    {displayJobs('Rejected')}
-                </div>
+        <div className="whole-div">
+          {/* <h1>~User's Saved Jobs</h1> */}
+          <div className="outer-div">
+            {/* <div className = 'all-jobs'>
+                          <h2>All Jobs:</h2>
+                          {displayAllJobs()}
+                      </div> */}
+      
+            <h1 id="userSavedJob">{currentUser.username}'s Saved Jobs: </h1>
+            {/* <div className="need-action slide-box"> */}
+            <div className="categoryDiv">
+              <h2 className="categories">Need Action:</h2>
+              {displayJobs("NeedAction")}
             </div>
-            
+      
+            <h2 className="categories">Applied To:</h2>
+            <div className="heard-back slide-box">
+              <h3 className="categories">In Progress/Waiting:</h3>
+              {displayJobs("InProgress")}
+            </div>
+      
+            <div className="closed slide-box">
+              <h3 className="categories">Rejected:</h3>
+              {displayJobs("Rejected")}
+            </div>
+          </div>
         </div>
-    )
+      );
 }
 
 

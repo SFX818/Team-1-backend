@@ -9,25 +9,47 @@ import "../css/profile.css";
 import { Card, Button } from "react-bootstrap";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import { setGoals } from '../services/profile.service'
-
+import { getProfileInfo, setGoals } from '../services/profile.service'
+//imports for dropdown menu
+import Select from 'react-select';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
 
+
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
-  const currentUser = getCurrentUser();
-  const [codingGoal, setCodingGoal] = useState([]);
-  const [codingProgress, setCodingProgress] = useState([]);
+  const [currentUser, setCurrentUser] = useState(getCurrentUser());
+  //const [currentUser, setCurrentUser] = useState('');
+  const [codingGoal, setCodingGoal] = useState('');
+  const [codingProgress, setCodingProgress] = useState('');
+  const goalOptions = [
+    {label: '1', value: 1},
+    {label: '2', value: 2},
+    {label: '3', value: 3},
+    {label: '4', value: 4},
+    {label: '5', value: 5},
+    {label: '6', value: 6},
+    {label: '7', value: 7},
+    {label: '8', value: 8},
+    {label: '9', value: 9},
+    {label: '10', value: 10}
+  ]
+
 
   //use useEffect to run the getJobs function
   useEffect(() => {
+    //below two lines are the axios get calls to our backend 
     jobGrabber();
-    setCodingGoal(currentUser.codingGoal.goal);
-    setCodingProgress(currentUser.codingGoal.progress);
+    profileInfoGrabber();
+    // setCodingGoal(currentUser.codingGoal.goal);
+    // setCodingProgress(currentUser.codingGoal.progress);
   }, []);
 
+  console.log('CURRENT USER', currentUser);
+
+  //going to our backend and responding with the users savedJobs info
   const jobGrabber = () => {
     const jobData = axios
       .get("http://localhost:8080/profile/savedJobs", { headers: authHeader() })
@@ -35,24 +57,41 @@ const Profile = () => {
     // .catch(err => console.log(err.message))
   };
 
+  //going to our backend and responsing with the users profile info
+  const profileInfoGrabber = () => {
+    axios.get("http://localhost:8080/profile", {headers: authHeader()})
+    .then(profileData => {
+      setCurrentUser(profileData.data)
+    })
+  }
+
   ////////////code for the goals below:
 
-  console.log("this is the current user stats", currentUser);
 
   const result = Math.round((codingProgress / codingGoal) * 100);
 
 
-  const changeGoalProgress = (type) =>{
-      let id = currentUser.id
-    if(type==="add"){
-        setCodingProgress(codingProgress + 1);
-        console.log("THIS IS THE CODING PROGRESS FOR +", codingProgress)
-    }if(type==="subtract"){
-        setCodingProgress(codingProgress - 1); 
-        console.log("THIS IS THE CODING PROGRESS FOR -", codingProgress)
-    }
-    setGoals(id, null, codingProgress, null, null)
-  }
+  // const changeGoalProgress = (e, type) =>{
+  //    console.log('EVENT', e)
+  //     let id = currentUser.id
+  //   if(type==="add"){
+  //       setCodingProgress(codingProgress + 1);
+  //       console.log('coding progress', codingProgress)
+  //   }if(type==="subtract"){
+  //       setCodingProgress(codingProgress - 1); 
+  //   }
+  //   setGoals(id, null, codingProgress, null, null)
+  //   setCurrentUser(getCurrentUser());
+  // }
+
+  // const changeCodingGoal = (e) => {
+  //   let id = currentUser.id
+  //   console.log(e.value)
+  //   setCodingGoal(e.value)
+  //   console.log('coding goal', codingGoal)
+  //   let codeGoal = e.value;
+  //   setGoals(id, codeGoal, null, null, null)
+  // }
 
 
 
@@ -80,7 +119,7 @@ const Profile = () => {
       <div className="container">
         <header className="jumbotron">
           <h3 id="user">
-            <strong> Welcome {currentUser.username} </strong>
+            {/* <strong> Welcome {currentUser.username} </strong> */}
           </h3>
         </header>
 
@@ -173,9 +212,12 @@ const Profile = () => {
 
             <div id="goalTextDiv">
               {" "}
-              Goal: {codingGoal} &nbsp; Completed: {codingProgress}
-              <button onClick={(event) => {{changeGoalProgress("add")}}}>{" "}+{" "} </button>
-              <button onClick={(event) => {{changeGoalProgress("subtract")}}}>{" "}-{" "} </button>
+              {/* Goal: {codingGoal} &nbsp; Completed: {codingProgress} */}
+              {/* <button onClick={(event) => {changeGoalProgress(event, "add")}}>{" "}+{" "} </button>
+              <button onClick={(event) => {changeGoalProgress(event, "subtract")}}>{" "}-{" "} </button> */}
+              Set a Coding Goal:
+              {/* <Select options={goalOptions} onChange={(event)=> {changeCodingGoal(event)}}/> */}
+
             </div>
           </div>
         </div>

@@ -180,10 +180,8 @@ ul{
   height: 60vw;
   width: 50%;
   overflow: scroll;
-<<<<<<< HEAD
 }
-=======
-}
+
 #progress{
   width:30%;
   /* border:2px solid red; */
@@ -232,4 +230,3 @@ ul{
   border:2px solid pink;
   /* height:20%; */
 }
->>>>>>> deb4cf692ead5005ade537a5cd7a832a1c634295

@@ -1,0 +1,11 @@
+.contact-container {
+    border: 3px solid orange;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.saved-contacts {
+    width: 100%;
+
+}

@@ -3,9 +3,11 @@ import axios from 'axios'
 import authHeader from '../utilities/authHeader.utilities'
 import NetworkForm from './NetworkForm'
 import EditNetworkForm from './EditNetworkForm'
-import {Card, ListGroup, Button} from 'react-bootstrap'
+import {Card, ListGroup, Button, CardDeck} from 'react-bootstrap'
 import {deleteNetwork} from '../services/networkform.service'
 
+//css import 
+import "../css/network.css";
 
 
 
@@ -31,10 +33,10 @@ const getNetwork = () =>{
 const handleDelete = (network) => {
         let id = network._id;
         deleteNetwork(id);
+        getNetwork();
     }
 
-const  editNetwork = (network ) => {
-     console.log(network);
+const editNetwork = (network) => {
     return (
      <EditNetworkForm network = {network}/>
      )
@@ -44,22 +46,22 @@ const  editNetwork = (network ) => {
     setClicked(true)
  }
   
-console.log(networkData)
+
 return (
         <div>
             
-            <NetworkForm/>
+            <NetworkForm getNetwork={getNetwork}/>
             <br></br>
             <div className = "saved-contacts">
               <h1 style = {{textAlign: "center"}}>My Contacts</h1>
-                <ul> 
+                <CardDeck>
                     {networkData.map((network) =>(
                         <Card style={{ width: '18rem' }}>
                             <ListGroup variant="flush">
                                 <ListGroup.Item><b> Name:</b> {network.name}</ListGroup.Item>
                                 <ListGroup.Item><b> Company:</b> {network.company}</ListGroup.Item>
-                                <ListGroup.Item>  <b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
-                                <ListGroup.Item> <b> Email:</b> {network.email}<br></br></ListGroup.Item>
+                                <ListGroup.Item><b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
+                                <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
                                 <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
                             </ListGroup>
                             <br></br>
@@ -71,8 +73,7 @@ return (
                         </Card>
                   
                     ))}
-                
-                </ul>
+                </CardDeck>
             </div>
         
         </div>

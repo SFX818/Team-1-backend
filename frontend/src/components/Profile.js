@@ -163,10 +163,13 @@ const Profile = () => {
   if (allJobs.length > 0) {
     return (
       <div className="container">
-        <header className="jumbotron">
-          <h3 id="user">
+        <header>
+        <div class="twelve">
+  <h1 id="h1">Welcome {currentUser.username}</h1>
+</div>
+          {/* <h3 id="user">
             <strong> Welcome {currentUser.username} </strong>
-          </h3>
+          </h3> */}
         </header>
 
         <h2>{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company}</h2>
@@ -175,9 +178,11 @@ const Profile = () => {
         <h3>Heard Back: {allJobs[0].heardBackJobs.length} </h3>
         <h3>Denied: {allJobs[0].deniedFromJobs.length} </h3> */}
 
-        <h2 id="savedJobs"> Saved Jobs: </h2>
         <div id="container">
-          <div id="jobList">{listJobs()}</div>
+          <div id="jobList">
+        <h2 id="savedJobs"> Saved Jobs: </h2>
+            
+            {listJobs()}</div>
 
           <div id="bigPie">
             {/* <div id="pie">

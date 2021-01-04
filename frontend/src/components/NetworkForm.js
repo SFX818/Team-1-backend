@@ -66,6 +66,7 @@ return (
         <Form>
             <FormGroup text="name">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Name" 
                   name="name"
@@ -76,6 +77,7 @@ return (
 
             <FormGroup text="company">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Company" 
                   name="company"
@@ -86,6 +88,7 @@ return (
 
             <FormGroup text="email">
                 <Form.Control
+                  size="sm"
                   type="email"
                   placeholder="Email" 
                   name="email"
@@ -96,6 +99,7 @@ return (
 
             <FormGroup text="phone">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Phone Number" 
                   name="phone"
@@ -106,6 +110,7 @@ return (
 
             <FormGroup text="note">
                 <Form.Control
+                  size= "sm"
                   type="text"
                   placeholder="Note" 
                   name="note"

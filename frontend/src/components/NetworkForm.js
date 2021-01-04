@@ -62,7 +62,7 @@ return (
   <div>
         <br></br>
         <br></br>
-        <h3>Add a new contact:</h3>
+        <h3>Add a New Contact:</h3>
         <Form>
             <FormGroup text="name">
                 <Form.Control

@@ -71,15 +71,19 @@ const Home = () => {
 
    <h5> {newQuote()}</h5>
    </div>
+   <br></br>
+   <br></br>
+   <h1>Take a look at the latest in Tech News:</h1>
+   <br></br>
   <CardDeck>
   {news.map((article) =>(
-    <Card style={{ width: '18rem' }}> 
+    <Card style={{ width: '25rem' }}> 
     <Card.Img variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{article.author}</Card.Subtitle>
           <a href={article.url}>
-          <Button variant="primary">See Article</Button>
+          <Button variant="info">See Article</Button>
           </a>
       </Card.Body>
     </Card>

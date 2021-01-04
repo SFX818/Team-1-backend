@@ -92,6 +92,7 @@ const Profile = () => {
 
   //FOR GOALS: function that allows users to set a goal for coding problems
   const changeCodingGoal = (e) => {
+    setCodingProgress(0)
     let id = currentUser.id
     setCodingGoal(e.value)
     let codeGoal = e.value;
@@ -121,6 +122,7 @@ const Profile = () => {
 
   //FOR GOALS: function that allows user to set a goal for the amount of applications they want to submit
   const changeAppGoal = (e) => {
+    setAppProgress(0)
     let id = currentUser.id
     setAppGoal(e.value)
     let appGoal = e.value;
@@ -149,17 +151,22 @@ const Profile = () => {
   if (allJobs.length > 0) {
     return (
       <div className="container">
-        <header className="jumbotron">
-          <h3 id="user">
+        <header>
+        <div class="twelve">
+  <h1 id="h1"> {currentUser.username}'s Profile</h1>
+</div>
+          {/* <h3 id="user">
             <strong> Welcome {currentUser.username} </strong>
-          </h3>
+          </h3> */}
         </header>
 
         <h2>{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company}</h2>
 
-        <h2 id="savedJobs"> Saved Jobs: </h2>
         <div id="container">
-          <div id="jobList">{listJobs()}</div>
+          <div id="jobList">
+        <h2 id="savedJobs"> Saved Jobs: </h2>
+            
+            {listJobs()}</div>
 
           <div id="bigPie">
             <PieCharts allJobs={allJobs}/>

@@ -188,6 +188,7 @@ ul{
   width: 50%;
   overflow: scroll;
 }
+
 #progress{
   width:30%;
   /* border:2px solid red; */
@@ -235,6 +236,7 @@ ul{
 
 
 .categoryDiv{
+<<<<<<< HEAD
   border:3px solid green;
   /* display:flex; */
   height:300px;
@@ -247,3 +249,8 @@ img{
   height:0px;
   width:0px;
 }
+=======
+  border:2px solid pink;
+  /* height:20%; */
+}
+>>>>>>> fef5333a3b9e79d0bf84efe73876026350309cef

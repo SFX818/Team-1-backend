@@ -38,7 +38,7 @@ const handleDelete = (network) => {
         getNetwork();
     }
 
-//this function is attacked to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
+// This function is attached to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
  const clickedButton = (id) => {
     setWhoClicked(id)
  }

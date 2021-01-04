@@ -11,6 +11,7 @@ import { getProfileInfo, editGoals } from '../services/profile.service'
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
+import {saveTodos} from '../services/user.service';
 
 //component import 
 import GoalMeter from '../components/GoalMeter';
@@ -33,7 +34,6 @@ const Profile = () => {
     jobGrabber();
     profileInfoGrabber();
   }, []);
-
 
   //going to our backend and responding with the users savedJobs info and saving it to the jobData state
   const jobGrabber = () => {
@@ -60,6 +60,14 @@ const Profile = () => {
       console.log('profile get info route error', err)
     }
   }
+
+  ///////FOR TODOS
+    //todos are updated in several ways: added, change done status, and deleted. Having a useEffect will allow them to save with each change
+    useEffect(() => {
+      let id = currentUser.id;
+      //connect to backend
+      saveTodos(id, todos)
+    }, [todos])
 
   ////////////code for the goals below:
 
@@ -123,7 +131,7 @@ const Profile = () => {
   const listJobs = () => {
     if (allJobs.length > 0) {
       return allJobs[0].allJobs.map((job, index) => (
-        <div id="card">
+        <div id="card" key={index}>
           <Card body>
             <ul>
               <li key={index}>
@@ -167,7 +175,7 @@ const Profile = () => {
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
-        
+
         <div id='todos'>
             <Todos todos={todos} setTodos={setTodos}/>
           </div>

@@ -3,15 +3,16 @@ import {Card, ListGroup, CardDeck} from 'react-bootstrap'
 import { Form, FormGroup, Button } from 'react-bootstrap'
 import shortid from 'shortid'
 
+
 //map through users todos and display them as list items
 function Todos({todos, setTodos}) {
 
-    const [newItem, setNewItem] = useState('');
+    const [newItem, setNewItem] = useState({text: ''});
 
     const displayTodos = () => {
         return todos.map((todo, i) => {
             let status = todo.done;
-                return <ListGroup.Item style={{textDecoration: status ? 'line-through' : ''}}>
+                return <ListGroup.Item style={{textDecoration: status ? 'line-through' : ''}} key={i}>
                 {i+1}: {todo.text}
                 <input type='image' src='../../check_icon.png'  alt='Completed' width='30' onClick={() => changeStatus(todo.key)}/>
                 <button onClick={() => deleteTodo(todo.key)}>Remove</button>

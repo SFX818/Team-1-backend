@@ -8,6 +8,7 @@ label {
   max-width: 350px !important;
   padding: 1vw 1vw;
   /* background-color: #3988d3c5; */
+
 }
 
 .card {
@@ -45,6 +46,8 @@ label {
   border-radius: 50%;
 }
 
+
+
 /* PIE CHART CODE */
 #pie {
   font-size: 0.5vw;
@@ -64,6 +67,7 @@ label {
   width: 30%;
   padding-left: 5vw;
   margin-left: 3vw;
+
 }
 
 #pie2 {
@@ -108,6 +112,10 @@ label {
 }
 
 
+#card1{
+  width:50%;
+  height:50%;
+}
 
 ul{
   padding-left: 0px;
@@ -128,7 +136,7 @@ ul{
   display: flex;
   width:100%;
   justify-content: center;
-  border:2px solid yellow;
+  /* border:2px solid yellow; */
   align-items: flex-start;
 }
 
@@ -191,6 +199,7 @@ ul{
   text-align: center;
   font-size:2vw;
   font-family: 'Roboto', sans-serif;
+  padding-bottom:2vw;
 }
 
 #goalTextDiv{
@@ -200,19 +209,7 @@ ul{
 }
 
 
-.whole-div{
-  border: 2px solid red; 
-  display:flex;
-  justify-content:center;
-  
-}
 
-.outer-div{
-  border: 2px solid blue;
-  width:80%;
-  height:50%;
-  
-}
 
 #userSavedJob{
   text-align: center;
@@ -220,13 +217,83 @@ ul{
 }
 
 .categories{
-  font-size:2.5vw;
+  font-size:2vw;
   text-align: center;
-  text-decoration-color: royalblue;
 }
 
 
+#test{
+  width:100%;
+  border:3px solid red;
+  height:100%;
+  /* display:flex; */
+  /* justify-content: flex-start; */
+}
+
+/* #miniTest{
+  border:3px solid blue;
+  width:50%;
+
+} */
+
+
 .categoryDiv{
-  border:2px solid pink;
-  /* height:20%; */
+  border:3px solid green;
+  /* display:flex; */
+  height:300px;
+  /* flex-direction: row;
+  justify-content: space-around; */
+  overflow: scroll;
+}
+
+img{
+  height:0px;
+  width:0px;
+}
+
+
+#appTextDiv{
+  padding-top:5vw;
+  text-align:center;
+  /* border:2px solid red; */
+}
+
+#goalTextDiv{
+  padding-left:3vw;
+  text-align:center;
+  /* border:2px solid blue; */
+  /* display:flex;
+  justify-content: space-between; */
+}
+
+#goalText{
+  text-align:center;
+}
+
+.plus{
+  background-color:teal;
+  color:white;
+  width:15%;
+  height:50%;
+}
+
+.plus:hover{
+  background-color:gray;
+  color:white;
+  font-size:1vw;
+}
+.minus{
+  background-color: white;
+  color:teal;
+  width:15%;
+  height:50%;
+}
+
+.minus:hover{
+  background-color: gray;
+  color:white;
+}
+
+#goals{
+ padding-left:3vw;
 }

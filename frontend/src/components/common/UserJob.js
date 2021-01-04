@@ -30,12 +30,18 @@ function UserJob({ job, jobGrabber }) {
 
 
     return (
-        <div>
-            {job.jobTitle} {job.company}
+    
+        <div id="test">
+            {/* {job.jobTitle} {job.company} */}
             {/* Job is passed the from so that when the Job component is rendered, the heart to save a job will not render */}
+            
+            <div id="miniTest">
             <Job job= {currentJob} from='savedJobs'/>
             <StatusForm job = {job} jobGrabber = {jobGrabber}/>
+            </div>
+
         </div>
+        
     )
 }
 

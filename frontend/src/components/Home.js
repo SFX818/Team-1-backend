@@ -61,6 +61,7 @@ const Home = () => {
 
   // create num generator that and put that inside the data array
   
+
   return <div id="bigboy">
     
     <div id="home"> 

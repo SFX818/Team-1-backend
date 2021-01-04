@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 body {
   font-family: 'Roboto', sans-serif;
+=======
+*{
+  font-family: 'Bitter', serif;
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 label {
@@ -52,8 +57,7 @@ label {
 /* PIE CHART CODE */
 #pie {
   font-size: 0.5vw;
-  /* font-family: 'Goldman', cursive; */
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   display: flex;
   flex-direction: column;
   /* border:2px solid red; */
@@ -72,35 +76,55 @@ label {
 
 #pie2 {
   font-size: 0.5vw;
-  /* font-family: 'Goldman', cursive; */
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   display: flex;
   flex-direction: column;
   width: 30%;
+  margin-top:5vw;
 }
 
 /* HEADER FOR THE PIE CHARTS */
 #applied {
+<<<<<<< HEAD
   /* font-family: 'Goldman', cursive; */
   font-family: 'Roboto', sans-serif;
   font-size: 2vw;
   text-align: center;
 
   width: 300%;
+=======
+  /* font-family: 'Roboto', sans-serif; */
+  font-size:2vw;
+  width:250%;
+  /* border:2px solid yellow; */
+  text-align: center;
+  
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #savedJobs {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   font-size: 2vw;
+  text-align: center;
+  width:90%;
+
 }
 
 #heardBack {
+<<<<<<< HEAD
   font-family: 'Roboto', sans-serif;
   font-size: 2vw;
   text-align: center;
   width: 300%;
   /* margin-top: 5vw; */
   /* font-family: 'Goldman', cursive; */
+=======
+  /* font-family: 'Roboto', sans-serif; */
+  font-size:2vw;
+  text-align: center;
+  width:240%;
+  /* border:2px solid red; */
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #card {
@@ -140,7 +164,12 @@ ul {
 }
 
 #user {
+<<<<<<< HEAD
   font-family: 'Roboto', sans-serif;
+=======
+  /* font-family: 'Roboto', sans-serif; */
+  text-align: center;
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 .btncontainer {
@@ -148,8 +177,13 @@ ul {
   flex-direction: row;
 }
 
+<<<<<<< HEAD
 #userHome {
   font-family: 'Roboto', sans-serif;
+=======
+#userHome{
+  /* font-family: 'Roboto', sans-serif; */
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
   text-align: center;
   /* border-bottom: 2px solid white; */
   text-decoration: underline;
@@ -197,9 +231,18 @@ ul {
 
 #goalChart {
   text-align: center;
+<<<<<<< HEAD
   font-size: 2vw;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 2vw;
+=======
+  font-size:2vw;
+  /* font-family: 'Roboto', sans-serif; */
+  padding-bottom:2vw;
+  width:100%;
+  margin-left:3vw;
+  
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #goalTextDiv {
@@ -211,7 +254,7 @@ ul {
 
 #userSavedJob {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
 .categories {
@@ -242,10 +285,15 @@ ul {
   overflow: scroll;
 }
 
+<<<<<<< HEAD
 /* img{
   height:0px;
   width:0px;
 } */
+=======
+
+
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 
 #appTextDiv {
   padding-top: 5vw;
@@ -297,9 +345,112 @@ ul {
   padding-left: 65%;
 }
 
+<<<<<<< HEAD
 #bigboy {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+=======
+
+#bigboy{
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+/* header{
+  border:2px solid red;
+  background-color: white; 
+  height:10vw;
+  width:70%;
+  justify-content: center;
+} */
+
+header{
+display:flex;
+justify-content: center;
+align-items: center;
+}
+
+
+
+.twelve #h1 {
+  font-family: 'Bitter', serif;
+  font-size:50px; 
+  font-weight:500;  
+  letter-spacing:1px; 
+  text-transform:uppercase; 
+  width:160px; 
+  text-align:center; 
+  margin:auto; 
+  white-space:nowrap;
+   padding-bottom:50px; 
+   color:white;
+   margin-left: 30%;
+}
+.twelve #h1:before {
+    background-color:teal;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 145px;
+    margin-bottom: 5px;
+}
+.twelve #h1:after {
+    background-color:teal;
+    content: '';
+    display: block;
+    /* position:absolute; right:0; bottom:0; */
+    height: 3px;
+    width: 145px;
+    margin-bottom: 0.25em;
+    margin-left: 6em;
+}
+
+.eight #h1 {
+  text-align:center;
+ 
+  text-transform:uppercase;
+  font-size:26px; letter-spacing:1px;
+  
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 16px 0;
+  grid-gap: 22px;
+}
+
+.eight #h1:after,.eight h1:before {
+  content: " ";
+  display: block;
+  border-bottom: 2px solid #ccc;
+  background-color:#f8f8f8;
+  margin-left:3px;
+}
+
+
+#h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#h1 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+#h1 em {
+  font-style: normal;
+  font-weight: 600;
+}
+>>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514

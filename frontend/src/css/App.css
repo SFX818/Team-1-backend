@@ -206,20 +206,7 @@ ul{
 }
 
 
-/* .whole-div{
-  border: 2px solid red; 
-  display:flex;
-  justify-content:center;
-  
-} */
 
-.outer-div{
-  border: 2px solid blue;
-  width:100%;
-  height:50%;
-  display:flex;
-  flex-direction: column;
-} 
 
 #userSavedJob{
   text-align: center;
@@ -227,8 +214,36 @@ ul{
 }
 
 .categories{
-  font-size:2.5vw;
+  font-size:2vw;
   text-align: center;
 }
 
 
+#test{
+  width:100%;
+  border:3px solid red;
+  height:100%;
+  /* display:flex; */
+  /* justify-content: flex-start; */
+}
+
+/* #miniTest{
+  border:3px solid blue;
+  width:50%;
+
+} */
+
+
+.categoryDiv{
+  border:3px solid green;
+  /* display:flex; */
+  height:300px;
+  /* flex-direction: row;
+  justify-content: space-around; */
+  overflow: scroll;
+}
+
+img{
+  height:0px;
+  width:0px;
+}

@@ -14,7 +14,7 @@ function UserJob({ job, jobGrabber }) {
     //useEffect is used to do axios calls for specific jobs based on their id so that info can be passed down to the Job component
     useEffect(() => {
         const cancelToken1 = axios.CancelToken.source()
-        axios.get('https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/' + job.jobId +'.json', {
+        axios.get('https://jobs.github.com/positions/' + job.jobId +'.json', {
             cancelToken: cancelToken1.token,
             // setting markdown as true so we done get any random bits of messy JSON
             params: {markdown: true }
@@ -30,12 +30,18 @@ function UserJob({ job, jobGrabber }) {
 
 
     return (
-        <div>
-            {job.jobTitle} {job.company}
+    
+        <div id="test">
+            {/* {job.jobTitle} {job.company} */}
             {/* Job is passed the from so that when the Job component is rendered, the heart to save a job will not render */}
+            
+            <div id="miniTest">
             <Job job= {currentJob} from='savedJobs'/>
             <StatusForm job = {job} jobGrabber = {jobGrabber}/>
+            </div>
+
         </div>
+        
     )
 }
 

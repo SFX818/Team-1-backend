@@ -15,8 +15,10 @@ const Network = () => {
 
 // Setting state to hold the saved networks
 const [networkData, setNetworkData] = useState([])
-const [clicked, setClicked] = useState(false)
-    
+const [submit, setSubmit] = useState(false)
+//this state is used to keep track of which contact was intended to be edited 
+const [whoClicked, setWhoClicked] = useState('')
+
 // Using the getNetwork function that access our API(backend)
 useEffect (()=>{
     getNetwork()
@@ -36,53 +38,47 @@ const handleDelete = (network) => {
         getNetwork();
     }
 
-const editNetwork = (network) => {
-    return (
-     <EditNetworkForm network = {network} setClicked={setClicked} getNetwork={getNetwork}/>
-     )
- }
-
- const clickedButton = () => {
-    setClicked(true)
+//this function is attacked to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
+ const clickedButton = (id) => {
+    setWhoClicked(id)
  }
   
 
 return (
-        <div>
-            
-            <NetworkForm getNetwork={getNetwork}/>
-            <br></br>
-            <div className = "saved-contacts">
-              <h1 style = {{textAlign: "center"}}>My Contacts</h1>
-                <CardDeck>
-                    {networkData.map((network) =>(
-                        <Card style={{ width: '18rem' }}>
-                            {clicked === false ?
-                            <div>
-                                <ListGroup variant="flush">
-                                <ListGroup.Item><b> Name:</b> {network.name}</ListGroup.Item>
-                                <ListGroup.Item><b> Company:</b> {network.company}</ListGroup.Item>
-                                <ListGroup.Item><b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
-                                <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
-                                <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
-                            </ListGroup>
-                            <br></br>
-                            <Button onClick={() => clickedButton()}>Edit</Button>
-                            <br></br>
-                            <Button onClick= {() => handleDelete(network)}>Delete</Button>
-                            </div>
-                            : <EditNetworkForm network={network} setClicked={setClicked} getNetwork={getNetwork}/>
-                            }
-                        </Card>
-                  
-                    ))}
-                </CardDeck>
+        <div> 
+        <NetworkForm getNetwork={getNetwork}/>
+        <br></br>
+        <div className = "saved-contacts">
+          <h1 style = {{textAlign: "center"}}>My Contacts</h1>
+            {/* <CardDeck> */}
+            <div className='card-deck card-deck-wrapper'>
+                {networkData.map((network) =>(
+                    <Card className="card mb-4" style={{ width: '18rem' }}>
+                        {/* the below condition will determine which contact will open the edit form */}
+                        {whoClicked === network._id ?
+                        <EditNetworkForm network={network} getNetwork={getNetwork} setWhoClicked={setWhoClicked}/>
+                        : 
+                        <div>
+                        <ListGroup variant="flush">
+                        <ListGroup.Item><b> Name:</b> {network.name}</ListGroup.Item>
+                        <ListGroup.Item><b> Company:</b> {network.company}</ListGroup.Item>
+                        <ListGroup.Item><b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
+                        <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
+                        <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
+                        </ListGroup>
+                        <br></br>
+                        <Button onClick={() => clickedButton(network._id)}>Edit</Button>
+                        <br></br>
+                        <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                        </div>
+                        }
+                    </Card>
+              
+                ))}
+            {/* </CardDeck> */}
             </div>
-        
         </div>
-            
-                    
-
+    </div>
     )
 }
 

@@ -4,7 +4,7 @@ import {editNetwork} from '../services/networkform.service'
 
 
 
-const EditNetworkForm = ({network, setClicked, getNetwork}) => {
+const EditNetworkForm = ({network, getNetwork, setWhoClicked}) => {
  //stores the name
 const [newName, setNewName] = useState(network.name);
 //stores the company
@@ -50,8 +50,8 @@ const [newNotes, setNewNote] = useState(network.notes);
      e.preventDefault()
      let id = network._id
      editNetwork(id, newName, newCompany, newEmail, newPhone, newNotes)
-     //set the clicked state bck to false so the edit form goes away
-     setClicked(false)
+     //set whoClicked state back to an empty string so the edit form doesnt pass the conditional to display itself anymore
+     setWhoClicked('')
      //call getNetwork so the list of contacts will rerender
      getNetwork()
  }
@@ -117,11 +117,7 @@ return (
           <Button onClick={(e) =>saveChanges(network, e)}>Save Changes</Button>
         </Form>
   </div>
-          
-
-                        
-          
-        )
+  )
 }
 
 export default EditNetworkForm

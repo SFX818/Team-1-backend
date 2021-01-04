@@ -6,6 +6,7 @@ import EditNetworkForm from './EditNetworkForm'
 import { ListGroup, Button} from 'react-bootstrap'
 import {deleteNetwork} from '../services/networkform.service'
 
+
 //css import 
 import "../css/network.css";
 
@@ -51,6 +52,7 @@ return (
         <div className = "saved-contacts">
           <h1 style = {{textAlign: "center"}}>My Contacts</h1>
             {/* <CardDeck> */}
+            <br></br>
             <div className='contact-container'>
                 {networkData.map((network) =>(
                     <div className='network-card'>
@@ -66,8 +68,25 @@ return (
                         <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
                         <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
                         <ListGroup.Item className= 'contact-btn'>
-                            <Button onClick={() => clickedButton(network._id)}>Edit</Button>
-                            <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                        <>
+  {/* <style type="text/css">
+    {`
+    .btn-flat {
+      background-color: teal;
+      color: white;
+    }
+
+    .btn-xl {
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+    }
+    `}
+  </style> */}
+  {/* <Button  variant ="flat" size="xl"onClick={() => clickedButton(network._id)}>Edit</Button>
+  <Button variant ="flat" size="xl" onClick= {() => handleDelete(network)}>Delete</Button> */}
+</>
+                            <Button variant="flat" size="xl" onClick={() => clickedButton(network._id)}>Edit</Button>
+                            <Button variant="flat" size="xl" onClick= {() => handleDelete(network)}>Delete</Button>
                         </ListGroup.Item>
                         </ListGroup>
                         {/* <br></br>

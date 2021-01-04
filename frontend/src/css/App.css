@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-body {
-  font-family: 'Roboto', sans-serif;
-=======
 *{
   font-family: 'Bitter', serif;
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 label {
@@ -85,21 +80,12 @@ label {
 
 /* HEADER FOR THE PIE CHARTS */
 #applied {
-<<<<<<< HEAD
-  /* font-family: 'Goldman', cursive; */
-  font-family: 'Roboto', sans-serif;
-  font-size: 2vw;
-  text-align: center;
-
-  width: 300%;
-=======
   /* font-family: 'Roboto', sans-serif; */
   font-size:2vw;
   width:250%;
   /* border:2px solid yellow; */
   text-align: center;
   
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #savedJobs {
@@ -111,20 +97,11 @@ label {
 }
 
 #heardBack {
-<<<<<<< HEAD
-  font-family: 'Roboto', sans-serif;
-  font-size: 2vw;
-  text-align: center;
-  width: 300%;
-  /* margin-top: 5vw; */
-  /* font-family: 'Goldman', cursive; */
-=======
   /* font-family: 'Roboto', sans-serif; */
   font-size:2vw;
   text-align: center;
   width:240%;
   /* border:2px solid red; */
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #card {
@@ -164,12 +141,8 @@ ul {
 }
 
 #user {
-<<<<<<< HEAD
-  font-family: 'Roboto', sans-serif;
-=======
   /* font-family: 'Roboto', sans-serif; */
   text-align: center;
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 .btncontainer {
@@ -177,13 +150,8 @@ ul {
   flex-direction: row;
 }
 
-<<<<<<< HEAD
-#userHome {
-  font-family: 'Roboto', sans-serif;
-=======
 #userHome{
   /* font-family: 'Roboto', sans-serif; */
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
   text-align: center;
   /* border-bottom: 2px solid white; */
   text-decoration: underline;
@@ -231,18 +199,12 @@ ul {
 
 #goalChart {
   text-align: center;
-<<<<<<< HEAD
-  font-size: 2vw;
-  font-family: 'Roboto', sans-serif;
-  padding-bottom: 2vw;
-=======
   font-size:2vw;
   /* font-family: 'Roboto', sans-serif; */
   padding-bottom:2vw;
   width:100%;
   margin-left:3vw;
   
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 }
 
 #goalTextDiv {
@@ -285,15 +247,8 @@ ul {
   overflow: scroll;
 }
 
-<<<<<<< HEAD
-/* img{
-  height:0px;
-  width:0px;
-} */
-=======
 
 
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514
 
 #appTextDiv {
   padding-top: 5vw;
@@ -345,14 +300,6 @@ ul {
   padding-left: 65%;
 }
 
-<<<<<<< HEAD
-#bigboy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-=======
 
 #bigboy{
 display:flex;
@@ -453,4 +400,3 @@ align-items: center;
   font-style: normal;
   font-weight: 600;
 }
->>>>>>> c76dcc5ab83d692dcb37e6b8725a0a1496aef514

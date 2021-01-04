@@ -152,7 +152,7 @@ const Profile = () => {
     return (
       <div className="container">
         <header>
-        <div class="twelve">
+        <div className="twelve">
   <h1 id="h1"> {currentUser.username}'s Profile</h1>
 </div>
           {/* <h3 id="user">

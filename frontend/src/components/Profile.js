@@ -165,7 +165,7 @@ const Profile = () => {
       <div className="container">
         <header>
         <div class="twelve">
-  <h1 id="h1">Welcome {currentUser.username}</h1>
+  <h1 id="h1"> {currentUser.username}'s Profile</h1>
 </div>
           {/* <h3 id="user">
             <strong> Welcome {currentUser.username} </strong>

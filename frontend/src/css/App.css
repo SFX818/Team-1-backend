@@ -95,10 +95,12 @@ label {
 
 #savedJobs {
   /* font-family: 'Roboto', sans-serif; */
-  font-size: 2vw;
+  font-size: 2.5vw;
   text-align: center;
   width:90%;
-
+  text-decoration: underline #fafafa;
+  text-decoration-skip-ink: auto;
+  
 }
 
 #heardBack {
@@ -107,6 +109,17 @@ label {
   text-align: center;
   width:240%;
   /* border:2px solid red; */
+}
+
+
+#stats{
+  text-decoration: underline #fafafa;
+  text-decoration-skip-ink: auto;
+  width:300%;
+  margin-bottom:5vw;
+  text-align: center;
+  font-size:2.5vw;
+ 
 }
 
 #card {
@@ -167,7 +180,7 @@ ul{
 
 #home{
   /* display:flex; */
-  margin-top:10%;
+  margin-top:5%;
   width:50%;
   /* align-self: center; */
 }
@@ -205,11 +218,13 @@ ul{
 
 #goalChart{
   text-align: center;
-  font-size:2vw;
+  font-size:2.5vw;
   /* font-family: 'Roboto', sans-serif; */
   padding-bottom:2vw;
   width:100%;
   margin-left:3vw;
+  text-decoration: underline #fafafa;
+  text-decoration-skip-ink: auto;
   
 }
 
@@ -218,6 +233,7 @@ ul{
   font-size:.9vw;
   display:flex;
   justify-content: center;
+  
 }
 
 
@@ -305,6 +321,7 @@ ul{
 
 #goals{
  padding-left:3vw;
+ 
 }
 
 #author{

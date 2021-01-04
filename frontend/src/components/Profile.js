@@ -92,9 +92,13 @@ const Profile = () => {
   //FOR GOALS: function that is connected to the + and - buttons in the GoalMeter component to change code goal progress. This change in info will then trigger the useEffect above
   const changeGoalProgress = (type) => {
     if(type==="add"){
-        setCodingProgress(codingProgress + 1);
+      if(codingProgress+1 <= codingGoal && codingProgress +1 >=0){  
+      setCodingProgress(codingProgress + 1);
+      }
     }if(type==="subtract"){
+      if(codingProgress-1 <= codingGoal && codingProgress -1 >=0){  
         setCodingProgress(codingProgress - 1); 
+      }
     }
   }
 
@@ -115,11 +119,17 @@ const Profile = () => {
   //FOR GOALS: function connected to + and  - buttons in the GoalMeter component to change progress of applications submitted, changed values to be used in the useEffect above
   const changeAppProgress = (type) => {
     if(type==="add"){
+      if(appProgress+1 <= appGoal && appProgress +1 >=0){  
         setAppProgress(appProgress + 1);
+      }
     }if(type==="subtract"){
+      if(appProgress-1 <= appGoal && appProgress -1 >=0){  
         setAppProgress(appProgress - 1); 
+      }
     }
   }
+
+
 
   //FOR GOALS: function that allows user to set a goal for the amount of applications they want to submit
   const changeAppGoal = (e) => {

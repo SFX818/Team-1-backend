@@ -67,6 +67,7 @@ label {
   width: 30%;
   padding-left: 5vw;
   margin-left: 3vw;
+
 }
 
 #pie2 {
@@ -198,6 +199,7 @@ ul{
   text-align: center;
   font-size:2vw;
   font-family: 'Roboto', sans-serif;
+  padding-bottom:2vw;
 }
 
 #goalTextDiv{
@@ -236,7 +238,6 @@ ul{
 
 
 .categoryDiv{
-<<<<<<< HEAD
   border:3px solid green;
   /* display:flex; */
   height:300px;
@@ -249,8 +250,50 @@ img{
   height:0px;
   width:0px;
 }
-=======
-  border:2px solid pink;
-  /* height:20%; */
+
+
+#appTextDiv{
+  padding-top:5vw;
+  text-align:center;
+  /* border:2px solid red; */
 }
->>>>>>> fef5333a3b9e79d0bf84efe73876026350309cef
+
+#goalTextDiv{
+  padding-left:3vw;
+  text-align:center;
+  /* border:2px solid blue; */
+  /* display:flex;
+  justify-content: space-between; */
+}
+
+#goalText{
+  text-align:center;
+}
+
+.plus{
+  background-color:teal;
+  color:white;
+  width:15%;
+  height:50%;
+}
+
+.plus:hover{
+  background-color:gray;
+  color:white;
+  font-size:1vw;
+}
+.minus{
+  background-color: white;
+  color:teal;
+  width:15%;
+  height:50%;
+}
+
+.minus:hover{
+  background-color: gray;
+  color:white;
+}
+
+#goals{
+ padding-left:3vw;
+}

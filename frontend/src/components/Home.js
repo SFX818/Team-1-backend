@@ -39,10 +39,12 @@ const Home = () => {
 
   const newQuote = () =>{
     if (quotes.length > 0 ) {
-      return <p> "{quotes[0].text}" 
-      <br></br>  
-      by <b> {quotes[0].author} </b></p>
-    }
+      return (
+      <div> 
+        <p> "{quotes[0].text}" </p> 
+      <p id="author"> by {quotes[0].author} </p> 
+      </div>
+      )}
   }
 
   // create num generator that and put that inside the data array

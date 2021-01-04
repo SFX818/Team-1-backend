@@ -142,6 +142,7 @@ ul{
 
 #user {
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .btncontainer {
@@ -155,11 +156,13 @@ ul{
   /* border-bottom: 2px solid white; */
   text-decoration: underline;
   text-decoration-color:white;
+  font-size:2.5vw;
 }
 
 #home{
-
-  /* border:2px solid red; */
+  margin-left:20%;
+  margin-top:10%;
+  border:2px solid red;
   width:50%;
   align-self: center;
 }
@@ -296,4 +299,8 @@ img{
 
 #goals{
  padding-left:3vw;
+}
+
+#author{
+  padding-left:65%;
 }

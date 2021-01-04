@@ -5,7 +5,7 @@ import {getCurrentUser} from '../services/auth.service'
 
 
 
-const NetworkForm = () => {
+const NetworkForm = ({getNetwork}) => {
 
 //stores the name
 const [name, setName] = useState("");
@@ -18,9 +18,9 @@ const [phone, setPhone] = useState("");
 //stores the notes about the contact
 const [notes, setNote] = useState("");
 
+
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
-console.log(currentUser)
 
 // Stores the name in our name state
   const onChangeName = (e) => {
@@ -49,11 +49,32 @@ console.log(currentUser)
  const onChangeNote = (e) => {
   const notes = e.target.value
   setNote(notes)
+  //NOTE: messing arround with notes as an array
+  // const note = e.target.value
+  // const notes = [];
+  // console.log('note', note.split(''));
+  // let noteArr = note.split('');
+  // noteArr.map((letter, i, arr) => {
+  //   if(letter === '$'){
+  //     notes.push((arr.splice(0,i)).join(''))
+  //   }
+  //   console.log('notes', notes);
+  // })
+  // setNote(note)
 };
+
 // Adds a new network onClick{handleSubmit} with the help of the addNetwork function created in networkform.services.js
  const handleSubmit = (e) =>{
      e.preventDefault()
-     addNetwork(currentUser,name,company,email,phone,notes)
+     addNetwork(currentUser, name, company, email, phone, notes)
+     //calling getNetwork() will have the networks rerender
+     getNetwork()
+     //setting states to empty strings will allow the contact form to revert back to the placeholders
+     setName('')
+     setCompany('')
+     setEmail('')
+     setPhone('')
+     setNote('')
  }
 
 
@@ -62,7 +83,7 @@ return (
   <div>
         <br></br>
         <br></br>
-        <h3>Add a new contact:</h3>
+        <h3>Add a New Contact:</h3>
         <Form>
             <FormGroup text="name">
                 <Form.Control

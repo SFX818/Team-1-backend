@@ -68,7 +68,7 @@ const Home = () => {
     <h3 id="userHome">
       <strong> Welcome {currentUser.username} </strong>
     </h3>
-
+  <br></br>
    <h5> {newQuote()}</h5>
    </div>
    <br></br>

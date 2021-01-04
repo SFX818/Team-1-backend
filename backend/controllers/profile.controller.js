@@ -29,36 +29,17 @@ exports.displayAll = (req, res) => {
 //the PUT route for editing todos
 exports.editTodos = (req, res) => {
     //findOneAndUpdate is passed {new: true, upsert: true} tells mongoose to return the updated document (without it it will return the document before it was updated)
-    User.findOneAndUpdate({_id: req.userId}, {$set: {todos: req.body.todos}}, {new: true, upsert: true}, (err, updatedUser) => {
+    User.findOneAndUpdate({_id: req.body.id}, {$set: {todos: req.body.todos}}, {new: true, upsert: true}, (err, updatedUser) => {
         if(err){
             res.send({message: 'Error when trying to update user\'s todos'})
         }
-        res.send(updatedUser);
+        res.send(updatedUser.todos);
         //console.log('UPDATED USER', updatedUser);
     })
 }
 
 //PUT route for editing goals, it is a 2 in one, the if statement will check which is being sent and update accordingly 
 exports.setGoals = (req, res) => {
-    // if(req.body.codingGoal.goal || req.body.codingGoal.progress){
-    //     User.findOneAndUpdate({_id: req.userId}, {$set: {"codingGoal.goal": req.body.codingGoal.goal}}, {new: true, upsert: true}, (err, updatedUser) => {
-    //         if(err){
-    //             res.send({message: 'Error when trying to update user\'s coding goal'})
-    //         }
-    //         res.send(updatedUser);
-    //         //console.log('UPDATED USER', updatedUser);
-    //     })
-    // } else {
-    //     User.findOneAndUpdate({_id: req.userId}, {$set: {"appGoal.goal": req.body.appGoal.goal}}, {new: true, upsert: true}, (err, updatedUser) => {
-    //         if(err){
-    //             res.send({message: 'Error when trying to update user\'s application goal'})
-    //         }
-    //         res.send(updatedUser);
-    //         //console.log('UPDATED USER', updatedUser);
-    //     })
-    // }
-    // const id = req.params.id;
-
     User.findOne({_id: req.body.id})
     .then(theGoal =>{
         console.log("THIS IS THE GOAL", theGoal)

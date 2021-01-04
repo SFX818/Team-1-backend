@@ -23,7 +23,7 @@ module.exports = function(app) {
     app.get("/profile", [authJwt.verifyWebToken], profileController.displayAll);
 
      //route to edit todos PUT 
-    app.put("/profile/todos", [authJwt.verifyWebToken], profileController.editTodos);
+    app.put("/profile/todos", profileController.editTodos);
 
     //route to edit goals: both app and coding
     app.put("/profile/goals", profileController.setGoals);

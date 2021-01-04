@@ -84,6 +84,7 @@ exports.setGoals = (req, res) => {
                 if(err){
                     res.send({message: 'Error when trying to update app or coding goal', err})
                 }
+                updatedGoal.save();
                 res.send(updatedGoal);
               })
           })

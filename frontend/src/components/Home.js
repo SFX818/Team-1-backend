@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getCurrentUser } from "../services/auth.service";
 import axios from "axios";
 import authHeader from "../utilities/authHeader.utilities";
+import { Card, CardDeck, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 
@@ -12,10 +14,12 @@ const Home = () => {
 
 
   const [quotes, setQuotes] = useState([]);
+  const [news, setNews] = useState([])
 
 
   useEffect(() => {
     quoteGrabber();
+    newsGrabber()
   }, []);
 
 
@@ -26,6 +30,14 @@ const Home = () => {
     // .catch(err => console.log(err.message))
   } 
   
+  const newsGrabber = () => {
+    axios.get('https://newsapi.org/v2/top-headlines?q=technology&apiKey=1d9ca5b13652436b801f9572b8878b27')
+    .then (response =>{
+      setNews(response.data.articles)
+      console.log("this is the data we get back from the api", response.data)
+
+    })
+  }
 
 
 
@@ -39,16 +51,17 @@ const Home = () => {
 
   const newQuote = () =>{
     if (quotes.length > 0 ) {
-      return <p> "{quotes[0].text}" 
-      <br></br>  
-      by <b> {quotes[0].author} </b></p>
-    }
+      return (
+      <div> 
+        <p> "{quotes[0].text}" </p> 
+      <p id="author"> by {quotes[0].author} </p> 
+      </div>
+      )}
   }
 
   // create num generator that and put that inside the data array
   
-  console.log("THIS IS ALL QUOTES ", quotes[0]);
-  return <div>
+  return <div id="bigboy">
     
     <div id="home"> 
     <h3 id="userHome">
@@ -57,6 +70,20 @@ const Home = () => {
 
    <h5> {newQuote()}</h5>
    </div>
+  <CardDeck>
+  {news.map((article) =>(
+    <Card style={{ width: '18rem' }}> 
+    <Card.Img variant="top" src={article.urlToImage} />
+      <Card.Body>
+        <Card.Title>{article.title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{article.author}</Card.Subtitle>
+          <a href={article.url}>
+          <Button variant="primary">See Article</Button>
+          </a>
+      </Card.Body>
+    </Card>
+  ))}
+  </CardDeck>
   </div>;
 };
 

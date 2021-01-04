@@ -1,3 +1,9 @@
+body{
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
 label {
   display: block;
   margin-top: 10px;
@@ -104,8 +110,8 @@ label {
 }
 
 #card {
-  font-size: 1vw;
-  width: 100%;
+  font-size: .9vw;
+  width: 90%;
   margin-top: 0px;
   /* background-color: rgb(64, 190, 240); */
   border-radius: 10%;
@@ -142,6 +148,7 @@ ul{
 
 #user {
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .btncontainer {
@@ -155,21 +162,22 @@ ul{
   /* border-bottom: 2px solid white; */
   text-decoration: underline;
   text-decoration-color:white;
+  font-size:2.5vw;
 }
 
 #home{
-
-  /* border:2px solid red; */
+  /* display:flex; */
+  margin-top:10%;
   width:50%;
-  align-self: center;
+  /* align-self: center; */
 }
 
-#homeBigDiv{
-  /* border:2px solid blue; */
+/* #homeBigDiv{
+  border:2px solid blue;
   display:flex;
   justify-content:  center;
   margin-top:6vw;
-}
+} */
 
 #logo {
   height: 9vw;
@@ -200,10 +208,13 @@ ul{
   font-size:2vw;
   font-family: 'Roboto', sans-serif;
   padding-bottom:2vw;
+  
+  
 }
 
 #goalTextDiv{
-
+  /* border:2px solid red; */
+  font-size:.9vw;
   display:flex;
   justify-content: center;
 }
@@ -296,4 +307,16 @@ img{
 
 #goals{
  padding-left:3vw;
+}
+
+#author{
+  padding-left:65%;
+}
+
+
+#bigboy{
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }

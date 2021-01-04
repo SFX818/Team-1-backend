@@ -56,7 +56,7 @@ function GoalMeter({codingGoal, codingProgress, appGoal, appProgress, changeCodi
 
             <div id="goalTextDiv">
               {" "}
-              Goal: {codingGoal} &nbsp; Completed: {codingProgress} &nbsp;&nbsp; &nbsp;&nbsp; 
+               Completed: {codingProgress} Goal: {codingGoal} &nbsp;  &nbsp; 
               <button  className="minus" onClick={(event) => {changeGoalProgress("subtract")}}>{" "}-{" "} </button>
               <button className="plus" onClick={(event) => {changeGoalProgress("add")}}>{" "}+{" "} </button>
             </div>
@@ -87,7 +87,7 @@ function GoalMeter({codingGoal, codingProgress, appGoal, appProgress, changeCodi
 
             <div id="goalTextDiv">
               {" "}
-              Goal: {appGoal} &nbsp; Completed: {appProgress} 
+            Completed: {appProgress} &nbsp;  Goal: {appGoal} &nbsp; &nbsp; 
               <button  className="minus" onClick={(event) => {changeAppProgress("subtract")}}>{" "}-{" "} </button>
               <button  className="plus" onClick={(event) => {changeAppProgress("add")}}>{" "}+{" "} </button>
             </div>

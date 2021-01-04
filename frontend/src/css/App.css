@@ -1,3 +1,9 @@
+body{
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
 label {
   display: block;
   margin-top: 10px;
@@ -8,6 +14,7 @@ label {
   max-width: 350px !important;
   padding: 1vw 1vw;
   /* background-color: #3988d3c5; */
+
 }
 
 .card {
@@ -45,6 +52,8 @@ label {
   border-radius: 50%;
 }
 
+
+
 /* PIE CHART CODE */
 #pie {
   font-size: 0.5vw;
@@ -64,6 +73,7 @@ label {
   width: 30%;
   padding-left: 5vw;
   margin-left: 3vw;
+
 }
 
 #pie2 {
@@ -100,14 +110,18 @@ label {
 }
 
 #card {
-  font-size: 1vw;
-  width: 100%;
+  font-size: .9vw;
+  width: 90%;
   margin-top: 0px;
   /* background-color: rgb(64, 190, 240); */
   border-radius: 10%;
 }
 
 
+#card1{
+  width:50%;
+  height:50%;
+}
 
 ul{
   padding-left: 0px;
@@ -128,12 +142,13 @@ ul{
   display: flex;
   width:100%;
   justify-content: center;
-  border:2px solid yellow;
+  /* border:2px solid yellow; */
   align-items: flex-start;
 }
 
 #user {
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .btncontainer {
@@ -147,21 +162,22 @@ ul{
   /* border-bottom: 2px solid white; */
   text-decoration: underline;
   text-decoration-color:white;
+  font-size:2.5vw;
 }
 
 #home{
-
-  /* border:2px solid red; */
+  /* display:flex; */
+  margin-top:10%;
   width:50%;
-  align-self: center;
+  /* align-self: center; */
 }
 
-#homeBigDiv{
-  /* border:2px solid blue; */
+/* #homeBigDiv{
+  border:2px solid blue;
   display:flex;
   justify-content:  center;
   margin-top:6vw;
-}
+} */
 
 #logo {
   height: 9vw;
@@ -178,9 +194,10 @@ ul{
   flex-direction: column;
   /* border: 2px solid blue; */
   height: 60vw;
-  width: 50%;
+  width: 60%;
   overflow: scroll;
 }
+
 #progress{
   width:30%;
   /* border:2px solid red; */
@@ -190,28 +207,20 @@ ul{
   text-align: center;
   font-size:2vw;
   font-family: 'Roboto', sans-serif;
+  padding-bottom:2vw;
+  
+  
 }
 
 #goalTextDiv{
-
+  /* border:2px solid red; */
+  font-size:.9vw;
   display:flex;
   justify-content: center;
 }
 
 
-.whole-div{
-  border: 2px solid red; 
-  display:flex;
-  justify-content:center;
-  
-}
 
-.outer-div{
-  border: 2px solid blue;
-  width:80%;
-  height:50%;
-  
-}
 
 #userSavedJob{
   text-align: center;
@@ -219,13 +228,95 @@ ul{
 }
 
 .categories{
-  font-size:2.5vw;
+  font-size:2vw;
   text-align: center;
-  text-decoration-color: royalblue;
 }
 
 
+#test{
+  width:100%;
+  border:3px solid red;
+  height:100%;
+  /* display:flex; */
+  /* justify-content: flex-start; */
+}
+
+/* #miniTest{
+  border:3px solid blue;
+  width:50%;
+
+} */
+
+
 .categoryDiv{
-  border:2px solid pink;
-  /* height:20%; */
+  border:3px solid green;
+  /* display:flex; */
+  height:300px;
+  /* flex-direction: row;
+  justify-content: space-around; */
+  overflow: scroll;
+}
+
+img{
+  height:0px;
+  width:0px;
+}
+
+
+#appTextDiv{
+  padding-top:5vw;
+  text-align:center;
+  /* border:2px solid red; */
+}
+
+#goalTextDiv{
+  padding-left:3vw;
+  text-align:center;
+  /* border:2px solid blue; */
+  /* display:flex;
+  justify-content: space-between; */
+}
+
+#goalText{
+  text-align:center;
+}
+
+.plus{
+  background-color:teal;
+  color:white;
+  width:15%;
+  height:50%;
+}
+
+.plus:hover{
+  background-color:gray;
+  color:white;
+  font-size:1vw;
+}
+.minus{
+  background-color: white;
+  color:teal;
+  width:15%;
+  height:50%;
+}
+
+.minus:hover{
+  background-color: gray;
+  color:white;
+}
+
+#goals{
+ padding-left:3vw;
+}
+
+#author{
+  padding-left:65%;
+}
+
+
+#bigboy{
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }

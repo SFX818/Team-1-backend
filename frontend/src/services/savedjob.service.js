@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { setItem, getItem, removeItem } from '../utilities/localStorage.utilities'
+
 
 
 export const saveAJob = (id, jobId, location, company, jobTitle) => {

@@ -1,12 +1,11 @@
-import React,{useState, useEffect} from 'react'
-import authHeader from '../utilities/authHeader.utilities'
+import React,{useState} from 'react'
 import { Form, FormGroup, Button } from 'react-bootstrap'
-import {addNetwork,editNetwork} from '../services/networkform.service'
+import {addNetwork} from '../services/networkform.service'
 import {getCurrentUser} from '../services/auth.service'
 
 
 
-const NetworkForm = () => {
+const NetworkForm = ({getNetwork}) => {
 
 //stores the name
 const [name, setName] = useState("");
@@ -18,6 +17,7 @@ const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
 //stores the notes about the contact
 const [notes, setNote] = useState("");
+
 
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
@@ -49,11 +49,32 @@ currentUser = currentUser.id
  const onChangeNote = (e) => {
   const notes = e.target.value
   setNote(notes)
+  //NOTE: messing arround with notes as an array
+  // const note = e.target.value
+  // const notes = [];
+  // console.log('note', note.split(''));
+  // let noteArr = note.split('');
+  // noteArr.map((letter, i, arr) => {
+  //   if(letter === '$'){
+  //     notes.push((arr.splice(0,i)).join(''))
+  //   }
+  //   console.log('notes', notes);
+  // })
+  // setNote(note)
 };
+
 // Adds a new network onClick{handleSubmit} with the help of the addNetwork function created in networkform.services.js
  const handleSubmit = (e) =>{
      e.preventDefault()
-     addNetwork(currentUser,name,company,email,phone,notes)
+     addNetwork(currentUser, name, company, email, phone, notes)
+     //calling getNetwork() will have the networks rerender
+     getNetwork()
+     //setting states to empty strings will allow the contact form to revert back to the placeholders
+     setName('')
+     setCompany('')
+     setEmail('')
+     setPhone('')
+     setNote('')
  }
 
 
@@ -62,10 +83,11 @@ return (
   <div>
         <br></br>
         <br></br>
-        <h3>Add a new contact:</h3>
+        <h3>Add a New Contact:</h3>
         <Form>
             <FormGroup text="name">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Name" 
                   name="name"
@@ -76,6 +98,7 @@ return (
 
             <FormGroup text="company">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Company" 
                   name="company"
@@ -86,6 +109,7 @@ return (
 
             <FormGroup text="email">
                 <Form.Control
+                  size="sm"
                   type="email"
                   placeholder="Email" 
                   name="email"
@@ -96,6 +120,7 @@ return (
 
             <FormGroup text="phone">
                 <Form.Control
+                  size ="sm"
                   type="text"
                   placeholder="Phone Number" 
                   name="phone"
@@ -106,6 +131,7 @@ return (
 
             <FormGroup text="note">
                 <Form.Control
+                  size= "sm"
                   type="text"
                   placeholder="Note" 
                   name="note"

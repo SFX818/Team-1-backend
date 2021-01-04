@@ -6,9 +6,12 @@ import { Card, CardDeck, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
+
 const Home = () => {
 
+
   const currentUser = getCurrentUser();
+
 
   const [quotes, setQuotes] = useState([]);
   const [news, setNews] = useState([])
@@ -18,6 +21,7 @@ const Home = () => {
     quoteGrabber();
     newsGrabber()
   }, []);
+
 
   const quoteGrabber = () => {
     const quoteData = axios
@@ -44,35 +48,26 @@ const Home = () => {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
+
   const newQuote = () =>{
     if (quotes.length > 0 ) {
-      return <p> "{quotes[0].text}" 
-      <br></br>  
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by <b> {quotes[0].author} </b></p>
-    }
+      return (
+      <div> 
+        <p> "{quotes[0].text}" </p> 
+      <p id="author"> by {quotes[0].author} </p> 
+      </div>
+      )}
   }
 
-
   // create num generator that and put that inside the data array
-
-
-
   
-  console.log("THIS IS ALL QUOTES ", quotes[0]);
-
-
-
-
-
-  return <div id="homeBigDiv">
+  return <div id="bigboy">
     
     <div id="home"> 
     <h3 id="userHome">
       <strong> Welcome {currentUser.username} </strong>
     </h3>
-    <br></br>
-    <br></br>
-  
+
    <h5> {newQuote()}</h5>
    </div>
   <CardDeck>
@@ -93,3 +88,10 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+

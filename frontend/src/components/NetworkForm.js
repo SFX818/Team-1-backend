@@ -1,7 +1,6 @@
-import React,{useState, useEffect} from 'react'
-import authHeader from '../utilities/authHeader.utilities'
+import React,{useState} from 'react'
 import { Form, FormGroup, Button } from 'react-bootstrap'
-import {addNetwork,editNetwork} from '../services/networkform.service'
+import {addNetwork} from '../services/networkform.service'
 import {getCurrentUser} from '../services/auth.service'
 
 
@@ -21,6 +20,7 @@ const [notes, setNote] = useState("");
 
 let currentUser = getCurrentUser()
 currentUser = currentUser.id
+console.log(currentUser)
 
 // Stores the name in our name state
   const onChangeName = (e) => {

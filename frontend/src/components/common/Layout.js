@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCurrentUser, logout } from "../../services/auth.service";
-import {Dropdown,NavLink} from 'react-bootstrap'
+import {Dropdown} from 'react-bootstrap'
 
 const Layout = (props) => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -25,7 +25,6 @@ const Layout = (props) => {
  
   return (
     <div>
-
       <nav id="nav" className="navbar navbar-expand navbar-dark bg-dark">
         <Link to="/" className="navbar-brand">
          <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
@@ -36,11 +35,11 @@ const Layout = (props) => {
               Home
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/profile/network"} className="nav-link">
               My Network
             </Link>
-          </li>
+          </li> */}
           {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">
@@ -59,11 +58,22 @@ const Layout = (props) => {
         </div>
         {currentUser ? (
           <div className="navbar-nav ml-auto">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
                 {currentUser.username}
               </Link>
-            </li>
+            </li> */}
+            <Dropdown>
+  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+   {currentUser.username}
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
+    <Dropdown.Item href="/profile/network">My Network</Dropdown.Item>
+    <Dropdown.Item href="/profile/savedjobs">My Saved Jobs</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
             <li className="nav-item">
             <Link to={"/landing"} className="nav-link">
               JobSearch

@@ -5,7 +5,7 @@ import NetworkForm from './NetworkForm'
 import EditNetworkForm from './EditNetworkForm'
 import {Card, ListGroup, Button} from 'react-bootstrap'
 import {deleteNetwork} from '../services/networkform.service'
-import {getCurrentUser} from '../services/auth.service'
+
 
 
 

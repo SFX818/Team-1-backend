@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "proxy": "lcp --proxyUrl https://jobs.github.com/"
+    "proxy": "https://jobs.github.com"
   },
   "eslintConfig": {
     "extends": [

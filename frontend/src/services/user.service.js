@@ -25,3 +25,15 @@ export const getAdminBoard = () => {
     return axios.get(API_URL + "admin", {headers: authHeader()})
 }
 
+//save users Todos to the backend
+export const saveTodos = (id, todos) => {
+    return axios
+    .put('http://localhost:8080/profile/todos', {id, todos})
+    .then(response => {
+        console.log('saveTodos route response', response)
+    })
+    .catch(err => {
+        console.log('saveTodos route error', err)
+    })
+}
+

@@ -162,14 +162,15 @@ const Profile = () => {
             <GoalMeter codingGoal={codingGoal} codingProgress={codingProgress} appGoal={appGoal} appProgress={appProgress} changeCodingGoal={changeCodingGoal} changeGoalProgress={changeGoalProgress} changeAppGoal={changeAppGoal} changeAppProgress={changeAppProgress}/>
           </div>
 
-          <div id='todos'>
-            <Todos todos={todos} setTodos={setTodos}/>
-          </div>
         </div>
 
         <Link to={"/profile/savedjobs"} className="nav-link">
           saved Jobs{" "}
         </Link>
+        
+        <div id='todos'>
+            <Todos todos={todos} setTodos={setTodos}/>
+          </div>
       </div>
     );
   }

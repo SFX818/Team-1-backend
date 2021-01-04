@@ -4,7 +4,7 @@ import {editNetwork} from '../services/networkform.service'
 
 
 
-const EditNetworkForm = ({network}) => {
+const EditNetworkForm = ({network, getNetwork, setWhoClicked}) => {
  //stores the name
 const [newName, setNewName] = useState(network.name);
 //stores the company
@@ -46,10 +46,14 @@ const [newNotes, setNewNote] = useState(network.notes);
   setNewNote(newNotes)
 };
 // Adds a new network onClick{handleSubmit} with the help of the addNetwork function created in networkform.services.js
- const handleSubmit = (network,e) =>{
+ const saveChanges = (network, e) =>{
      e.preventDefault()
      let id = network._id
-     editNetwork(id,newName,newCompany,newEmail,newPhone, newNotes)
+     editNetwork(id, newName, newCompany, newEmail, newPhone, newNotes)
+     //set whoClicked state back to an empty string so the edit form doesnt pass the conditional to display itself anymore
+     setWhoClicked('')
+     //call getNetwork so the list of contacts will rerender
+     getNetwork()
  }
 
 
@@ -58,7 +62,7 @@ return (
   <div>
         <br></br>
         <br></br>
-        <h3>Edit an existing contact:</h3>
+        <h3>Edit Contact:</h3>
         <Form>
             <FormGroup text="name">
                 <Form.Control
@@ -75,7 +79,7 @@ return (
                   type="text"
                   placeholder="company" 
                   name="company"
-                  value={network.company}
+                  value={newCompany}
                   onChange={onChangeCompany}
                 />
             </FormGroup>
@@ -85,7 +89,7 @@ return (
                   type="email"
                   placeholder="email" 
                   name="email"
-                  value={network.emaill}
+                  value={newEmail}
                   onChange={onChangeEmail}
                 />
             </FormGroup>
@@ -95,7 +99,7 @@ return (
                   type="text"
                   placeholder="phone number" 
                   name="phone"
-                  value={network.phone}
+                  value={newPhone}
                   onChange={onChangePhone}
                 />
             </FormGroup>
@@ -105,19 +109,15 @@ return (
                   type="text"
                   placeholder="note" 
                   name="note"
-                  value={network.notes}
+                  value={newNotes}
                   onChange={onChangeNote}
                 />
             </FormGroup>
     
-          <Button onClick={(e) =>handleSubmit(network,e)}>Save Changes</Button>
+          <Button onClick={(e) =>saveChanges(network, e)}>Save Changes</Button>
         </Form>
   </div>
-          
-
-                        
-          
-        )
+  )
 }
 
 export default EditNetworkForm

@@ -1,0 +1,23 @@
+.contact-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+.saved-contacts {
+    width: 100%;
+
+}
+
+.network-card {
+    width: 45%;
+    margin-bottom: 3em;
+    
+}
+
+.contact-btn {
+    display: flex;
+    justify-content: space-evenly;
+}

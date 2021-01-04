@@ -51,9 +51,9 @@ return (
         <div className = "saved-contacts">
           <h1 style = {{textAlign: "center"}}>My Contacts</h1>
             {/* <CardDeck> */}
-            <div className='card-deck card-deck-wrapper'>
+            <div className='contact-container'>
                 {networkData.map((network) =>(
-                    <Card className="card mb-4" style={{ width: '18rem' }}>
+                    <div className='network-card'>
                         {/* the below condition will determine which contact will open the edit form */}
                         {whoClicked === network._id ?
                         <EditNetworkForm network={network} getNetwork={getNetwork} setWhoClicked={setWhoClicked}/>
@@ -65,15 +65,18 @@ return (
                         <ListGroup.Item><b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
                         <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
                         <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
+                        <ListGroup.Item className= 'contact-btn'>
+                            <Button onClick={() => clickedButton(network._id)}>Edit</Button>
+                            <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                        </ListGroup.Item>
                         </ListGroup>
-                        <br></br>
+                        {/* <br></br>
                         <Button onClick={() => clickedButton(network._id)}>Edit</Button>
                         <br></br>
-                        <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                        <Button onClick= {() => handleDelete(network)}>Delete</Button> */}
                         </div>
                         }
-                    </Card>
-              
+                    </div>
                 ))}
             {/* </CardDeck> */}
             </div>

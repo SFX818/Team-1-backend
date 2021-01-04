@@ -69,7 +69,7 @@ const SavedJobs = () => {
     }
   };
   return (
-      <CardDeck> 
+       
     <div className="whole-div">
       {/* <h1>~User's Saved Jobs</h1> */}
       <div className="outer-div">
@@ -79,28 +79,32 @@ const SavedJobs = () => {
                       </div> */}
         <h1 id="userSavedJob">{currentUser.username}'s Saved Jobs: </h1>
         {/* <div className="need-action slide-box"> */}
-    <Card>
-          <h2 className="categories">Need Action:</h2>
+        
+        <h2 className="categories">Need Action:</h2>
+        <CardDeck> 
         <div className="categoryDiv">
           {displayJobs("NeedAction")}
         </div>
-        </Card>
-        <Card>
+        </CardDeck>
+
         <h2 className="categories">Applied To:</h2>
-          <h3 className="categories">In Progress/Waiting:</h3>
+        <h3 className="categories">In Progress/Waiting:</h3>
+        
+        <CardDeck> 
         <div className="categoryDiv">              
           {displayJobs("InProgress")}
         </div>
-        </Card>
-        <Card> 
-          <h3 className="categories">Rejected:</h3>
+        </CardDeck>
+
+        <h3 className="categories">Rejected:</h3>
+        <CardDeck> 
         <div className="categoryDiv">
           {displayJobs("Rejected")}
         </div>
-        </Card>
+        </CardDeck>
       </div>
     </div>
-    </CardDeck>
+    
  
   );
 };

@@ -104,6 +104,7 @@ const Profile = () => {
 
   //FOR GOALS: function that allows users to set a goal for coding problems
   const changeCodingGoal = (e) => {
+    setCodingProgress(0)
     let id = currentUser.id
     setCodingGoal(e.value)
     let codeGoal = e.value;
@@ -133,6 +134,7 @@ const Profile = () => {
 
   //FOR GOALS: function that allows user to set a goal for the amount of applications they want to submit
   const changeAppGoal = (e) => {
+    setAppProgress(0)
     let id = currentUser.id
     setAppGoal(e.value)
     let appGoal = e.value;

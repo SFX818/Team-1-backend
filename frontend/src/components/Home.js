@@ -49,8 +49,7 @@ const Home = () => {
 
   // create num generator that and put that inside the data array
   
-  console.log("THIS IS ALL QUOTES ", quotes[0]);
-  return <div>
+  return <div id="bigboy">
     
     <div id="home"> 
     <h3 id="userHome">

@@ -4,7 +4,7 @@ import {editNetwork} from '../services/networkform.service'
 
 
 
-const EditNetworkForm = ({network}) => {
+const EditNetworkForm = ({network, setClicked, getNetwork}) => {
  //stores the name
 const [newName, setNewName] = useState(network.name);
 //stores the company
@@ -50,6 +50,10 @@ const [newNotes, setNewNote] = useState(network.notes);
      e.preventDefault()
      let id = network._id
      editNetwork(id, newName, newCompany, newEmail, newPhone, newNotes)
+     //set the clicked state bck to false so the edit form goes away
+     setClicked(false)
+     //call getNetwork so the list of contacts will rerender
+     getNetwork()
  }
 
 

@@ -38,7 +38,7 @@ const handleDelete = (network) => {
 
 const editNetwork = (network) => {
     return (
-     <EditNetworkForm network = {network}/>
+     <EditNetworkForm network = {network} setClicked={setClicked} getNetwork={getNetwork}/>
      )
  }
 
@@ -57,7 +57,9 @@ return (
                 <CardDeck>
                     {networkData.map((network) =>(
                         <Card style={{ width: '18rem' }}>
-                            <ListGroup variant="flush">
+                            {clicked === false ?
+                            <div>
+                                <ListGroup variant="flush">
                                 <ListGroup.Item><b> Name:</b> {network.name}</ListGroup.Item>
                                 <ListGroup.Item><b> Company:</b> {network.company}</ListGroup.Item>
                                 <ListGroup.Item><b> Phone:</b> {network.phone}<br></br></ListGroup.Item>
@@ -65,11 +67,12 @@ return (
                                 <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
                             </ListGroup>
                             <br></br>
-                            {/* <Button onClick={() => handleEdit(network)}>Edit</Button> */}
-                            {clicked === false ? <Button onClick = {()=>clickedButton()}>Edit</Button> : editNetwork(network) }
-                            {/* <Button onClick = {()=>clickedButton()}>Edit</Button> */}
+                            <Button onClick={() => clickedButton()}>Edit</Button>
                             <br></br>
                             <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                            </div>
+                            : <EditNetworkForm network={network} setClicked={setClicked} getNetwork={getNetwork}/>
+                            }
                         </Card>
                   
                     ))}

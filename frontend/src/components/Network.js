@@ -16,14 +16,14 @@ const Network = () => {
 
 // Setting state to hold the saved networks
 const [networkData, setNetworkData] = useState([])
-const [submit, setSubmit] = useState(false)
+const [update, setUpdate] = useState(true)
 //this state is used to keep track of which contact was intended to be edited 
 const [whoClicked, setWhoClicked] = useState('')
 
-// Using the getNetwork function that access our API(backend)
+// Using the getNetwork function that access our API(backend) //pass in update to the useEffect so that everytime the update state changes, the network/contacts rerender
 useEffect (()=>{
     getNetwork()
-},[])
+},[update])
 
 // Getting the data from our API (database/collection)
 const getNetwork = () =>{
@@ -36,7 +36,8 @@ const getNetwork = () =>{
 const handleDelete = (network) => {
         let id = network._id;
         deleteNetwork(id);
-        getNetwork();
+        //setting update so the network/contacts rerender the updated set
+        setUpdate(prevUpdate => !prevUpdate)
     }
 
 // This function is attached to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
@@ -47,7 +48,7 @@ const handleDelete = (network) => {
 
 return (
       <div> 
-          <NetworkForm getNetwork={getNetwork}/>
+          <NetworkForm getNetwork={getNetwork} setUpdate={setUpdate}/>
         
         <br></br>
         <div className = "saved-contacts">
@@ -59,7 +60,7 @@ return (
                     <div className='network-card' key={i}>
                         {/* the below condition will determine which contact will open the edit form */}
                         {whoClicked === network._id ?
-                        <EditNetworkForm network={network} getNetwork={getNetwork} setWhoClicked={setWhoClicked}/>
+                        <EditNetworkForm network={network} getNetwork={getNetwork} setWhoClicked={setWhoClicked} setUpdate={setUpdate}/>
                         : 
                         <div>
                         <ListGroup variant="flush">

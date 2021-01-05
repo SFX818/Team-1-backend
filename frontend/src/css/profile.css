@@ -144,3 +144,22 @@ body {
     font-weight: 600;
   }
   
+  .empty-message {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color: teal;
+    width: 100%;
+  }
+
+  #job-search-link {
+    color: black;
+  }
+
+  #job-search-link:hover {
+    color: white;
+  }
+
+  #hide {
+    color: rgba(255, 255, 255, 0);
+  }

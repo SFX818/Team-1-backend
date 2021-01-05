@@ -4,12 +4,16 @@ import authHeader from "../utilities/authHeader.utilities";
 import { getCurrentUser } from "../services/auth.service";
 import { CardDeck, Card } from "react-bootstrap";
 import { MDBBtn, MDBIcon } from "mdbreact";
+import { Link } from "react-router-dom";
 
 //backend function import
 import { getJobs } from "../services/savedjob.service";
 //component import
 import UserJob from "../components/common/UserJob";
-//component that renders on the page when the link is clicked undered saved jobs on the profile home page
+
+//css import
+import "../css/profile.css";
+
 const SavedJobs = () => {
   const currentUser = getCurrentUser();
   //setting a state that will hold the saved jobs
@@ -28,27 +32,30 @@ const SavedJobs = () => {
       })
       .catch((err) => console.log("ERROR ON JOB GET CALL", err.message));
   };
-  // //function that grabs ALL of the user's saved jobs
-  // const displayAllJobs = () => {
-  //     if(allJobs != undefined && allJobs.length != 0){
-  //         return allJobs.allJobs.map((job, index) => (
-  //             <UserJob job = {job} key = {index} appliedTo = {appliedTo}/>
-  //         ))
-  //     }
-  //     else {
-  //         return <h1>Loading...</h1>
-  //     }
-  // }
+
   //function that will render a UserJob component for every job separated by its application status
   const displayJobs = (section) => {
     if (allJobs != undefined && allJobs.length != 0) {
+
+      //if statements for if user doesnt have anything saved 
+      if(allJobs.needActionJobs.length === 0 && section === "NeedAction"){
+        return <div className ='empty-message'>You currently have no jobs that need action. Search for more jobs <span id='hide'>_</span> 
+         <Link to={"/jobsearch"} id='job-search-link'>
+          here.
+        </Link></div>
+      }
+      if(allJobs.deniedFromJobs.length === 0 && section === "Rejected"){
+        return <div className ='empty-message'>You have not been rejected by any jobs.</div>
+      }
+      if(allJobs.inProgressJobs.length === 0 && section === "InProgress"){
+        return <div className ='empty-message'>You have no job applications in progress.</div>
+      }
+
       if (section === "NeedAction") {
         return allJobs.needActionJobs.map((job, index) => (
           <UserJob job={job} key={index} jobGrabber={jobGrabber} status='NeedAction'/>
         ));
-      } else if (
-        section === "Rejected"
-      ) {
+        } else if (section === "Rejected") {
         return allJobs.deniedFromJobs.map((job, index) => (
           <UserJob job={job} key={index} jobGrabber={jobGrabber} />
         ));

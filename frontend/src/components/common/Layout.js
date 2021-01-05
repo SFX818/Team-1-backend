@@ -75,7 +75,7 @@ const Layout = (props) => {
   </Dropdown.Menu>
 </Dropdown>
             <li className="nav-item">
-            <Link to={"/landing"} className="nav-link">
+            <Link to={"/jobsearch"} className="nav-link">
               JobSearch
             </Link>
           </li>

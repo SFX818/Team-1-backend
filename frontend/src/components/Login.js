@@ -51,7 +51,7 @@ const Login = (props) => {
 
       login(username, password).then(
         () =>{
-          props.history.push('/landing')
+          props.history.push('/home')
           window.location.reload()
         },
         (error) => {

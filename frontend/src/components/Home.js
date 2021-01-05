@@ -4,6 +4,8 @@ import axios from "axios";
 import authHeader from "../utilities/authHeader.utilities";
 import { Card, CardDeck, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Particles from "react-particles-js";
+import { ParticlesOptions } from "./ParticleOptions.js";
 
 
 
@@ -63,11 +65,18 @@ const Home = () => {
   
 
   return <div id="bigboy">
-    
     <div id="home"> 
+    {/* <Particles
+        className="particles particles-box"
+        params={ParticlesOptions}
+      /> */}
     <h3 id="userHome">
       <strong> Welcome {currentUser.username} </strong>
     </h3>
+    <Particles
+        className="particles particles-box"
+        params={ParticlesOptions}
+      />
   <br></br>
    <h5> {newQuote()}</h5>
    </div>

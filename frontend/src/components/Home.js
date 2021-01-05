@@ -68,7 +68,7 @@ const Home = () => {
     <h3 id="userHome">
       <strong> Welcome {currentUser.username} </strong>
     </h3>
-
+  <br></br>
    <h5> {newQuote()}</h5>
    </div>
    <br></br>
@@ -77,7 +77,7 @@ const Home = () => {
    <br></br>
   <CardDeck>
   {news.map((article) =>(
-    <Card style={{ width: '20rem' }}> 
+    <Card style={{ width: '40rem' }}> 
     <Card.Img variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>

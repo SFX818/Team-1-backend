@@ -5,6 +5,7 @@ function PieCharts({allJobs}) {
     return (
         <div>
             <div id="pie">
+              <h2 id="stats"> Stats: </h2>
               <h2 id="applied">
                 {" "}
                 Applied to: {allJobs[0].appliedToJobs.length}{" "}

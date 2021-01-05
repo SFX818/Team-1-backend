@@ -5,7 +5,7 @@ import axios from 'axios';
 const API_URL = "http://localhost:8080/"
 
 
-// Function to add a new network
+// Function to add a new network, grabbing from our API(backend)
 export const addNetwork = (currentUser, name, company, email, phone, notes) => {
     return axios.post( API_URL + "newnetwork", {
         currentUser,
@@ -22,7 +22,7 @@ export const addNetwork = (currentUser, name, company, email, phone, notes) => {
         console.log("oh no no no, error in addNetwork", err)
     })
 }
-
+//Function to delete a contact, grabbing the function from our API(backend)
 export const deleteNetwork = (id) => {
     console.log()
     return axios
@@ -34,7 +34,7 @@ export const deleteNetwork = (id) => {
         console.log('error with delete network', err)
     })
 }
-
+// Function to edit a contact, grabbing from our API (backend)
 export const editNetwork = (id, name, company, email, phone, notes ) => {
     return axios
     .put('http://localhost:8080/updatenetwork/' +id, {name,company,email,phone,notes})

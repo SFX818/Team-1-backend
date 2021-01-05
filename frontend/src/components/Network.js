@@ -3,8 +3,9 @@ import axios from 'axios'
 import authHeader from '../utilities/authHeader.utilities'
 import NetworkForm from './NetworkForm'
 import EditNetworkForm from './EditNetworkForm'
-import {Card, ListGroup, Button, CardDeck} from 'react-bootstrap'
+import { ListGroup, Button} from 'react-bootstrap'
 import {deleteNetwork} from '../services/networkform.service'
+
 
 //css import 
 import "../css/network.css";
@@ -38,7 +39,7 @@ const handleDelete = (network) => {
         getNetwork();
     }
 
-//this function is attacked to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
+// This function is attached to the edit button and the specific network id is passed in. By setting whoClicked to be equal to the network id, we can then compare it in the conditional to determine which contact will display the edit form in place of the contact info (before the edit button would open for every contact)
  const clickedButton = (id) => {
     setWhoClicked(id)
  }
@@ -51,6 +52,7 @@ return (
         <div className = "saved-contacts">
           <h1 style = {{textAlign: "center"}}>My Contacts</h1>
             {/* <CardDeck> */}
+            <br></br>
             <div className='contact-container'>
                 {networkData.map((network) =>(
                     <div className='network-card'>
@@ -66,8 +68,25 @@ return (
                         <ListGroup.Item><b> Email:</b> {network.email}<br></br></ListGroup.Item>
                         <ListGroup.Item><b> Notes:</b> {network.notes} <br></br></ListGroup.Item>
                         <ListGroup.Item className= 'contact-btn'>
-                            <Button onClick={() => clickedButton(network._id)}>Edit</Button>
-                            <Button onClick= {() => handleDelete(network)}>Delete</Button>
+                        <>
+  {/* <style type="text/css">
+    {`
+    .btn-flat {
+      background-color: teal;
+      color: white;
+    }
+
+    .btn-xl {
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+    }
+    `}
+  </style> */}
+  {/* <Button  variant ="flat" size="xl"onClick={() => clickedButton(network._id)}>Edit</Button>
+  <Button variant ="flat" size="xl" onClick= {() => handleDelete(network)}>Delete</Button> */}
+</>
+                            <Button variant="flat" size="xl" onClick={() => clickedButton(network._id)}>Edit</Button>
+                            <Button variant="flat" size="xl" onClick= {() => handleDelete(network)}>Delete</Button>
                         </ListGroup.Item>
                         </ListGroup>
                         {/* <br></br>

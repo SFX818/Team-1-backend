@@ -84,7 +84,7 @@ return (
         <br></br>
         <br></br>
         <h3>Add a New Contact:</h3>
-        <Form>
+        <Form className = "form">
             <FormGroup text="name">
                 <Form.Control
                   size ="sm"
@@ -140,7 +140,7 @@ return (
                 />
             </FormGroup>
     
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button variant="flat" size="xl" onClick={handleSubmit}>Submit</Button>
         </Form>
   </div>
           

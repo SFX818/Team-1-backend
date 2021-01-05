@@ -114,7 +114,7 @@ return (
                 />
             </FormGroup>
     
-          <Button onClick={(e) =>saveChanges(network, e)}>Save Changes</Button>
+          <Button variant="flat" size="xl" onClick={(e) =>saveChanges(network, e)}>Save Changes</Button>
         </Form>
   </div>
   )

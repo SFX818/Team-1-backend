@@ -21,3 +21,17 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.btn-flat {
+    background-color: teal;
+    color: white;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .form {
+      width: 50%;
+      
+  }
+
+  

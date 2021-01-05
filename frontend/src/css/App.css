@@ -115,6 +115,8 @@ label {
   text-align: center;
   width:240%;
   /* border:2px solid red; */
+<<<<<<< HEAD
+=======
 }
 
 
@@ -126,6 +128,7 @@ label {
   text-align: center;
   font-size:2.5vw;
  
+>>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
 }
 
 #card {
@@ -223,14 +226,22 @@ ul {
 
 #goalChart {
   text-align: center;
+<<<<<<< HEAD
+  font-size:2vw;
+=======
 
   font-size:2.5vw;
+>>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
   /* font-family: 'Roboto', sans-serif; */
   padding-bottom:2vw;
   width:100%;
   margin-left:3vw;
+<<<<<<< HEAD
+  
+=======
   text-decoration: underline #fafafa;
   text-decoration-skip-ink: auto;
+>>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
 }
 
 #goalTextDiv {

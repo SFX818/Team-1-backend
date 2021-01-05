@@ -12,12 +12,19 @@ function Todos({todos, setTodos}) {
     const displayTodos = () => {
         return todos.map((todo, i) => {
             let status = todo.done;
-                return <ListGroup.Item style={{textDecoration: status ? 'line-through' : ''}} key={i}>
-                {i+1}: {todo.text}
-                <input type='image' src='../../check_icon.png'  alt='Completed' width='30' onClick={() => changeStatus(todo.key)}/>
-                <button onClick={() => deleteTodo(todo.key)}>Remove</button>
-                </ListGroup.Item>
-        })
+                return (
+                    <div id="bigToDo">
+                    <ListGroup.Item style={{textDecoration: status ? 'line-through' : ''}} key={i}>
+                    {i+1}: {todo.text}
+                    <div id="mediumToDo"> 
+                    <input id="toDoList" type='image' src='../../check_icon.png'  alt='Completed' width='30'  onClick={() => changeStatus(todo.key)}/>
+                    
+                    <button  id="remove" onClick={() => deleteTodo(todo.key)}>Remove</button>
+                    </div>
+                    </ListGroup.Item>
+                    
+                </div>
+        )})
     }
 
     //function that handles and sets user input
@@ -60,7 +67,9 @@ function Todos({todos, setTodos}) {
         <div>
             <Card>
                 <ListGroup>
-                    Your Todos:
+                        
+                <h1 id="mirror" data-text="Your to dos:"><span>Your to dos:</span></h1>
+                <br></br>
                     {displayTodos()}
                 </ListGroup>
             </Card>

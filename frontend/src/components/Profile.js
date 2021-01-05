@@ -178,11 +178,14 @@ const Profile = () => {
           </div>
 
         </div>
-
+          <div id="links"> 
         <Link to={"/profile/savedjobs"} className="nav-link">
-          saved Jobs{" "}
+         View Saved Jobs{" "}
         </Link>
-
+        <Link to={"/profile/network"} className="nav-link">
+          View Network{" "}
+        </Link>
+        </div>
         <div id='todos'>
             <Todos todos={todos} setTodos={setTodos}/>
           </div>

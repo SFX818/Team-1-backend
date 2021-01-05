@@ -68,8 +68,9 @@ function Todos({todos, setTodos}) {
             <Card>
                 <ListGroup>
                         
-                <h1 id="mirror" data-text="Your to dos:"><span>Your to dos:</span></h1>
-                <br></br>
+                <div className='line'>
+    <h2 id="h2" className='flipX'>Your To Dos:</h2>
+  </div>
                     {displayTodos()}
                 </ListGroup>
             </Card>
@@ -77,13 +78,13 @@ function Todos({todos, setTodos}) {
             <Form>
                 <FormGroup>
                     <Form.Control
-                    size ="sm"
+                    size ="lg"
                     type="text"
                     placeholder="Add todo" 
                     name="todoItem"
                     value={newItem.text}
                     onChange={grabNewTodo} />
-                    <Button onClick={(e)=> addItem(e)}>Add</Button>
+                    <Button style={{width:'100px', backgroundColor:'white', color:'teal', margin:'1% 40px 50px 45%', fontWeight:700}} onClick={(e)=> addItem(e)}>Add</Button>
                 </FormGroup>
             </Form>
             

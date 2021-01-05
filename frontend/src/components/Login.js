@@ -66,10 +66,16 @@ const Login = (props) => {
   
 
   return (
+    <div id="bigOne"> 
+    <p id="glow">Everything you need to land your first software engineering job.</p>
+{/* <div className="one">
+  <h1 id="h11"> Everything you need to land your first software engineering job.</h1>
+</div> */}
+
     <div className="col-md-12">
       <div className="card card-container">
         <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          src="https://i.postimg.cc/zXPSbRGC/correct.jpg"
           alt="profile-img"
           className="profile-img-card"
         />
@@ -96,7 +102,7 @@ const Login = (props) => {
             />
           </FormGroup>
 
-        <ButtonSpinner text="login" loading={loading} />
+        <ButtonSpinner text="Login" loading={loading} />
 
 
           {message && (
@@ -109,6 +115,7 @@ const Login = (props) => {
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
       </div>
+    </div>
     </div>
   );
 };

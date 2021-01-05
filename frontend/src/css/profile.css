@@ -1,66 +1,63 @@
 body {
-    background-image: url('https://i.pinimg.com/originals/be/2a/94/be2a940c4ac312bf5abc0aa9677749de.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 100% 100%;
+  background-image: url('https://i.pinimg.com/originals/be/2a/94/be2a940c4ac312bf5abc0aa9677749de.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
-
 .categoryDiv {
-    display:flex; 
-    /* height: 400px; */
-    width: 100%;
-    flex-direction: row;
-    overflow: scroll;
-    scrollbar-color: teal white;
-  }
-  
+  display: flex;
+  /* height: 400px; */
+  width: 100%;
+  flex-direction: row;
+  overflow: scroll;
+  scrollbar-color: teal white;
+}
 
-  .scrollable-element {
-    scrollbar-color: teal white;
-  }
+.scrollable-element {
+  scrollbar-color: teal white;
+}
 
+#date-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-  #date-type {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  #location {
-    display: flex;
-    /* align-self: center; */
-    align-items: center;
-  }
-  
-  #detail-btn {
-    display: flex;
-    justify-content: center;
-  }
+#location {
+  display: flex;
+  /* align-self: center; */
+  align-items: center;
+}
 
-  #sj-Card {
-      margin-bottom: 1rem;
-  }
+#detail-btn {
+  display: flex;
+  justify-content: center;
+}
 
-  /* //////////// code below makes the scrollbar always visible  */
-  ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    border-radius: 60px;
-    background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-  }
+#sj-Card {
+  margin-bottom: 1rem;
+}
 
-  /* ///////////code for profile header */
-  header{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    }
+/* //////////// code below makes the scrollbar always visible  */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* ///////////code for profile header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .twelve #h1 {
     font-family: 'Bitter', serif;
@@ -144,3 +141,22 @@ body {
     font-weight: 600;
   }
   
+  .empty-message {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color: teal;
+    width: 100%;
+  }
+
+  #job-search-link {
+    color: black;
+  }
+
+  #job-search-link:hover {
+    color: white;
+  }
+
+  #hide {
+    color: rgba(255, 255, 255, 0);
+  }

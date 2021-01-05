@@ -113,10 +113,8 @@ label {
   /* font-family: 'Roboto', sans-serif; */
   font-size:2vw;
   text-align: center;
-  width:240%;
+  width:280%;
   /* border:2px solid red; */
-<<<<<<< HEAD
-=======
 }
 
 
@@ -128,11 +126,10 @@ label {
   text-align: center;
   font-size:2.5vw;
  
->>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
 }
 
 #card {
-  font-size: 0.9vw;
+  font-size: 1.1vw;
   width: 90%;
   margin-top: 0px;
   /* background-color: rgb(64, 190, 240); */
@@ -226,27 +223,19 @@ ul {
 
 #goalChart {
   text-align: center;
-<<<<<<< HEAD
-  font-size:2vw;
-=======
 
   font-size:2.5vw;
->>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
   /* font-family: 'Roboto', sans-serif; */
   padding-bottom:2vw;
   width:100%;
   margin-left:3vw;
-<<<<<<< HEAD
-  
-=======
   text-decoration: underline #fafafa;
   text-decoration-skip-ink: auto;
->>>>>>> 041e52c6b224296a380a26fc62000f44b88d1115
 }
 
 #goalTextDiv {
   /* border:2px solid red; */
-  font-size: 0.9vw;
+  font-size: 1.1vw;
   display: flex;
   justify-content: center;
   
@@ -544,3 +533,139 @@ background-color: #101010;
 }
 
 
+
+#toDo{
+  font-weight: 700;
+  font-size:2vw;
+}
+
+#remove{
+color:red;
+background-color: transparent;
+border:0px;
+text-decoration-color:transparent;
+}
+
+#remove:hover{
+  border:2px solid teal;
+}
+
+#toDoList{
+  /* border:2px solid red; */
+  width:3%;
+  height:15%;
+  margin-bottom:5px;
+}
+
+#bigToDo{
+  /* border:2px solid blue; */
+  text-align: flex-start;
+
+}
+
+#mediumToDo{
+  margin-top:-25px;
+  /* border:2px solid green; */
+  display:flex;
+  justify-content: flex-end;
+  text-align: flex-start;
+}
+
+
+
+
+/* NEW NEW CODE */
+
+
+#mirror {
+  position: relative;
+  /* font-family: 'Montserrat', Arial, sans-serif; */
+  font-size: 2vw;
+  font-weight: 700;
+  color: rgb(48, 110, 102);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0 0.15em #2b4d5a;
+  /* user-select: none;
+  white-space: nowrap; */
+  filter: blur(0.007em);
+  animation: shake 2.5s linear forwards;
+  margin-left: 10%;
+  height:20%;
+}
+
+#mirror span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+          clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+}
+
+#mirror::before,
+#mirror::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#mirror::before {
+  animation: crack1 2.5s linear forwards;
+  -webkit-clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+}
+
+#mirror::after {
+  animation: crack2 2.5s linear forwards;
+  -webkit-clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+          clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+}
+
+@keyframes shake {
+  5%, 15%, 25%, 35%, 55%, 65%, 75%, 95% {
+      filter: blur(0.018em);
+      transform: translateY(0.018em) rotate(0deg);
+  }
+
+  10%, 30%, 40%, 50%, 70%, 80%, 90% {
+      filter: blur(0.01em);
+      transform: translateY(-0.018em) rotate(0deg);
+  }
+
+  20%, 60% {
+      filter: blur(0.03em);
+      transform: translate(-0.018em, 0.018em) rotate(0deg);
+  }
+
+  45%, 85% {
+      filter: blur(0.03em);
+      transform: translate(0.018em, -0.018em) rotate(0deg);
+  }
+
+  100% {
+      filter: blur(0.007em);
+      transform: translate(0) rotate(-0.5deg);
+  }
+}
+
+@keyframes crack1 {
+  0%, 95% {
+      transform: translate(-50%, -50%);
+  }
+
+  100% {
+      transform: translate(-51%, -48%);
+  }
+}
+
+@keyframes crack2 {
+  0%, 95% {
+      transform: translate(-50%, -50%);
+  }
+
+  100% {
+      transform: translate(-49%, -53%);
+  }
+}

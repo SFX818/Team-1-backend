@@ -13,10 +13,9 @@ import axios from 'axios'
 
 
 //UserJob component will display the Job (card) component but also a form component allowing user to change the status 
-function UserJob({ job, jobGrabber }) {
+function UserJob({ job, jobGrabber, status }) {
     const [currentJob, setCurrentJob] = useState('')
     const [open, setOpen] = useState(false)
-    const [cardSize, setCardSize] = useState('25rem')
 
     //useEffect is used to do axios calls for specific jobs based on their id so that info can be passed down to the Job component
     useEffect(() => {
@@ -37,56 +36,48 @@ function UserJob({ job, jobGrabber }) {
 
 
     return (
-    
+        
         <div>
-        <Card style={{ width: cardSize }}>
+        <Card style={{ width: open  ? '50rem': '25rem', height: open ? '' : '20rem' } }>
             <Card.Body>
                 <StatusForm job = {job} jobGrabber = {jobGrabber}/>
-                <div className='title-logo'>
-                    <Card.Title>
-                        {currentJob.title} - <span className= 'text-muted font-weight-light'>{job.company}</span>
-                    </Card.Title>
-                    <img className="d-none d-md-block" height="50" alt={currentJob.company} src={currentJob.company_logo} />
-                </div>
 
-                <div id='badges-date'>
-                    <div id='badges'>
-                    <Badge variant="secondary">{currentJob.location}</Badge>
-                    <Badge variant="secondary" className="mr-2">{currentJob.type}</Badge>
+                    <Card.Title>
+                        {currentJob.title} - <span className= 'text-muted font-weight-light'>{currentJob.company}</span>
+                    </Card.Title>
+
+
+                    {/* <Badge variant="secondary">{currentJob.location}</Badge> */}
+                    <div id='location'>
+                        <img src='../../images/location.png' width='30'/> {currentJob.location}
                     </div>
-                    <Card.Subtitle className="text-muted mb-2">
-                        {new Date(currentJob.created_at).toLocaleDateString()}
-                    </Card.Subtitle>
-                </div>
- 
-                <div style={{ wordBreak: 'break-all' }}>
-                    <ReactMarkdown source={currentJob.how_to_apply} />
-                </div>
-               
-                
-                <Card.Text>
-                    <Button className='float-right mt-5'
-                        onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
-                            {open ? 'Hide Details' : 'View Details'}
-                            {open ? setCardSize('25rem'): setCardSize('50rem')}
-                    </Button>
-                 </Card.Text>
+                    <br></br>
+
+                    {/* <Badge variant="secondary" className="">{currentJob.type}</Badge> */}
+                    <div id='date-type'>
+                        <Card.Subtitle className="text-muted mb-2">
+                            Posted: {new Date(currentJob.created_at).toLocaleDateString()}
+                        </Card.Subtitle>
+                        <Badge variant="secondary" className="">{currentJob.type}</Badge>
+                    </div>
+                    
+
+                    <Card.Text id ='detail-btn'>
+                        <Button className='mt-1'
+                            onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
+                                {open ? 'Hide Details' : 'View Details'}
+                        </Button>
+                    </Card.Text>
+
                  
                  <Collapse in={open}>
                     <div className="mt-4">
-                     <ReactMarkdown source={currentJob.description} />
+                        {status === 'NeedAction' ? <ReactMarkdown source={currentJob.how_to_apply} /> : ''}
+                        <ReactMarkdown source={currentJob.description} />
                     </div>
                 </Collapse>
             </Card.Body>
         </Card>
-            
-            {/* Job is passed the from so that when the Job component is rendered, the heart to save a job will not render */}
-            
-            {/* <div id="miniTest"> */}
-            {/* <Job job= {currentJob} from='savedJobs'/> */}
-            {/* <StatusForm job = {job} jobGrabber = {jobGrabber}/> */}
-            {/* </div> */}
-
         </div>
         
     )

@@ -43,7 +43,7 @@ const SavedJobs = () => {
     if (allJobs != undefined && allJobs.length != 0) {
       if (section === "NeedAction") {
         return allJobs.needActionJobs.map((job, index) => (
-          <UserJob job={job} key={index} jobGrabber={jobGrabber} />
+          <UserJob job={job} key={index} jobGrabber={jobGrabber} status='NeedAction'/>
         ));
       } /* else if(section === 'AppliedTo') {
                 return allJobs.appliedToJobs.map((job, index) => (

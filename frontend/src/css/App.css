@@ -40,7 +40,7 @@ label {
 }
 
 .profile-img-card {
-  margin-top:2vw;
+  margin-top: 2vw;
   width: 50%;
   height: 50%;
   margin: 0 auto;
@@ -52,11 +52,9 @@ label {
   background-position: center;
   background-attachment: fixed;
   background-size: 100% 100%;
- 
 }
 
-
-.profile-img-card:hover{
+.profile-img-card:hover {
   opacity: 50%;
 }
 
@@ -424,14 +422,9 @@ header {
   font-weight: 600;
 }
 
-
-
-
 /* new code */
 
-
-
-/* === BASE HEADING === */ 
+/* === BASE HEADING === */
 
 /* #h11 {
   margin-top:15vw;
@@ -486,7 +479,6 @@ header {
   background-color: #b80000;
 } */
 
-
 /* NEW CODE  */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
@@ -501,31 +493,44 @@ background-color: #101010;
   
 } */
 
-
 #glow {
-    height:8vw;
-    /* margin-left:10%; */
-    font-size: 2rem;
-    color: lightblue;
-    text-shadow: 5px 5px 30px blue;
-    font-family: 'Open Sans Condensed', sans-serif;
-    animation-name: repeat;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    font-weight: lighter;
-    /* border:2px solid red; */
-    text-align: center;
+  height: 8vw;
+  /* margin-left:10%; */
+  font-size: 2rem;
+  color: lightblue;
+  text-shadow: 5px 5px 30px blue;
+  font-family: 'Open Sans Condensed', sans-serif;
+  animation-name: repeat;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  font-weight: lighter;
+  /* border:2px solid red; */
+  text-align: center;
 }
 
 @keyframes repeat {
-
-  0% {color: lightblue; text-shadow: 5px 5px 30px lightblue;}
-  20% {color: #579cbd; text-shadow: 5px 5px 30px  #31ada3;}
-  40% {color: #4b9fd3; text-shadow: 5px 5px 30px  #417777;}
-  60% {color: #75c7f7; text-shadow: 5px 5px 30px  #4dada9;}
-  80% {color: #72c7e9; text-shadow: 5px 5px 30px  #5195aa;}
-  100% {color: lightblue; text-shadow: 5px 5px 30px  lightblue;}
-
+  0% {
+    color: lightblue;
+    text-shadow: 5px 5px 30px lightblue;
+  }
+  20% {
+    color: #579cbd;
+    text-shadow: 5px 5px 30px #31ada3;
+  }
+  40% {
+    color: #4b9fd3;
+    text-shadow: 5px 5px 30px #417777;
+  }
+  60% {
+    color: #75c7f7;
+    text-shadow: 5px 5px 30px #4dada9;
+  }
+  80% {
+    color: #72c7e9;
+    text-shadow: 5px 5px 30px #5195aa;
+  }
+  100% {
+    color: lightblue;
+    text-shadow: 5px 5px 30px lightblue;
+  }
 }
-
-

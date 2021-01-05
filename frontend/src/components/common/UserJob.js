@@ -7,7 +7,7 @@ import Job from '../Job'
 import StatusForm from '../StatusForm'
 
 //css import
-import "../../css/App.css";
+import "../../css/profile.css";
 
 import axios from 'axios'
 
@@ -38,7 +38,7 @@ function UserJob({ job, jobGrabber, status }) {
     return (
         
         <div>
-        <Card style={{ width: open  ? '50rem': '25rem', height: open ? '' : '20rem' } }>
+        <Card style={{ width: open  ? '45rem': '25rem', height: open ? '' : '20rem' } } id='sj-Card'>
             <Card.Body>
                 <StatusForm job = {job} jobGrabber = {jobGrabber}/>
 
@@ -46,14 +46,11 @@ function UserJob({ job, jobGrabber, status }) {
                         {currentJob.title} - <span className= 'text-muted font-weight-light'>{currentJob.company}</span>
                     </Card.Title>
 
-
-                    {/* <Badge variant="secondary">{currentJob.location}</Badge> */}
                     <div id='location'>
-                        <img src='../../images/location.png' width='30'/> {currentJob.location}
+                        <img src='../../images/location.png' alt='Location: ' height='30'/> {currentJob.location}
                     </div>
                     <br></br>
 
-                    {/* <Badge variant="secondary" className="">{currentJob.type}</Badge> */}
                     <div id='date-type'>
                         <Card.Subtitle className="text-muted mb-2">
                             Posted: {new Date(currentJob.created_at).toLocaleDateString()}
@@ -63,7 +60,7 @@ function UserJob({ job, jobGrabber, status }) {
                     
 
                     <Card.Text id ='detail-btn'>
-                        <Button className='mt-1'
+                        <Button className='mt-2'
                             onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
                                 {open ? 'Hide Details' : 'View Details'}
                         </Button>

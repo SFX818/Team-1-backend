@@ -84,7 +84,7 @@ function Todos({todos, setTodos}) {
                     name="todoItem"
                     value={newItem.text}
                     onChange={grabNewTodo} />
-                    <Button onClick={(e)=> addItem(e)} id='todo-btn' variant='flat' size='m'>Add</Button>
+                    <Button id="addTodo" onClick={(e)=> addItem(e)} id='todo-btn' variant='flat' size='m'>Add</Button>
                 </FormGroup>
             </Form>
             

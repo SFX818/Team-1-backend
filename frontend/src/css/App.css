@@ -630,3 +630,12 @@ border:2px solid rgb(4, 75, 75);
   display:flex;
   justify-content: center;
 }
+
+#todo-btn{
+  background-color: white;
+  color:teal;
+  width:20%;
+  margin-left: 42%;
+  font-weight:700;
+  border:1px solid teal;
+}

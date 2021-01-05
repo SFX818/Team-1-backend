@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Form, FormGroup, Button } from 'react-bootstrap'
 import {addNetwork} from '../services/networkform.service'
 import {getCurrentUser} from '../services/auth.service'
+import "../css/network.css";
 
 
 

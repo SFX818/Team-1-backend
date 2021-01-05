@@ -92,7 +92,7 @@ label {
 /* HEADER FOR THE PIE CHARTS */
 #applied {
   /* font-family: 'Roboto', sans-serif; */
-  font-size:2vw;
+  font-size:1.5vw;
   width:250%;
   /* border:2px solid yellow; */
   text-align: center;
@@ -111,7 +111,7 @@ label {
 
 #heardBack {
   /* font-family: 'Roboto', sans-serif; */
-  font-size:2vw;
+  font-size:1.5vw;
   text-align: center;
   width:280%;
   /* border:2px solid red; */
@@ -129,7 +129,7 @@ label {
 }
 
 #card {
-  font-size: 1vw;
+  font-size: .9vw;
   width: 90%;
   margin-top: 0px;
   /* background-color: rgb(64, 190, 240); */
@@ -150,9 +150,16 @@ ul {
   display: flex;
   flex-direction: column;
   /* border: 2px solid blue; */
-  height: 60vw;
-  width: 30%;
+  /* height: 45vw;
+  width: 30%; */
   overflow: scroll;
+}
+
+#bigJobList{
+  width:30%;
+  height:45vw;
+  display: flex;
+  flex-direction: column;
 }
 
 /* CONTAINER FOR THE SAVED JOB AND PIE CHART  */
@@ -264,15 +271,6 @@ ul {
   width:50%;
 
 } */
-
-.categoryDiv {
-  border: 3px solid green;
-  /* display:flex; */
-  height: 300px;
-  /* flex-direction: row;
-  justify-content: space-around; */
-  overflow: scroll;
-}
 
 
 
@@ -507,31 +505,7 @@ background-color: #101010;
 } */
 
 
-#glow {
-    height:8vw;
-    /* margin-left:10%; */
-    font-size: 2rem;
-    color: lightblue;
-    text-shadow: 5px 5px 30px blue;
-    font-family: 'Open Sans Condensed', sans-serif;
-    animation-name: repeat;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    font-weight: lighter;
-    /* border:2px solid red; */
-    text-align: center;
-}
 
-@keyframes repeat {
-
-  0% {color: lightblue; text-shadow: 5px 5px 30px lightblue;}
-  20% {color: #579cbd; text-shadow: 5px 5px 30px  #31ada3;}
-  40% {color: #4b9fd3; text-shadow: 5px 5px 30px  #417777;}
-  60% {color: #75c7f7; text-shadow: 5px 5px 30px  #4dada9;}
-  80% {color: #72c7e9; text-shadow: 5px 5px 30px  #5195aa;}
-  100% {color: lightblue; text-shadow: 5px 5px 30px  lightblue;}
-
-}
 
 
 
@@ -621,7 +595,7 @@ color:teal;
 border:2px solid rgb(4, 75, 75);
   /* background-color: rgb(99, 177, 177); */
   background-color: rgba(11, 224, 143, 0.334);
-
+width:100%;
 }
 
 #links{
@@ -638,4 +612,11 @@ border:2px solid rgb(4, 75, 75);
   margin-left: 42%;
   font-weight:700;
   border:1px solid teal;
+}
+
+#todos{
+display:flex;
+justify-content: center;
+width:100%;
+
 }

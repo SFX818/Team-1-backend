@@ -62,7 +62,7 @@ Website Used: [Lucid App](https://lucid.app/)
 Website Used: [Whimsical](http://whimsical.com)
 
 
-### Technologies Used: hiiiiiiii
+### Technologies Used: 
 
 * Node/Express
 * Bcrypt for authentification and password hashing.
@@ -76,3 +76,26 @@ Website Used: [Whimsical](http://whimsical.com)
 
 
 ### Routes:
+
+CRUD | Route | Function
+--------------- | --------------- | -----------------
+POST | /api/auth/signup | Register new user
+POST | /api/auth/signin | Login user
+GET  | /profile | Display the profile page with the app and coding goals, and the todo list
+PUT  | /profile/todos | Edit the todo list
+PUT  | /profile/goals | Edit the app and coding goals
+POST | /newnetwork | Creates a new contact on the network page
+GET  | /findnetwork | Shows all our saved contacts on our network page
+DELETE | /delete/network/:id | Deletes a contact by id
+PUT | /updatenetwork/:id | Edit the contact and saves by id
+GET | /profile/savedJobs | Displays all of the specifics user's favorited jobs on profile page
+POST | /newsavedJob | Creates a new savedJob and assigns it to the current user
+DELETE | /deletejob/:id | Deletes the savedJob
+PUT | /updatenote/:id | Updates the notes inside the appliedTo object
+GET | /findjob/:id | Retrieve a job by its id
+PUT | /changestatus/:id | grab and save updated statuses on their savedJob
+
+
+
+
+

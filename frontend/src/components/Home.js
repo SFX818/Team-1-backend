@@ -77,7 +77,7 @@ const Home = () => {
    <br></br>
   <CardDeck>
   {news.map((article) =>(
-    <Card style={{ width: '25rem' }}> 
+    <Card style={{ width: '20rem' }}> 
     <Card.Img variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
@@ -89,6 +89,7 @@ const Home = () => {
     </Card>
   ))}
   </CardDeck>
+  <br></br>
   </div>;
 };
 

@@ -120,15 +120,17 @@ const Signup = (props) => {
   return (
     
     <div className="col-md-12">
+      <p id="glow">Everything you need to land your first software engineering job.</p>
       <div className="card card-container">
+
         <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          src="https://i.postimg.cc/zXPSbRGC/correct.jpg"
           alt="profile-img"
           className="profile-img-card"
         />
 
         <Form onSubmit={handleSignup} ref={form}>
-          <FormGroup text="username">
+          <FormGroup text="Username">
             <Input
               type="text"
               className="form-control"
@@ -139,7 +141,7 @@ const Signup = (props) => {
             />
           </FormGroup>
 
-          <FormGroup text="email">
+          <FormGroup text="Email">
             <Input
               type="email"
               className="form-control"
@@ -150,7 +152,7 @@ const Signup = (props) => {
             />
           </FormGroup>
 
-          <FormGroup text="password">
+          <FormGroup text="Password">
             <Input
               type="password"
               className="form-control"
@@ -161,7 +163,7 @@ const Signup = (props) => {
             />
             </FormGroup>
 
-          <ButtonSpinner text="Sign Up"/> 
+          <ButtonSpinner text="Register"/> 
 
           {message && (
             <div className="form-group">

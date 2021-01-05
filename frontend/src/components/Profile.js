@@ -163,11 +163,13 @@ const Profile = () => {
         <h2>{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company}</h2>
 
         <div id="container">
+          <div id="bigJobList"> 
+            <h2 id="savedJobs"> Saved Jobs: </h2>
           <div id="jobList">
-        <h2 id="savedJobs"> Saved Jobs: </h2>
             
-            {listJobs()}</div>
-
+            {listJobs()}
+            </div>
+            </div> 
           <div id="bigPie">
             <PieCharts allJobs={allJobs}/>
           </div>
@@ -178,11 +180,14 @@ const Profile = () => {
           </div>
 
         </div>
-
+          <div id="links"> 
         <Link to={"/profile/savedjobs"} className="nav-link">
-          saved Jobs{" "}
+         View Saved Jobs{" "}
         </Link>
-
+        <Link to={"/profile/network"} className="nav-link">
+          View Network{" "}
+        </Link>
+        </div>
         <div id='todos'>
             <Todos todos={todos} setTodos={setTodos}/>
           </div>

@@ -36,8 +36,6 @@ const Home = () => {
     axios.get('https://newsapi.org/v2/top-headlines?q=technology&apiKey=1d9ca5b13652436b801f9572b8878b27')
     .then (response =>{
       setNews(response.data.articles)
-      console.log("this is the data we get back from the api", response.data)
-
     })
   }
 

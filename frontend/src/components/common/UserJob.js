@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react'
+import { Card, Badge, Button, Collapse } from 'react-bootstrap'
+import ReactMarkdown from 'react-markdown'
 
 //component import
-import Job from '../Job'
 import StatusForm from '../StatusForm'
+
+//css import
+import "../../css/profile.css";
 
 import axios from 'axios'
 
 
 //UserJob component will display the Job (card) component but also a form component allowing user to change the status 
-function UserJob({ job, jobGrabber }) {
+function UserJob({ job, jobGrabber, status }) {
     const [currentJob, setCurrentJob] = useState('')
+    const [open, setOpen] = useState(false)
 
     //useEffect is used to do axios calls for specific jobs based on their id so that info can be passed down to the Job component
     useEffect(() => {
@@ -30,16 +35,45 @@ function UserJob({ job, jobGrabber }) {
 
 
     return (
-    
-        <div id="test">
-            {/* {job.jobTitle} {job.company} */}
-            {/* Job is passed the from so that when the Job component is rendered, the heart to save a job will not render */}
-            
-            <div id="miniTest">
-            <Job job= {currentJob} from='savedJobs'/>
-            <StatusForm job = {job} jobGrabber = {jobGrabber}/>
-            </div>
+        
+        <div>
+        <Card style={{ width: open  ? '45rem': '25rem', height: open ? '' : '20rem' } } id='sj-Card'>
+            <Card.Body>
+                <StatusForm job = {job} jobGrabber = {jobGrabber}/>
 
+                    <Card.Title>
+                        {currentJob.title} - <span className= 'text-muted font-weight-light'>{currentJob.company}</span>
+                    </Card.Title>
+
+                    <div id='location'>
+                        <img src='../../images/location.png' alt='Location: ' height='30'/> {currentJob.location}
+                    </div>
+                    <br></br>
+
+                    <div id='date-type'>
+                        <Card.Subtitle className="text-muted mb-2">
+                            Posted: {new Date(currentJob.created_at).toLocaleDateString()}
+                        </Card.Subtitle>
+                        <Badge variant="secondary" className="">{currentJob.type}</Badge>
+                    </div>
+                    
+
+                    <Card.Text id ='detail-btn'>
+                        <Button className='mt-2'
+                            onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
+                                {open ? 'Hide Details' : 'View Details'}
+                        </Button>
+                    </Card.Text>
+
+                 
+                 <Collapse in={open}>
+                    <div className="mt-4">
+                        {status === 'NeedAction' ? <ReactMarkdown source={currentJob.how_to_apply} /> : ''}
+                        <ReactMarkdown source={currentJob.description} />
+                    </div>
+                </Collapse>
+            </Card.Body>
+        </Card>
         </div>
         
     )

@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
+import { MDBBtn, MDBIcon } from "mdbreact";
 
 //import function
 import { updateJobStatus, deleteJob } from '../services/savedjob.service'
@@ -64,12 +65,14 @@ function StatusForm({ job, jobGrabber }) {
     }
 
     return (
+        
         <div>
-            <button onClick= {() => appliedTo(job)} className='form-btn' style={{background: appStatus}}>Applied To</button>
-            <button onClick= {() => heardBack(job)} className='form-btn'style={{background: responseStatus}} >Heard Back</button>
-            <button onClick= {() => rejectedFrom(job)} className='form-btn' style={{background: rejectStatus}}> Rejected</button>
-            <Button onClick= {() => removeJob(job)}>Remove Job</Button>
+            <Button variant="outline-danger" onClick= {() => appliedTo(job)}>Applied To</Button>
+            <Button variant="outline-secondary" onClick= {() => heardBack(job)} >Heard Back</Button>
+            <Button variant="outline-warning" onClick= {() => rejectedFrom(job)}> Rejected</Button>
+            <Button variant="outline-dark" onClick= {() => removeJob(job)}>Remove Job</Button>
         </div>
+        
     )
 }
 

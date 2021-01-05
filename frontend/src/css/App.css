@@ -68,6 +68,7 @@ label {
   flex-direction: column;
   /* border:2px solid red; */
   width: 30%;
+  font-weight:500;
 }
 
 #bigPie {
@@ -86,7 +87,8 @@ label {
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin-top:5vw;
+  padding-top:2vw;
+
 }
 
 /* HEADER FOR THE PIE CHARTS */
@@ -106,6 +108,8 @@ label {
   width:90%;
   text-decoration: underline #8decd8;
   text-decoration-skip-ink: auto;
+  padding-bottom:2vw;
+
   
 }
 
@@ -122,7 +126,9 @@ label {
   text-decoration: underline #66c5b1;
   text-decoration-skip-ink: auto;
   width:300%;
-  margin-bottom:5vw;
+  /* margin-bottom:2.2vw; */
+  padding-bottom:2vw;
+
   text-align: center;
   font-size:2.5vw;
  
@@ -522,7 +528,9 @@ text-decoration-color:transparent;
 }
 
 #remove:hover{
-  border:2px solid teal;
+ 
+  text-decoration: underline #8decd8;
+
 }
 
 #toDoList{
@@ -591,8 +599,8 @@ text-decoration-color:transparent;
 
 .list-group{
 
-color:teal;
-border:2px solid rgb(4, 75, 75);
+color:black;
+border:1px solid rgb(4, 75, 75);
   /* background-color: rgb(99, 177, 177); */
   background-color: rgba(11, 224, 143, 0.334);
 width:100%;
@@ -603,7 +611,10 @@ width:100%;
   font-size:2vw;
   display:flex;
   justify-content: center;
+  color:white;
 }
+
+
 
 #todo-btn{
   background-color: white;
@@ -619,4 +630,57 @@ display:flex;
 justify-content: center;
 width:100%;
 
+}
+
+
+::-webkit-scrollbar-track {
+  background: rgb(252, 252, 252);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: teal;
+}
+#glow {
+  height:5vw;
+  /* margin-left:10%; */
+  font-size: 2rem;
+  color: lightblue;
+  text-shadow: 5px 5px 30px blue;
+  font-family: 'Open Sans Condensed', sans-serif;
+  animation-name: repeat;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  font-weight: lighter;
+  /* border:2px solid red; */
+  text-align: center;
+}
+
+@keyframes repeat {
+
+0% {color: lightblue; text-shadow: 5px 5px 30px lightblue;}
+20% {color: #579cbd; text-shadow: 5px 5px 30px  #31ada3;}
+40% {color: #4b9fd3; text-shadow: 5px 5px 30px  #417777;}
+60% {color: #75c7f7; text-shadow: 5px 5px 30px  #4dada9;}
+80% {color: #72c7e9; text-shadow: 5px 5px 30px  #5195aa;}
+100% {color: lightblue; text-shadow: 5px 5px 30px  lightblue;}
+
+}
+
+.btn.btn-primary.btn-block{
+  color:black;
+  background-color: rgba(48, 136, 139, 0.3);
+  border:1px solid transparent;
+  font-weight:500;
+  width:50%;
+ margin-left:25%;
+}
+
+
+.nav-link{
+  color:black;
+}
+
+.nav-link:hover{
+  color:teal;
 }

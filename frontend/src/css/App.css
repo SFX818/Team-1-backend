@@ -266,14 +266,6 @@ ul {
 
 } */
 
-.categoryDiv {
-  border: 3px solid green;
-  /* display:flex; */
-  height: 300px;
-  /* flex-direction: row;
-  justify-content: space-around; */
-  overflow: scroll;
-}
 
 #appTextDiv {
   padding-top: 5vw;
@@ -660,3 +652,29 @@ text-decoration-color:transparent;
       transform: translate(-49%, -53%);
   }
 }
+
+#todo-add {
+  display: flex;
+  flex-direction: row;
+}
+
+#todo-btn {
+  background-color: teal;
+}
+
+#form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* #add-net-btn {
+  display: flex;
+  align-self: center;
+} */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+

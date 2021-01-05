@@ -80,10 +80,10 @@ currentUser = currentUser.id
 
 
 return (
-  <div>
+  <div id='form-div'>
         <br></br>
         <br></br>
-        <h3>Add a New Contact:</h3>
+        <h2>Add a New Contact:</h2>
         <Form className = "form">
             <FormGroup text="name">
                 <Form.Control
@@ -140,7 +140,7 @@ return (
                 />
             </FormGroup>
     
-          <Button variant="flat" size="xl" onClick={handleSubmit}>Submit</Button>
+          <Button variant="flat" size="xl" onClick={handleSubmit} id='add-net-btn'>Submit</Button>
         </Form>
   </div>
           

@@ -3,7 +3,6 @@ import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
 
 //component import
-import Job from '../Job'
 import StatusForm from '../StatusForm'
 
 //css import

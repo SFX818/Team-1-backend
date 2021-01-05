@@ -74,13 +74,8 @@ const Home = () => {
    <h1>Take a look at the latest in Tech News:</h1>
    <br></br>
   <CardDeck>
-<<<<<<< HEAD
   {news.map((article, i) =>(
-    <Card style={{ width: '25rem' }} key={i}> 
-=======
-  {news.map((article) =>(
-    <Card style={{ width: '40rem' }}> 
->>>>>>> 5dbcd94fcdb3e00365fd60ec744e9e9cadd311d5
+    <Card style={{ width: '40rem' }} key={i}> 
     <Card.Img variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>

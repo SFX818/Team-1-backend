@@ -46,16 +46,17 @@ const handleDelete = (network) => {
   
 
 return (
-        <div> 
-        <NetworkForm getNetwork={getNetwork}/>
+      <div> 
+          <NetworkForm getNetwork={getNetwork}/>
+        
         <br></br>
         <div className = "saved-contacts">
-          <h1 style = {{textAlign: "center"}}>My Contacts</h1>
+          <h2 style = {{textAlign: "center"}}>My Contacts</h2>
             {/* <CardDeck> */}
             <br></br>
             <div className='contact-container'>
-                {networkData.map((network) =>(
-                    <div className='network-card'>
+                {networkData.map((network, i) =>(
+                    <div className='network-card' key={i}>
                         {/* the below condition will determine which contact will open the edit form */}
                         {whoClicked === network._id ?
                         <EditNetworkForm network={network} getNetwork={getNetwork} setWhoClicked={setWhoClicked}/>

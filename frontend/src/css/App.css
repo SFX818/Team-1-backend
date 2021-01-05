@@ -40,13 +40,24 @@ label {
 }
 
 .profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  margin-top:2vw;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  /* -moz-border-radius: 50%;
+  -webkit-border-radius: 50%; */
+  /* border-radius: 50%; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+ 
+}
+
+
+.profile-img-card:hover{
+  opacity: 50%;
 }
 
 /* PIE CHART CODE */
@@ -416,3 +427,109 @@ align-items: center;
   font-style: normal;
   font-weight: 600;
 }
+
+
+
+
+/* new code */
+
+
+
+/* === BASE HEADING === */ 
+
+/* #h11 {
+  margin-top:15vw;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  color: #ffffff;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  border:2px solid red;
+}
+
+#h11 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+#h11 em {
+  font-style: normal;
+  font-weight: 600;
+} */
+
+/* === HEADING STYLE #1 === */
+/* .one #h11 {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.one #h11:before {
+  width: 28px;
+  height: 5px;
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  margin-left: -14px;
+  background-color: #b80000;
+}
+.one #h11:after {
+  width: 100px;
+  height: 1px;
+  display: block;
+  content: "";
+  position: relative;
+  margin-top: 25px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #b80000;
+} */
+
+
+/* NEW CODE  */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
+
+/* body {
+
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #101010;
+  
+} */
+
+
+#glow {
+    height:8vw;
+    /* margin-left:10%; */
+    font-size: 2rem;
+    color: lightblue;
+    text-shadow: 5px 5px 30px blue;
+    font-family: 'Open Sans Condensed', sans-serif;
+    animation-name: repeat;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    font-weight: lighter;
+    /* border:2px solid red; */
+    text-align: center;
+}
+
+@keyframes repeat {
+
+  0% {color: lightblue; text-shadow: 5px 5px 30px lightblue;}
+  20% {color: #579cbd; text-shadow: 5px 5px 30px  #31ada3;}
+  40% {color: #4b9fd3; text-shadow: 5px 5px 30px  #417777;}
+  60% {color: #75c7f7; text-shadow: 5px 5px 30px  #4dada9;}
+  80% {color: #72c7e9; text-shadow: 5px 5px 30px  #5195aa;}
+  100% {color: lightblue; text-shadow: 5px 5px 30px  lightblue;}
+
+}
+
+

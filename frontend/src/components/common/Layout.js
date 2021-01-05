@@ -26,15 +26,26 @@ const Layout = (props) => {
   return (
     <div>
       <nav id="nav" className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">
-         <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
-        </Link>
+        {currentUser ?   
+           <Link to="/" className="navbar-brand">
+                     <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
+
+          </Link> 
+        :
+        <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
+
+        }
+   
         <div className="navbar-nav mr-auto">
+          {currentUser && (
+
           <li className="nav-item">
             <Link to={"/home"} className="nav-link">
-              Home
+              
             </Link>
           </li>
+            
+          )}
           {/* <li className="nav-item">
             <Link to={"/profile/network"} className="nav-link">
               My Network
@@ -42,9 +53,9 @@ const Layout = (props) => {
           </li> */}
           {showAdminBoard && (
             <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
+              {/* <Link to={"/admin"} className="nav-link">
                 Admin Board
-              </Link>
+              </Link> */}
             </li>
           )}
 
@@ -95,7 +106,7 @@ const Layout = (props) => {
 
             <li className="nav-item">
                 <Link to={'/register'} className="nav-link">
-                    Sign Up
+                    Register
                 </Link>
             </li>
           </div>

@@ -11,7 +11,7 @@ function PieCharts({allJobs}) {
                 Applied to: {allJobs[0].appliedToJobs.length}{" "}
               </h2>
               <PieChart
-                style={{ marginLeft: "vw", height: "200px", width: "200px" }}
+                style={{ marginLeft: "vw", height: "250%", width: "250%" }}
                 data={[
                   {
                     title: "Heard Back: ",
@@ -40,7 +40,7 @@ function PieCharts({allJobs}) {
                 Heard Back: {allJobs[0].heardBackJobs.length}{" "}
               </h2>
               <PieChart
-                style={{ marginLeft: "vw", height: "200px", width: "200px" }}
+                style={{ marginLeft: "vw", height: "250%", width: "250%" }}
                 data={[
                   {
                     title: "Moved Fwrd: ",

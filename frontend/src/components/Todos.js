@@ -14,8 +14,8 @@ function Todos({todos, setTodos}) {
             let status = todo.done;
                 return (
                     <div id="bigToDo">
-                    <ListGroup.Item style={{textDecoration: status ? 'line-through' : ''}} key={i}>
-                    {i+1}: {todo.text}
+                    <ListGroup.Item key={i}>
+                    {i+1}: <span style={{textDecoration: status ? 'line-through' : ''}}>{todo.text}</span>
                     <div id="mediumToDo"> 
                     <input id="toDoList" type='image' src='../../check_icon.png'  alt='Completed' width='30'  onClick={() => changeStatus(todo.key)}/>
                     
@@ -76,7 +76,7 @@ function Todos({todos, setTodos}) {
             </Card>
 
             <Form>
-                <FormGroup>
+                <FormGroup id='todo-add'>
                     <Form.Control
                     size ="lg"
                     type="text"
@@ -84,7 +84,7 @@ function Todos({todos, setTodos}) {
                     name="todoItem"
                     value={newItem.text}
                     onChange={grabNewTodo} />
-                    <Button style={{width:'100px', backgroundColor:'white', color:'teal', margin:'1% 40px 50px 45%', fontWeight:700}} onClick={(e)=> addItem(e)}>Add</Button>
+                    <Button onClick={(e)=> addItem(e)} id='todo-btn' variant='flat' size='m'>Add</Button>
                 </FormGroup>
             </Form>
             

@@ -235,7 +235,7 @@ ul {
 
 #goalTextDiv {
   /* border:2px solid red; */
-  font-size: 1.1vw;
+  font-size: 1vw;
   display: flex;
   justify-content: center;
   
@@ -280,6 +280,7 @@ ul {
 #appTextDiv {
   padding-top: 5vw;
   text-align: center;
+  font-size:1vw;
   /* border:2px solid red; */
 }
 

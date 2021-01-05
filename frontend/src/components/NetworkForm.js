@@ -5,7 +5,7 @@ import {getCurrentUser} from '../services/auth.service'
 
 
 
-const NetworkForm = ({getNetwork}) => {
+const NetworkForm = ({getNetwork, setUpdate}) => {
 
 //stores the name
 const [name, setName] = useState("");
@@ -67,8 +67,8 @@ currentUser = currentUser.id
  const handleSubmit = (e) =>{
      e.preventDefault()
      addNetwork(currentUser, name, company, email, phone, notes)
-     //calling getNetwork() will have the networks rerender
-     getNetwork()
+     //setting update to make the networks rerender after an add
+     setUpdate(prevUpdate => !prevUpdate)
      //setting states to empty strings will allow the contact form to revert back to the placeholders
      setName('')
      setCompany('')
@@ -80,10 +80,10 @@ currentUser = currentUser.id
 
 
 return (
-  <div>
+  <div id='form-div'>
         <br></br>
         <br></br>
-        <h3>Add a New Contact:</h3>
+        <h2>Add a New Contact:</h2>
         <Form className = "form">
             <FormGroup text="name">
                 <Form.Control
@@ -140,7 +140,7 @@ return (
                 />
             </FormGroup>
     
-          <Button variant="flat" size="xl" onClick={handleSubmit}>Submit</Button>
+          <Button variant="flat" size="xl" onClick={handleSubmit} id='add-net-btn'>Submit</Button>
         </Form>
   </div>
           

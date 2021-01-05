@@ -44,17 +44,9 @@ const SavedJobs = () => {
     if (allJobs != undefined && allJobs.length != 0) {
       if (section === "NeedAction") {
         return allJobs.needActionJobs.map((job, index) => (
-          <UserJob job={job} key={index} jobGrabber={jobGrabber} />
+          <UserJob job={job} key={index} jobGrabber={jobGrabber} status='NeedAction'/>
         ));
-      } /* else if(section === 'AppliedTo') {
-                return allJobs.appliedToJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index} />
-                ))
-            } else if(section === 'HeardBack') {
-                return allJobs.heardBackJobs.map((job, index) => (
-                    <UserJob job = {job} key = {index} />
-                )) 
-            }*/ else if (
+      } else if (
         section === "Rejected"
       ) {
         return allJobs.deniedFromJobs.map((job, index) => (
@@ -72,14 +64,8 @@ const SavedJobs = () => {
   return (
        
     <div className="whole-div">
-      {/* <h1>~User's Saved Jobs</h1> */}
       <div className="outer-div">
-        {/* <div className = 'all-jobs'>
-                          <h2>All Jobs:</h2>
-                          {displayAllJobs()}
-                      </div> */}
         <h1 id="userSavedJob">{currentUser.username}'s Saved Jobs: </h1>
-        {/* <div className="need-action slide-box"> */}
         
         <h2 className="categories">Need Action:</h2>
         <CardDeck> 
@@ -91,7 +77,7 @@ const SavedJobs = () => {
         <h2 className="categories">Applied To:</h2>
         <h3 className="categories">In Progress/Waiting:</h3>
         
-        <CardDeck> 
+        <CardDeck > 
         <div className="categoryDiv">              
           {displayJobs("InProgress")}
         </div>

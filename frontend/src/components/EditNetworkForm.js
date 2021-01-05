@@ -4,7 +4,7 @@ import {editNetwork} from '../services/networkform.service'
 
 
 
-const EditNetworkForm = ({network, getNetwork, setWhoClicked}) => {
+const EditNetworkForm = ({network, getNetwork, setWhoClicked, setUpdate}) => {
  //stores the name
 const [newName, setNewName] = useState(network.name);
 //stores the company
@@ -52,8 +52,8 @@ const [newNotes, setNewNote] = useState(network.notes);
      editNetwork(id, newName, newCompany, newEmail, newPhone, newNotes)
      //set whoClicked state back to an empty string so the edit form doesnt pass the conditional to display itself anymore
      setWhoClicked('')
-     //call getNetwork so the list of contacts will rerender
-     getNetwork()
+     //setting update so the list of contacts will rerender
+     setUpdate(prevUpdate => !prevUpdate)
  }
 
 

@@ -8,6 +8,7 @@ import {resMessage} from '../utilities/functions.utilities'
 //components 
 import FormGroup from './common/FormGroup'
 import ButtonSpinner from './common/ButtonSpinner'
+// import {Spinner} from 'react-spinkit'
 // Function given to react-validator
 const required = (value) => {          
   if (!value) {
@@ -19,6 +20,7 @@ const required = (value) => {
   }
 };
 const Login = (props) => {
+  const Spinner = require('react-spinkit')
   const form = useRef();
   const checkBtn = useRef();
   const [username, setUsername] = useState("");
@@ -103,6 +105,7 @@ const Login = (props) => {
           </FormGroup>
 
         <ButtonSpinner text="Login" loading={loading} />
+        {/* <Spinner name="three-bounce" color="teal" loading={loading} /> */}
 
 
           {message && (

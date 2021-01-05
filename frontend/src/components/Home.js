@@ -34,8 +34,6 @@ const Home = () => {
     axios.get('https://newsapi.org/v2/top-headlines?q=technology&apiKey=1d9ca5b13652436b801f9572b8878b27')
     .then (response =>{
       setNews(response.data.articles)
-      console.log("this is the data we get back from the api", response.data)
-
     })
   }
 
@@ -76,8 +74,8 @@ const Home = () => {
    <h1>Take a look at the latest in Tech News:</h1>
    <br></br>
   <CardDeck>
-  {news.map((article) =>(
-    <Card style={{ width: '25rem' }}> 
+  {news.map((article, i) =>(
+    <Card style={{ width: '25rem' }} key={i}> 
     <Card.Img variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>

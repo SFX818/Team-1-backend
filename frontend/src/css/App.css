@@ -254,17 +254,6 @@ ul {
 
 } */
 
-.categoryDiv {
-  border: 3px solid green;
-  /* display:flex; */
-  height: 300px;
-  /* flex-direction: row;
-  justify-content: space-around; */
-  overflow: scroll;
-}
-
-
-
 
 #appTextDiv {
   padding-top: 5vw;
@@ -415,4 +404,36 @@ align-items: center;
 #h1 em {
   font-style: normal;
   font-weight: 600;
+}
+
+.card-img {
+  height: 40px;
+  border: 4px solid pink;
+}
+
+.title-logo {
+  display: flex;
+  flex-direction: row;
+
+}
+
+#badges-date{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#badges {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+
+.categoryDiv {
+  border: 3px solid green;
+  display:flex; 
+  height: 400px;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow: scroll;
 }

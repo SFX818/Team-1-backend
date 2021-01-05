@@ -71,7 +71,6 @@ const SavedJobs = () => {
   return (
        
     <div className="whole-div">
-      {/* <h1>~User's Saved Jobs</h1> */}
       <div className="outer-div">
         {/* <div className = 'all-jobs'>
                           <h2>All Jobs:</h2>

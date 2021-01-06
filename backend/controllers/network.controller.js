@@ -4,9 +4,11 @@ const Network = db.network;
 
 // POST Add a Network
 exports.createNetwork = (req, res) => {
-  console.log("Hit create network route")
+  //Creating a new Network with what the user is putting in form in req.body
   const network = new Network(req.body);
+  //Save new network
   network.save();
+  //Finding the User by their id which is what our currentUser is
   User.findById({ _id: req.body.currentUser })
     .then((foundUser) => {
       foundUser.network.push(network);
@@ -53,7 +55,6 @@ exports.deleteNetwork = (req, res) => {
 exports.editNetwork = (req, res) => {
   const id = req.params.id;
   Network.findOne({ _id: id }).then((foundNetwork) => {
-    //res.send(foundNetwork);
     const name =
       req.body.name === undefined ? foundNetwork.name : req.body.name;
     const company =
@@ -82,16 +83,5 @@ exports.editNetwork = (req, res) => {
       }
     );
   });
-  // Network.findOneAndUpdate(
-  //     {_id: id},
-  //     {$set:{name: req.body.name,
-  //     company: req.body.company,
-  //     phone: req.body.phone,
-  //     email: req.body.email,
-  //     notes: req.body.notes}},{new: true, upsert: true},(error, updatedNetwork)=>{
-  //         if (error){
-  //             res.send(error)
-  //         }
-  //         res.send(updatedNetwork)
-  //     })
+
 };

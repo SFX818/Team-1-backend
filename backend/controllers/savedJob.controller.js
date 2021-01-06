@@ -83,8 +83,7 @@ exports.findAllJobs = (req, res) =>{
   })
 }
 
-//DELETE based on :id   (working)
-//(THIS IS WORKING, LEAVE IT ALONE)
+//DELETE based on :id   
 exports.delete = (req, res) =>{
   const id = req.params.id
   SavedJob.remove(

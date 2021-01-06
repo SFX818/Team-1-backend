@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# The Tracker App.
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
-
-=======
 # .find(Career)
->>>>>>> 8b78a453591538920aa48b73552920bfbc5f85e3
 
 Link to deployed site:
 
@@ -38,6 +32,11 @@ As a user:
 ### Job Search Page
 ![Screen Shot 2021-01-05 at 9 59 43 PM](https://user-images.githubusercontent.com/69171194/103724056-7f5c0c80-4fa1-11eb-899f-12f56f1967c2.png)
 
+### Saved Jobs Page 
+![Screen Shot 2021-01-06 at 2 58 04 PM](https://user-images.githubusercontent.com/69171194/103814665-153e7880-5030-11eb-86a8-d4b04857cb85.png)
+
+### Profile Page 
+<img width="1552" alt="Screen Shot 2021-01-06 at 3 05 40 PM" src="https://user-images.githubusercontent.com/69171194/103815988-3c964500-5032-11eb-9d97-72dca7be24a4.png">
 
 ### Network Page 
 ![Screen Shot 2021-01-05 at 9 56 16 PM](https://user-images.githubusercontent.com/69171194/103723843-fe047a00-4fa0-11eb-8fb8-2eb3e534737a.png)
@@ -115,8 +114,7 @@ Role | name
 
 ### Unsolved problems/Major Hurdles
 
-* Pie chart 
-* 
+
 
 
 

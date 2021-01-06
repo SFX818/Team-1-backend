@@ -15,14 +15,14 @@ function PieCharts({ allJobs }) {
             {
               title: "Heard Back: ",
               value: allJobs[0].heardBackJobs.length,
-              color: "#20B2AA",
+              color: "#6CDACA",
             },
             {
               title: "Waiting: ",
               value:
                 allJobs[0].appliedToJobs.length -
                 allJobs[0].heardBackJobs.length,
-              color: "#90EE90",
+              color: "#6CB3DA",
             },
           ]}
           // label={({ dataEntry }) => dataEntry.title}
@@ -39,12 +39,12 @@ function PieCharts({ allJobs }) {
             {
               title: "Moved Fwrd: ",
               value: allJobs[0].inProgressJobs.length,
-              color: "#DB7093",
+              color: "#65F4BC",
             },
             {
               title: "Rejected: ",
               value: allJobs[0].deniedFromJobs.length,
-              color: "#ff000080",
+              color: "#65E5F4",
             },
           ]}
           //   label={({ dataEntry }) => dataEntry.title}

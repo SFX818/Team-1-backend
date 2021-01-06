@@ -96,6 +96,18 @@ GET | /findjob/:id | Retrieve a job by its id
 PUT | /changestatus/:id | grab and save updated statuses on their savedJob
 
 
+### Models: 
+MODEL | SCHEMA 
+------ | --------
+Network | name, company,phone,email,notes[]
+SavedJob | jobId,location,language,company,jobTitle,heardBack:{status,scheduledInterview,closed},appliedTo:{appstatus,date,notes[]}
+User | username,email,password,roles:[{ref:Role}],todos[], savedJobs:[{SavedJob}], codingGoal:{goal,progress},appGoal{goal,progress}, network[{ref:Network}]
+Role | name
+
+
+
+
+
 
 
 

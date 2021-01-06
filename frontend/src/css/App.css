@@ -102,7 +102,7 @@ label {
   font-size: 2.5vw;
   text-align: center;
   width: 90%;
-  text-decoration: underline #8decd8;
+  text-decoration: underline rgb(198, 207, 207);
   text-decoration-skip-ink: auto;
   padding-bottom: 2vw;
 }
@@ -116,7 +116,7 @@ label {
 }
 
 #stats {
-  text-decoration: underline #66c5b1;
+  /* text-decoration: underline rgb(183, 198, 199); */
   text-decoration-skip-ink: auto;
   width: 300%;
   /* margin-bottom:2.2vw; */
@@ -234,7 +234,7 @@ ul {
   padding-bottom: 2vw;
   width: 100%;
   margin-left: 3vw;
-  text-decoration: underline #4b9180;
+  /* text-decoration: underline rgb(183, 198, 199); */
   text-decoration-skip-ink: auto;
 }
 
@@ -408,7 +408,7 @@ ul {
   color: black;
   border: 1px solid rgb(4, 75, 75);
   /* background-color: rgb(99, 177, 177); */
-  background-color: rgba(11, 224, 143, 0.334);
+  background-color: rgba(112, 233, 187, 0.134);
   width: 100%;
 }
 
@@ -436,12 +436,17 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(252, 252, 252);
+  background:transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: teal;
 }
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
 #glow {
   height: 5vw;
   /* margin-left:10%; */
@@ -508,4 +513,28 @@ ul {
   height: 100%;
   margin-top: 50px;
   /* z-index: -1; */
+}
+
+
+#fakePie{
+
+  margin-left:-6.5vw;
+}
+
+
+#fakePieDiv{
+
+}
+
+
+
+#stats2 {
+  text-decoration: underline rgb(183, 198, 199);
+  text-decoration-skip-ink: auto;
+  width: 100%;
+  /* margin-bottom:2.2vw; */
+  padding-bottom: 2vw;
+  text-align: center;
+  font-size: 2.5vw;
+  margin-left:-4vw;
 }

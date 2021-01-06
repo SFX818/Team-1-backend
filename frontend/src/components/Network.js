@@ -52,7 +52,7 @@ return (
         
         <br></br>
         <div className = "saved-contacts">
-          <h2 style = {{textAlign: "center"}}>My Contacts</h2>
+          <h2 style = {{textAlign: "center", textDecoration: 'underline teal'}}>My Contacts</h2>
             {/* <CardDeck> */}
             <br></br>
             <div className='contact-container'>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import FetchJobs from '../utilities/fetchJobs.utilities'
 import {Container} from 'react-bootstrap'
 import Job from './Job'
@@ -27,11 +28,16 @@ const Landing = () => {
             <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
             <br></br>
             <br></br>
-            <br></br>
             <h2 className='mb-4'>returned(results):</h2>
             <SearchForm params={params} onParamChange={handleParamChange} />
+            <p>Don't see the job you want to save? Add and keep track of your own job's<span id='hide'>_</span>
+                <Link to={'/addjob'} id='saved-job-link'>
+                here
+                </Link>
+            </p>
+            <br></br>
             <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-                    {loading && <h1><Spinner name="wandering-cubes" color="purple"/></h1>}
+                    {loading && <div className='loader'><Spinner name="wandering-cubes" color="teal"/></div>}
                     {error && <h1>Error. Try Refreshing.</h1>}
                     {jobs.map(job => {
                     return <Job key={job.id} job={job} />

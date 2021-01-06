@@ -47,13 +47,17 @@ function AddJob() {
         const userId = currentUser.id;
         //these jobs wont have a jobId but our saveAjob function expects one so we pass in a value, we can then use this to work with the UserJob component
         const jobId = '0';
+        const joburl = 'http://'+ jobUrl;
         //passed in values are coming from the state
-        saveAJob(userId, jobId, location, company, jobTitle, jobUrl)
+        saveAJob(userId, jobId, location, company, jobTitle, joburl)
         //set all values back to empty strings so that user can begin adding a new job
+        setLocation('');
+        setCompany('');
+        setJobTitle('');
+        setJobUrl('');
     }
 
     return (
-            // <h2>Don't see the job you want to save? Add and keep track of your own job here!</h2>
         <div id='form-div'>
             <br></br>
             <br></br>

@@ -52,7 +52,7 @@ function Todos({todos, setTodos}) {
     //function triggered by checkmark input, will find the todo that was clicked and change its status
     const changeStatus = (key) => {
         setTodos(
-            todos.map(todo => {
+            todos.map((todo) => {
                 if(todo.key === key){
                     return {...todo, done: !todo.done} 
                 } else {

@@ -197,7 +197,7 @@ const Profile = () => {
       </div>
     );
   }
-  return <div> <Spinner name="three-bounce" color="teal"/> </div>;
+  return <div className='loader'> <Spinner name="three-bounce" color="teal"/> </div>;
 };
 
 export default Profile;

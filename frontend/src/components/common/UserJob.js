@@ -57,9 +57,6 @@ function UserJob({ job, jobGrabber, status }) {
                         {currentJob.title} - <span className= 'text-muted font-weight-light'>{currentJob.company}</span>
                     </Card.Title>
                     }
-                    {/* <Card.Title>
-                        {currentJob.title} - <span className= 'text-muted font-weight-light'>{currentJob.company}</span>
-                    </Card.Title> */}
 
                     <div id='location'>
                         <img src='../../images/location.png' alt='Location: ' height='30'/> {currentJob.location}
@@ -68,7 +65,7 @@ function UserJob({ job, jobGrabber, status }) {
 
                     {/* another conditional to check if its the job from the API or a job from user input */}
                     {job.jobId === '0' ? 
-                        <a href={currentJob.jobUrl}>Check Out the Job Posting.</a>
+                        <a href={currentJob.jobUrl} target='_blank'>Check Out the Job Posting</a>
                     :
                     <div>
                         <div id='date-type'>
@@ -95,28 +92,6 @@ function UserJob({ job, jobGrabber, status }) {
                         </Collapse>
                     </div> 
                     }
-                    {/* <div id='date-type'>
-                        <Card.Subtitle className="text-muted mb-2">
-                            Posted: {new Date(currentJob.created_at).toLocaleDateString()}
-                        </Card.Subtitle>
-                        <Badge variant="secondary" className="">{currentJob.type}</Badge>
-                    </div>
-                    
-
-                    <Card.Text id ='detail-btn'>
-                        <Button className='mt-2'
-                            onClick={() => setOpen(prevOpen => !prevOpen)}variant="primary">
-                                {open ? 'Hide Details' : 'View Details'}
-                        </Button>
-                    </Card.Text>
-
-                 
-                 <Collapse in={open}>
-                    <div className="mt-4">
-                        {status === 'NeedAction' ? <ReactMarkdown source={currentJob.how_to_apply} /> : ''}
-                        <ReactMarkdown source={currentJob.description} />
-                    </div>
-                </Collapse> */}
             </Card.Body>
         </Card>
         </div>

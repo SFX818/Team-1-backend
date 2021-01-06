@@ -504,8 +504,8 @@ ul {
 .navbar,
 .navbar-default {
   background-image: linear-gradient(
-    to top,
-    #32ffe73e 0,
+    to right,
+    #00e4ca74 0,
     #0d263c 100%
   ) !important; /* override background image gradient w/ flat color */
 }

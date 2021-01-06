@@ -68,7 +68,7 @@ const SavedJobs = () => {
         ));
       }
     } else {
-      return <h1><Spinner name="line-scale-pulse-out-rapid" color="orange"/>
+      return <h1><Spinner name="line-scale-pulse-out-rapid" color="teal"/>
       </h1>;
     }
   };

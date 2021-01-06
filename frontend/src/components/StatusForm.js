@@ -1,6 +1,4 @@
 import React, {useState, useEffect, Fragment} from 'react'
-import { Card, Badge, Button, Collapse } from 'react-bootstrap'
-import { MDBBtn, MDBIcon } from "mdbreact";
 import ReactTooltip from 'react-tooltip';
 
 //import function

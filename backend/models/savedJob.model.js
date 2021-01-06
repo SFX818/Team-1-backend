@@ -5,6 +5,7 @@ const SavedJob = mongoose.model(
     "SavedJob",
     new mongoose.Schema({
         jobId: String,
+        jobUrl: String,
        location: String,
        language: String,
        company: String,

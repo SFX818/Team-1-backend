@@ -197,7 +197,7 @@ const Profile = () => {
       </div>
     );
   }
-  return <div> <Spinner name="three-bounce" color="teal"/> </div>;
+  return <div> <Spinner name='line-scale-pulse-out-rapid' color='teal'/> </div>;
 };
 
 export default Profile;

@@ -4,10 +4,8 @@ const User = db.user
 
 //this route is connected to the get route for the profile page, it finds the current user and returns it, res.send makes it available to the front end 
 exports.displayAll = (req, res) => {
-    //console.log('YOUR USER', req.userId);
     User.findById(req.userId)
     .then(user => {
-        //res.send(user);
         res.send({
             id: user._id,
             username: user.username,
@@ -20,7 +18,7 @@ exports.displayAll = (req, res) => {
         })
     })
     .catch(err => {
-        //console.log('ERROR IN DISPLAYALL', err);
+        
         res.send({message: err});
     })
 }
@@ -34,7 +32,7 @@ exports.editTodos = (req, res) => {
             res.send({message: 'Error when trying to update user\'s todos'})
         }
         res.send(updatedUser.todos);
-        //console.log('UPDATED USER', updatedUser);
+        
     })
 }
 

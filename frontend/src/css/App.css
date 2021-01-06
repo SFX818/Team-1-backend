@@ -327,8 +327,6 @@ ul {
   align-items: center;
 }
 
-
-
 #toDo {
   font-weight: 700;
   font-size: 2vw;
@@ -436,17 +434,27 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
+<<<<<<< HEAD
   background:transparent;
+=======
+  background: transparent;
+>>>>>>> 8b78a453591538920aa48b73552920bfbc5f85e3
 }
 
 ::-webkit-scrollbar-thumb {
   background: teal;
 }
+<<<<<<< HEAD
 
 ::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
 }
 
+=======
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+>>>>>>> 8b78a453591538920aa48b73552920bfbc5f85e3
 #glow {
   height: 5vw;
   /* margin-left:10%; */
@@ -504,6 +512,14 @@ ul {
 
 .nav-link:hover {
   color: teal;
+}
+.navbar,
+.navbar-default {
+  background-image: linear-gradient(
+    to right,
+    #00e4c95a 0,
+    #0d263c 100%
+  ) !important; /* override background image gradient w/ flat color */
 }
 .particles-box {
   position: absolute;

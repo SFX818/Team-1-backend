@@ -105,9 +105,7 @@ const Login = (props) => {
           </FormGroup>
 
         <ButtonSpinner text="Login" loading={loading} />
-        {/* <Spinner name="three-bounce" color="teal" loading={loading} /> */}
-
-
+      
           {message && (
             <div className="form-group">
               <div className="alert alert-danger" role="alert">

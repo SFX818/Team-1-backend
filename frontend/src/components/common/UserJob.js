@@ -37,7 +37,7 @@ function UserJob({ job, jobGrabber, status }) {
     return (
         
         <div>
-        <Card style={{ width: open  ? '45rem': '25rem', height: open ? '' : '20rem' } } id='sj-Card'>
+        <Card style={{ width: open  ? '45rem': '25rem', height: open ? '' : '20rem' }} id='sj-Card'>
             <Card.Body>
                 <StatusForm job = {job} jobGrabber = {jobGrabber}/>
 

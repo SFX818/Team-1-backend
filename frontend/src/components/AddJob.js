@@ -43,14 +43,11 @@ function AddJob() {
 
 
     //function run when user submits a job and saves it to the backend
-    const saveJob = (job) => {
+    const saveJob = (e) => {
         const userId = currentUser.id;
         //these jobs wont have a jobId but our saveAjob function expects one so we pass in a value, we can then use this to work with the UserJob component
         const jobId = '0';
-        const location = job.location;
-        const company = job.company;
-        const jobTitle = job.title;
-        const jobUrl = job.url;
+        //passed in values are coming from the state
         saveAJob(userId, jobId, location, company, jobTitle, jobUrl)
         //set all values back to empty strings so that user can begin adding a new job
     }
@@ -61,7 +58,7 @@ function AddJob() {
             <br></br>
             <br></br>
             <h2>Add a Job to Keep Track:</h2>
-            <h5>You will be able to update your application status on the My Saved Job Page.
+            <h5>
                 To update the job application status, visit your<span id='hide'>_</span> 
                 <Link to={'/profile/savedjobs'} id='saved-job-link'>
                 My Saved Jobs Page.

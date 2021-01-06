@@ -31,7 +31,7 @@ const SavedJobs = () => {
       .then((jobData) => {
         setAllJobs(jobData.data);
       })
-      .catch((err) => console.log('ERROR ON JOB GET CALL', err.message));
+      //.catch((err) => console.log('ERROR ON JOB GET CALL', err.message));
   };
 
   //function that will render a UserJob component for every job separated by its application status
@@ -89,6 +89,7 @@ const SavedJobs = () => {
           {displayJobs('NeedAction')}
         </div>
         </CardDeck>
+        <br></br>
 
         <h2 className='categories big-label'>Applied To:</h2>
         <h3 className='categories little-label'>Waiting:</h3>
@@ -98,6 +99,7 @@ const SavedJobs = () => {
           {displayJobs('Waiting')}
         </div>
         </CardDeck>
+        <br></br>
 
         <h3 className='categories little-label'>In Progress:</h3>
         
@@ -106,6 +108,7 @@ const SavedJobs = () => {
           {displayJobs('InProgress')}
         </div>
         </CardDeck>
+        <br></br>
 
         <h3 className='categories little-label'>Rejected:</h3>
         <CardDeck> 

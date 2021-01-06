@@ -15,34 +15,33 @@ export const addNetwork = (currentUser, name, company, email, phone, notes) => {
         phone, 
         notes
     })
-    .then(res =>{
-        console.log("adding network response", res)
-    })
-    .catch(err=>{
-        console.log("oh no no no, error in addNetwork", err)
-    })
+    // .then(res =>{
+    //     console.log("adding network response", res)
+    // })
+    // .catch(err=>{
+    //     console.log("oh no no no, error in addNetwork", err)
+    // })
 }
 //Function to delete a contact, grabbing the function from our API(backend)
 export const deleteNetwork = (id) => {
-    console.log()
     return axios
     .delete('http://localhost:8080/deletenetwork/'+ id)
-    .then(response => {
-        console.log('deleted network', response)
-    })
-    .catch(err => {
-        console.log('error with delete network', err)
-    })
+    // .then(response => {
+    //     console.log('deleted network', response)
+    // })
+    // .catch(err => {
+    //     console.log('error with delete network', err)
+    // })
 }
 // Function to edit a contact, grabbing from our API (backend)
 export const editNetwork = (id, name, company, email, phone, notes ) => {
     return axios
     .put('http://localhost:8080/updatenetwork/' +id, {name,company,email,phone,notes})
-    .then(response => {
-        console.log('edited network successfull', response)
-    })
-    .catch(err => {
-        console.log('error with edit network', err)
-    })
+    // .then(response => {
+    //     console.log('edited network successfull', response)
+    // })
+    // .catch(err => {
+    //     console.log('error with edit network', err)
+    // })
 }
 

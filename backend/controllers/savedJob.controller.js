@@ -9,7 +9,6 @@ const User = db.user
 //POST route thats connected to /newsavedjob: will create and save a new job and add it to the current user
 //(THIS IS WORKING, LEAVE IT ALONE)
 exports.saveAJob = (req, res) => {
-  console.log(req.body)
   const savedJob = new SavedJob(req.body);
   savedJob.save();
   User.findById({_id: req.body.id})
@@ -46,7 +45,6 @@ exports.findAllJobs = (req, res) =>{
     }
 
     user.savedJobs.map(job => {
-      console.log(job._id)
       //push all jobs so we have access to all saved jobs to display
       usersJobs.allJobs.push(job);
 
@@ -125,7 +123,6 @@ exports.findJobById = (req, res) =>{
 //NOTE: all three status changes (and two dates) will be together and updated at the same time, need to make sure the previous value is in place when submitting the change 
 //changed the set values to what were passing from the front end 
 exports.updateStatus = (req, res) => {
-  console.log('HITT BACK END')
   const id = req.params.id;
 
   SavedJob.findOne({_id: id})
@@ -163,7 +160,6 @@ exports.updateNote = (req, res)=>{
         {_id: id},
         {"appliedTo.notes": req.body.appliedTo.notes}
     ).then(data => {
-      //console.log("THIS IS THE DATA", data)
         if (!data) {
           res.status(404).send({
             message: `Cannot update notes with id=${id}.`

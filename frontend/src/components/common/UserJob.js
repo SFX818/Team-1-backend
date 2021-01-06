@@ -31,12 +31,11 @@ function UserJob({ job, jobGrabber, status }) {
                 //console.log('specific axios call response', response)
                 setCurrentJob(response.data)
             })
-            .catch(err => {
-                console.log('specific axios call error', err)
-            })
+            // .catch(err => {
+            //     console.log('specific axios call error', err)
+            // })
         } else {
             setCurrentJob(job)
-            console.log('current job after axios check', currentJob);
         }
     }, []) 
 

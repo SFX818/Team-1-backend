@@ -60,7 +60,7 @@ const Profile = () => {
       setTodos(profileData.data.todos);
       //return await response.data;
     } catch (err){
-      console.log('profile get info route error', err)
+      //console.log('profile get info route error', err)
     }
   }
 

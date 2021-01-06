@@ -29,11 +29,11 @@ export const getAdminBoard = () => {
 export const saveTodos = (id, todos) => {
     return axios
     .put('http://localhost:8080/profile/todos', {id, todos})
-    .then(response => {
-        console.log('saveTodos route response', response)
-    })
-    .catch(err => {
-        console.log('saveTodos route error', err)
-    })
+    // .then(response => {
+    //     console.log('saveTodos route response', response)
+    // })
+    // .catch(err => {
+    //     console.log('saveTodos route error', err)
+    // })
 }
 

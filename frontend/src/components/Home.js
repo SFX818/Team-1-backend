@@ -85,13 +85,13 @@ const Home = () => {
   <CardDeck>
   {news.map((article) =>(
   
-    <Card style={{ width: '100rem', height:'25rem'}}> 
-    <Card.Img variant="top" src={article.urlToImage} />
+    <Card className="newsCard"> 
+    <Card.Img className="newsImg" variant="top" src={article.urlToImage} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{article.author}</Card.Subtitle>
           <a href={article.url}>
-          <Button variant="info">See Article</Button>
+          <Button className="glow-on-hover" variant="info">See Article</Button>
           </a>
       </Card.Body>
     </Card>

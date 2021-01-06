@@ -53,6 +53,9 @@ const SavedJobs = () => {
       if(allJobs.inProgressJobs.length === 0 && section === "InProgress"){
         return <div className ='empty-message'>You have no job applications in progress.</div>
       }
+      if(allJobs.waitingJobs.length === 0 && section === "Waiting"){
+        return <div className ='empty-message'>You have no job applications that you are waiting to hear back from.</div>
+      }
 
       if (section === "NeedAction") {
         return allJobs.needActionJobs.map((job, index) => (
@@ -64,6 +67,10 @@ const SavedJobs = () => {
         ));
       } else if (section === "InProgress") {
         return allJobs.inProgressJobs.map((job, index) => (
+          <UserJob job={job} key={index} jobGrabber={jobGrabber} />
+        ));
+      } else if(section === "Waiting"){
+        return allJobs.waitingJobs.map((job, index) => (
           <UserJob job={job} key={index} jobGrabber={jobGrabber} />
         ));
       }
@@ -86,7 +93,15 @@ const SavedJobs = () => {
         </CardDeck>
 
         <h2 className="categories">Applied To:</h2>
-        <h3 className="categories">In Progress/Waiting:</h3>
+        <h3 className="categories">Waiting:</h3>
+        
+        <CardDeck > 
+        <div className="categoryDiv">              
+          {displayJobs("Waiting")}
+        </div>
+        </CardDeck>
+
+        <h3 className="categories">In Progress:</h3>
         
         <CardDeck > 
         <div className="categoryDiv">              

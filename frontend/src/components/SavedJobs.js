@@ -14,10 +14,13 @@ import UserJob from "../components/common/UserJob";
 //css import
 import "../css/profile.css";
 
+
 const SavedJobs = () => {
   const currentUser = getCurrentUser();
   //setting a state that will hold the saved jobs
   const [allJobs, setAllJobs] = useState([]);
+
+  const Spinner = require('react-spinkit');
 
   //use useEffect to run the getJobs function
   useEffect(() => {
@@ -65,7 +68,8 @@ const SavedJobs = () => {
         ));
       }
     } else {
-      return <h1>Loading...</h1>;
+      return <h1><Spinner name="line-scale-pulse-out-rapid" color="teal"/>
+      </h1>;
     }
   };
   return (

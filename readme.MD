@@ -69,7 +69,6 @@ Website Used: [Whimsical](http://whimsical.com)
 
 ### Technologies Used: 
 
-* Node/Express
 * Bcrypt for authentification and password hashing.
 * Mongoose for data structure.
 * MongoDB for data storage.

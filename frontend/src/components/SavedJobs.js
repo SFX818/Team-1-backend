@@ -83,15 +83,15 @@ const SavedJobs = () => {
       <div className='outer-div'>
         <h1 id='userSavedJob'>{currentUser.username}'s Saved Jobs: </h1>
         
-        <h2 className='categories'>Need Action:</h2>
+        <h2 className='categories big-label'>Need Action:</h2>
         <CardDeck> 
         <div className='categoryDiv'>
           {displayJobs('NeedAction')}
         </div>
         </CardDeck>
 
-        <h2 className='categories'>Applied To:</h2>
-        <h3 className='categories'>Waiting:</h3>
+        <h2 className='categories big-label'>Applied To:</h2>
+        <h3 className='categories little-label'>Waiting:</h3>
         
         <CardDeck > 
         <div className='categoryDiv'>              
@@ -99,7 +99,7 @@ const SavedJobs = () => {
         </div>
         </CardDeck>
 
-        <h3 className='categories'>In Progress:</h3>
+        <h3 className='categories little-label'>In Progress:</h3>
         
         <CardDeck > 
         <div className='categoryDiv'>              
@@ -107,7 +107,7 @@ const SavedJobs = () => {
         </div>
         </CardDeck>
 
-        <h3 className='categories'>Rejected:</h3>
+        <h3 className='categories little-label'>Rejected:</h3>
         <CardDeck> 
         <div className='categoryDiv'>
           {displayJobs('Rejected')}

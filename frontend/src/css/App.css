@@ -247,6 +247,7 @@ ul {
 
 #userSavedJob {
   text-align: center;
+  text-decoration: underline teal;
   /* font-family: 'Roboto', sans-serif; */
 }
 

@@ -47,9 +47,9 @@ function AddJob() {
         const userId = currentUser.id;
         //these jobs wont have a jobId but our saveAjob function expects one so we pass in a value, we can then use this to work with the UserJob component
         const jobId = '0';
-        const joburl = 'http://'+ jobUrl;
+        //const joburl = 'https://'+ jobUrl;
         //passed in values are coming from the state
-        saveAJob(userId, jobId, location, company, jobTitle, joburl)
+        saveAJob(userId, jobId, location, company, jobTitle, jobUrl)
         //set all values back to empty strings so that user can begin adding a new job
         setLocation('');
         setCompany('');
@@ -61,13 +61,14 @@ function AddJob() {
         <div id='form-div'>
             <br></br>
             <br></br>
-            <h2>Add a Job to Keep Track:</h2>
+            <h2 id='add-job-title'>Add a Job to Keep Track:</h2>
             <h5>
                 To update the job application status, visit your<span id='hide'>_</span> 
                 <Link to={'/profile/savedjobs'} id='saved-job-link'>
-                My Saved Jobs Page.
+                My Saved Jobs Page
                 </Link> 
             </h5>
+            <br></br>
             <Form className = "form">
                 <FormGroup text="jobTitle">
                     <Form.Control

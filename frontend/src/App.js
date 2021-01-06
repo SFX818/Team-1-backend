@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import Landing from './components/Landing'
 import SavedJobs from './components/SavedJobs'
 import Network from './components/Network'
+import AddJob from './components/AddJob'
 
 // CSS imports
 import "./css/App.css";
@@ -25,6 +26,7 @@ const App = () => {
        <Route exact path="/jobsearch" component={Landing}/>
        <Route exact path="/profile/savedjobs" component={SavedJobs}/>
        <Route exact path="/profile/network" component={Network}/>
+       <Route exact path="/addjob" component={AddJob}/>
      </Switch>
     </Layout>
   );

@@ -154,7 +154,11 @@ header {
   color: black;
 }
 
-#job-search-link:hover {
+#saved-job-link {
+  color: teal
+}
+
+#job-search-link:hover, #saved-job-link:hover {
   color: white;
 }
 

@@ -3,9 +3,9 @@ import axios from 'axios';
 
 
 
-export const saveAJob = (id, jobId, location, company, jobTitle) => {
+export const saveAJob = (id, jobId, location, company, jobTitle, jobUrl) => {
     return axios
-    .post('http://localhost:8080/newsavedjob', {id, jobId, location, company, jobTitle})
+    .post('http://localhost:8080/newsavedjob', {id, jobId, location, company, jobTitle, jobUrl})
     .then(response => {
         console.log('post response', response);
     })

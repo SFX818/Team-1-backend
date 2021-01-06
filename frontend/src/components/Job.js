@@ -17,17 +17,15 @@ export default function Job({ job}) {
     useEffect(() => {
         setCurrentUser(currentUser.id)
     },[])
-    console.log(currentUser)
-    
 
     const saveThisJob = (job) => {
         const jobId = job.id
         const location = job.location;
         const company = job.company;
         const jobTitle = job.title;
-        saveAJob(currentUser, jobId, location, company, jobTitle)
+        const jobUrl = job.url;
+        saveAJob(currentUser, jobId, location, company, jobTitle, jobUrl)
     }
-    // console.log("HAAAAAAAAAAAAAAAAAAAAAAAAA", job, "LOCATION", job.location, job.company, job.title)
 
     return (
         <Card>

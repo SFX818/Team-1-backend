@@ -50,18 +50,6 @@ currentUser = currentUser.id
  const onChangeNote = (e) => {
   const notes = e.target.value
   setNote(notes)
-  //NOTE: messing arround with notes as an array
-  // const note = e.target.value
-  // const notes = [];
-  // console.log('note', note.split(''));
-  // let noteArr = note.split('');
-  // noteArr.map((letter, i, arr) => {
-  //   if(letter === '$'){
-  //     notes.push((arr.splice(0,i)).join(''))
-  //   }
-  //   console.log('notes', notes);
-  // })
-  // setNote(note)
 };
 
 // Adds a new network onClick{handleSubmit} with the help of the addNetwork function created in networkform.services.js
@@ -144,11 +132,7 @@ return (
           <Button variant="flat" size="xl" onClick={handleSubmit} id='add-net-btn'>Submit</Button>
         </Form>
   </div>
-          
-
-                        
-          
-        )
+  )
 }
 
 export default NetworkForm

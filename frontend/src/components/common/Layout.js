@@ -28,44 +28,28 @@ const Layout = (props) => {
       <nav id="nav" className="navbar navbar-expand navbar-dark bg-dark">
         {currentUser ?   
            <Link to="/" className="navbar-brand">
-                     <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
-
+              <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' alt='.find(career)'/>
           </Link> 
         :
-        <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
-
+        <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' alt='.find(career)'/>
         }
    
         <div className="navbar-nav mr-auto">
-          {currentUser && (
-
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
-              
-            </Link>
-          </li>
-            
-          )}
-          {/* <li className="nav-item">
-            <Link to={"/profile/network"} className="nav-link">
-              My Network
-            </Link>
-          </li> */}
-          {showAdminBoard && (
+          {/* {showAdminBoard && (
             <li className="nav-item">
-              {/* <Link to={"/admin"} className="nav-link">
+               <Link to={"/admin"} className="nav-link">
                 Admin Board
-              </Link> */}
+              </Link> 
             </li>
-          )}
+          )} */}
 
-          {currentUser && (
+          {/* {currentUser && (
             <li className="nav-item">
-              {/* <Link to={"/user"} className="nav-link">
+               <Link to={"/user"} className="nav-link">
                 User
-              </Link> */}
+              </Link> 
             </li>
-          )}
+          )} */}
         </div>
         {currentUser ? (
           <div className="navbar-nav ml-auto">
@@ -75,21 +59,28 @@ const Layout = (props) => {
               </Link>
             </li> */}
             <Dropdown>
-  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-   {currentUser.username}
-  </Dropdown.Toggle>
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+              {currentUser.username}
+              </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
-    <Dropdown.Item href="/profile/network">My Network</Dropdown.Item>
-    <Dropdown.Item href="/profile/savedjobs">My Saved Jobs</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
+                <Dropdown.Item href="/profile/network">My Network</Dropdown.Item>
+                <Dropdown.Item href="/profile/savedjobs">My Saved Jobs</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
             <li className="nav-item">
-            <Link to={"/jobsearch"} className="nav-link">
-              JobSearch
-            </Link>
-          </li>
+              <Link to={"/jobsearch"} className="nav-link">
+                Job Search
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/addjob"} className="nav-link">
+                Add Job
+              </Link>
+            </li>
+
             <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
                   Logout

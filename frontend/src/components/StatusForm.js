@@ -1,6 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import { MDBBtn, MDBIcon } from "mdbreact";
+import ReactTooltip from 'react-tooltip';
 
 //import function
 import { updateJobStatus, deleteJob } from '../services/savedjob.service'
@@ -72,10 +73,23 @@ function StatusForm({ job, jobGrabber }) {
             <Button variant="outline-warning" onClick= {() => rejectedFrom(job)}> Rejected</Button>
             <Button variant="outline-dark" onClick= {() => removeJob(job)}>Remove Job</Button> */}
             <div id='status-icons'>
-                <input type='image' src='../../images/appliedTo.png' height='30' onClick= {() => appliedTo(job)}></input>
-                <input type='image' src='../../images/ear.png' height='30' onClick= {() => heardBack(job)}></input>
-                <input type='image' src='../../images/X.png' height='30' onClick= {() => rejectedFrom(job)}></input>
-                <input type='image' src='../../images/delete.png' height='30' onClick= {() => removeJob(job)}></input>
+                
+                <input data-tip data-for='appliedTo' type='image' src='../../images/appliedTo.png' height='30' onClick= {() => appliedTo(job)}></input>
+                <ReactTooltip id='appliedTo'>
+                    <span>Applied To</span>
+                </ReactTooltip>
+                <input data-tip data-for='didnothearBack' type='image' src='../../images/ear.png' height='30' onClick= {() => heardBack(job)}></input>
+                <ReactTooltip id='didnothearBack'>
+                    <span>Heard Back</span>
+                </ReactTooltip>
+                <input data-tip data-for='rejected' type='image' src='../../images/X.png' height='30' onClick= {() => rejectedFrom(job)}></input>
+                <ReactTooltip id='rejected'>
+                    <span>Rejected</span>
+                </ReactTooltip>
+                <input data-tip data-for='remove' type='image' src='../../images/delete.png' height='30' onClick= {() => removeJob(job)}></input>
+                <ReactTooltip id='remove'>
+                    <span>Remove Job</span>
+                </ReactTooltip>
             </div>
 
 

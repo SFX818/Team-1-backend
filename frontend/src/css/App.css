@@ -434,27 +434,15 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-<<<<<<< HEAD
-  background:transparent;
-=======
   background: transparent;
->>>>>>> 8b78a453591538920aa48b73552920bfbc5f85e3
 }
 
 ::-webkit-scrollbar-thumb {
   background: teal;
 }
-<<<<<<< HEAD
-
 ::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0);
 }
-
-=======
-::-webkit-scrollbar-corner {
-  background: rgba(0, 0, 0, 0);
-}
->>>>>>> 8b78a453591538920aa48b73552920bfbc5f85e3
 #glow {
   height: 5vw;
   /* margin-left:10%; */
@@ -531,18 +519,12 @@ ul {
   z-index: -1;
 }
 
-
-#fakePie{
-
-  margin-left:-6.5vw;
+#fakePie {
+  margin-left: -6.5vw;
 }
 
-
-#fakePieDiv{
-
+#fakePieDiv {
 }
-
-
 
 #stats2 {
   text-decoration: underline rgb(183, 198, 199);
@@ -552,5 +534,5 @@ ul {
   padding-bottom: 2vw;
   text-align: center;
   font-size: 2.5vw;
-  margin-left:-4vw;
+  margin-left: -4vw;
 }

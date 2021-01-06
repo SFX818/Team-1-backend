@@ -39,6 +39,7 @@ exports.findAllJobs = (req, res) =>{
       allJobs: [],
       appliedToJobs: [],
       heardBackJobs: [],
+      waitingJobs: [],
       deniedFromJobs: [],
       needActionJobs: [],
       inProgressJobs: []
@@ -56,6 +57,8 @@ exports.findAllJobs = (req, res) =>{
         //if user has applied, check if they have heard back
         if(job.heardBack.status === true) {
           usersJobs.heardBackJobs.push(job)
+        } else if(job.heardBack.status === false){
+          usersJobs.waitingJobs.push(job)
         }
 
         // If user has applied, check if they have been denied
@@ -80,8 +83,7 @@ exports.findAllJobs = (req, res) =>{
   })
 }
 
-//DELETE based on :id   (working)
-//(THIS IS WORKING, LEAVE IT ALONE)
+//DELETE based on :id   
 exports.delete = (req, res) =>{
   const id = req.params.id
   SavedJob.remove(

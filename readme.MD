@@ -17,6 +17,7 @@ In addition, our application helps the user stay organized and track their progr
 
 ### User Story: 
 As a user: 
+* Be able to read the latest tech news.
 * Be able to view and choose jobs by specific coding language(s) and location.
 * Be able to save favorite jobs.
 * Be able to set and keep track of weekly goals.
@@ -27,6 +28,15 @@ As a user:
 
 ### Landing Page
 ![Screen Shot 2021-01-05 at 9 19 33 PM](https://user-images.githubusercontent.com/69171194/103722180-681b2000-4f9d-11eb-9b4e-d43692200ea8.png)
+
+### Job Search Page
+![Screen Shot 2021-01-05 at 9 59 43 PM](https://user-images.githubusercontent.com/69171194/103724056-7f5c0c80-4fa1-11eb-899f-12f56f1967c2.png)
+
+
+### Network Page 
+![Screen Shot 2021-01-05 at 9 56 16 PM](https://user-images.githubusercontent.com/69171194/103723843-fe047a00-4fa0-11eb-8fb8-2eb3e534737a.png)
+
+
 
 
  ### Wireframe: 
@@ -58,6 +68,7 @@ Website Used: [Whimsical](http://whimsical.com)
 * Bcrypt for authentification and password hashing.
 * Mongoose for data structure.
 * MongoDB for data storage.
+* React 
 * Axios for API calls/fetch data.
 * CSS and Bootstrap for styling
 * HTML for basic structure
@@ -96,7 +107,10 @@ Role | name
 
 
 
+### Unsolved problems/Major Hurdles
 
+* Pie chart 
+* 
 
 
 

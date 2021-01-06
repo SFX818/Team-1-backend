@@ -6,6 +6,8 @@ import Job from './Job'
 import JobsPagination from './JobsPagination'
 import SearchForm from './SearchForm'
 
+import '../css/App.css'
+
 const Landing = () => {
     // passing in params and page numbers to set the state to original status, empty object meaning no results bc no search has been made yet and default page 1 
     const [params, setParams] = useState({})
@@ -25,10 +27,8 @@ const Landing = () => {
     return (
         <Container>
             <br></br>
-            <img id="logo" src='https://i.postimg.cc/cCzTyBXD/a2390cc5-18a7-48e0-af19-2d4a76be7ad9-200x200.png' />
             <br></br>
-            <br></br>
-            <h2 className='mb-4'>returned(results):</h2>
+            <h2 className='mb-4' id='search-title'>returned(results):</h2>
             <SearchForm params={params} onParamChange={handleParamChange} />
             <p>Don't see the job you want to save? Add and keep track of your own job's<span id='hide'>_</span>
                 <Link to={'/addjob'} id='saved-job-link'>

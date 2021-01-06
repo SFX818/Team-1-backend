@@ -90,7 +90,7 @@ const Home = () => {
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{article.author}</Card.Subtitle>
-          <a href={article.url}>
+          <a href={article.url} target='_blank' rel="noreferrer">
           <Button className="glow-on-hover" variant="info">See Article</Button>
           </a>
       </Card.Body>

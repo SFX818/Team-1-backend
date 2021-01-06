@@ -64,7 +64,7 @@ function UserJob({ job, jobGrabber, status }) {
 
                     {/* another conditional to check if its the job from the API or a job from user input */}
                     {job.jobId === '0' ? 
-                        <a href={currentJob.jobUrl} target='_blank'>Check Out the Job Posting</a>
+                        <a href={currentJob.jobUrl} target='_blank' rel="noreferrer">Check Out the Job Posting</a>
                     :
                     <div>
                         <div id='date-type'>

@@ -70,7 +70,8 @@ header {
   margin: auto;
   white-space: nowrap;
   padding-bottom: 50px;
-  color: rgb(127, 180, 180);
+  /* color: rgb(127, 180, 180); */
+  color: white;
   margin-left: 30%;
 }
 .twelve #h1:before {
@@ -192,5 +193,8 @@ header {
 
 #add-job-title {
   text-decoration: underline teal;
+}
 
+#search-title {
+  text-decoration: underline teal;
 }

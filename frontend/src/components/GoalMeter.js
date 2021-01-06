@@ -31,7 +31,6 @@ function GoalMeter({codingGoal, codingProgress, appGoal, appProgress, changeCodi
 
     return (
         <div id="goals">
-            {/* <h4>Coding Goals:</h4> */}
           <p id="goalText">  Set a Coding Goal: </p> 
             <Select options={goalOptions} onChange={(event)=> {changeCodingGoal(event)}}/>
 
@@ -60,12 +59,10 @@ function GoalMeter({codingGoal, codingProgress, appGoal, appProgress, changeCodi
               <button  className="minus" onClick={(event) => {changeGoalProgress("subtract")}}>{" "}-{" "} </button>
               <button className="plus" onClick={(event) => {changeGoalProgress("add")}}>{" "}+{" "} </button>
             </div>
+            <br></br>
 
-            {/* <h4>Job Application Goals:</h4> */}
-            <div id="appTextDiv">
-            Set an Application Goal:
+            <p id="goalText">  Set an Application Goal: </p> 
             <Select options={goalOptions} onChange={(event)=> {changeAppGoal(event)}}/>
-              </div> 
             <Progress
               theme={{
                 success: {
@@ -87,7 +84,7 @@ function GoalMeter({codingGoal, codingProgress, appGoal, appProgress, changeCodi
 
             <div id="goalTextDiv">
               {" "}
-            Completed: {appProgress} &nbsp;  Goal: {appGoal} &nbsp; &nbsp; 
+              Completed: {appProgress} &nbsp;  Goal: {appGoal} &nbsp; &nbsp; 
               <button  className="minus" onClick={(event) => {changeAppProgress("subtract")}}>{" "}-{" "} </button>
               <button  className="plus" onClick={(event) => {changeAppProgress("add")}}>{" "}+{" "} </button>
             </div>

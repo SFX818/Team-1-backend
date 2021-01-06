@@ -15,26 +15,21 @@ function PieCharts({allJobs}) {
                 data={[
                   {
                     title: "Heard Back: ",
-                    value: allJobs[0].heardBackJobs.length || 10,
+                    value: allJobs[0].heardBackJobs.length,
                     color: "#20B2AA",
                   },
                   {
                     title: "Waiting: ",
-                    value:
+                    value: 
                       allJobs[0].appliedToJobs.length -
                       allJobs[0].heardBackJobs.length,
                     color: "#90EE90",
                   },
                 ]}
-                //   label={({ dataEntry }) => dataEntry.title}
-                label={({ dataEntry }) =>{
-                if (dataEntry.percentage === 0){
-                return  `${dataEntry.title} ${Math.round(dataEntry.percentage=100)} %`
-                }else{
-                    return `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
+                  // label={({ dataEntry }) => dataEntry.title}
+                label={({ dataEntry }) =>
+               `${dataEntry.title} ${Math.round(dataEntry.percentage)} %`
                 }
-                }
-              }
               />
             </div>
 
@@ -49,12 +44,12 @@ function PieCharts({allJobs}) {
                 data={[
                   {
                     title: "Moved Fwrd: ",
-                    value: allJobs[0].inProgressJobs.length || 100,
+                    value: allJobs[0].inProgressJobs.length,
                     color: "#DB7093",
                   },
                   {
                     title: "Rejected: ",
-                    value: allJobs[0].deniedFromJobs.length || 0,
+                    value: allJobs[0].deniedFromJobs.length,
                     color: "#ff000080",
                   },
                 ]}

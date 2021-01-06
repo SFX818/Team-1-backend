@@ -40,7 +40,6 @@ exports.editTodos = (req, res) => {
 exports.setGoals = (req, res) => {
     User.findOne({_id: req.body.id})
     .then(theGoal =>{
-        console.log("THIS IS THE GOAL", theGoal)
         const codingGoal = req.body.codingGoal === null ? theGoal.codingGoal.goal : req.body.codingGoal;
         const codingProgress = req.body.codingProgress === null ? theGoal.codingGoal.progress : req.body.codingProgress;
         const appGoal = req.body.appGoal === null ? theGoal.appGoal.goal : req.body.appGoal;

@@ -6,7 +6,7 @@ import { MDBBtn, MDBIcon } from "mdbreact";
 import { updateJobStatus, deleteJob } from '../services/savedjob.service'
 
 //css import 
-import '../css/App.css'
+import '../css/profile.css'
 
 //status form needs 3 buttons (and maybe allowing users to set dates for interviews)
 
@@ -67,10 +67,18 @@ function StatusForm({ job, jobGrabber }) {
     return (
         
         <div>
-            <Button variant="outline-danger" onClick= {() => appliedTo(job)}>Applied To</Button>
+            {/* <Button variant="outline-danger" onClick= {() => appliedTo(job)}>Applied To</Button>
             <Button variant="outline-secondary" onClick= {() => heardBack(job)} >Heard Back</Button>
             <Button variant="outline-warning" onClick= {() => rejectedFrom(job)}> Rejected</Button>
-            <Button variant="outline-dark" onClick= {() => removeJob(job)}>Remove Job</Button>
+            <Button variant="outline-dark" onClick= {() => removeJob(job)}>Remove Job</Button> */}
+            <div id='status-icons'>
+                <input type='image' src='../../images/appliedTo.png' height='30' onClick= {() => appliedTo(job)}></input>
+                <input type='image' src='../../images/ear.png' height='30' onClick= {() => heardBack(job)}></input>
+                <input type='image' src='../../images/X.png' height='30' onClick= {() => rejectedFrom(job)}></input>
+                <input type='image' src='../../images/delete.png' height='30' onClick= {() => removeJob(job)}></input>
+            </div>
+
+
         </div>
         
     )

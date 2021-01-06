@@ -19,6 +19,7 @@ import PieCharts from '../components/PieCharts';
 import Todos from '../components/Todos';
 
 
+
 const Profile = () => {
   const [allJobs, setAllJobs] = useState([]);
   const [currentUser, setCurrentUser] = useState('');
@@ -27,6 +28,8 @@ const Profile = () => {
   const [appGoal, setAppGoal] = useState('');
   const [appProgress, setAppProgress] = useState('');
   const [todos, setTodos] = useState([]);
+
+  const Spinner = require('react-spinkit');
 
 
   //use useEffect to make calls to the backend and return users job and profile info
@@ -194,7 +197,7 @@ const Profile = () => {
       </div>
     );
   }
-  return <div> loading </div>;
+  return <div> <Spinner name="three-bounce" color="goldenrod"/> </div>;
 };
 
 export default Profile;

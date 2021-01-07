@@ -135,34 +135,38 @@ const Profile = () => {
 
   const listJobs = () => {
     if (allJobs.length > 0) {
-      return allJobs[0].allJobs.map((job, index) => {
-        
-        if(allJobs[0].allJobs.length === 0){
-          return <div id="card" key={index}>
-            <Card body>
-            <p>You currently do not have any jobs saved.</p>
-            <Link to={'/jobsearch'} id='saved-job-link'>
-              <p>Search for jobs on our Job Search. </p>
-            </Link> 
-            <Link to={'addjob'} id='saved-job-link'>
-              <p>Or add a job to your collection.</p>
-            </Link> 
-           </Card>
-          </div>
-        } else {
-          return <div id="card" key={index}>
+      if(allJobs[0].allJobs.length === 0){
+        return <div id="card">
           <Card body>
-            <ul>
-              <li key={index}>
-                {" "}
-                <b> Company:</b> {job.company} <br></br> <b> Job Title:</b>{" "}
-                {job.jobTitle}
-              </li>
-            </ul>
+          <p>You currently do not have any jobs saved.</p>
+          <p>Search for jobs on our<span id='hide'>_</span>  
+          <Link to={'/jobsearch'} id='saved-job-link'>
+            Job Search.
+          </Link> 
+          </p>
+          <p>Or<span id='hide'>_</span>
+            <Link to={'addjob'} id='saved-job-link'>
+            Add a Job
+           </Link> 
+           <span id='hide'>_</span>to your collection.</p>
+          
           </Card>
         </div>
-        }
-      });
+      } else {
+        return allJobs[0].allJobs.map((job, index) => (
+          <div id="card" key={index}>
+            <Card body>
+              <ul>
+                <li key={index}>
+                  {" "}
+                  <b> Company:</b> {job.company} <br></br> <b> Job Title:</b>{" "}
+                  {job.jobTitle}
+                </li>
+              </ul>
+            </Card>
+          </div>
+        ));
+      }
     } 
   };
 

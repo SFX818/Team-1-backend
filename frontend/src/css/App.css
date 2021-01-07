@@ -525,6 +525,15 @@ ul {
 }
 
 #fakePieDiv {
+  width: 100%;
+}
+
+#fake-pie-text {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  margin-left: -6.5vw;
+  text-align: center;
 }
 
 #stats2 {

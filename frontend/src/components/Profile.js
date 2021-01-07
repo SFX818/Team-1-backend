@@ -135,8 +135,22 @@ const Profile = () => {
 
   const listJobs = () => {
     if (allJobs.length > 0) {
-      return allJobs[0].allJobs.map((job, index) => (
-        <div id="card" key={index}>
+      return allJobs[0].allJobs.map((job, index) => {
+        
+        if(allJobs[0].allJobs.length === 0){
+          return <div id="card" key={index}>
+            <Card body>
+            <p>You currently do not have any jobs saved.</p>
+            <Link to={'/jobsearch'} id='saved-job-link'>
+              <p>Search for jobs on our Job Search. </p>
+            </Link> 
+            <Link to={'addjob'} id='saved-job-link'>
+              <p>Or add a job to your collection.</p>
+            </Link> 
+           </Card>
+          </div>
+        } else {
+          return <div id="card" key={index}>
           <Card body>
             <ul>
               <li key={index}>
@@ -147,8 +161,9 @@ const Profile = () => {
             </ul>
           </Card>
         </div>
-      ));
-    }
+        }
+      });
+    } 
   };
 
   if (allJobs.length > 0) {
@@ -158,9 +173,6 @@ const Profile = () => {
         <div className="twelve">
   <h1 id="h1"> {currentUser.username}'s Profile</h1>
 </div>
-          {/* <h3 id="user">
-            <strong> Welcome {currentUser.username} </strong>
-          </h3> */}
         </header>
 
         <h2>{allJobs.appliedToJobs && allJobs.appliedToJobs[0].company}</h2>

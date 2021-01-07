@@ -59,12 +59,8 @@ function PieCharts({ allJobs }) {
 return <div id="fakePieDiv">  
   <h2 id="stats2"> Stats: </h2>
  <img id="fakePie" style={{ height: "130%", width: "130%" }} src="https://i.imgur.com/BbVwLvl.png"></img>
- {/* <p>All Saved Jobs: {allJobs[0].allJobs.length} </p> */}
- <p>Jobs You Haven't Applied To: {allJobs[0].needActionJobs.length}</p>
- <p>Jobs You've Applied To: {allJobs[0].appliedToJobs.length}</p>
- <p>Jobs You've Heard Back From: {allJobs[0].heardBackJobs.length}</p>
- {/* <p>Jobs Waiting/In Progress: {allJobs[0].inProgressJobs.length + allJobs[0].waitingJobs.length}</p> */}
- <p>Jobs with Rejections: {allJobs[0].deniedFromJobs.length}</p>
+ <p>You've applied to {allJobs[0].appliedToJobs.length} jobs</p>
+ <p>You've heard back from {allJobs[0].heardBackJobs.length} jobs</p>
  </div>;
 }
 export default PieCharts;

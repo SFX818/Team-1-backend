@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "team-1-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Link to deployed site:",
   "main": "server.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,8 +14,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SFX818/Team-1-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SFX818/Team-1-backend/issues"
+  },
+  "homepage": "https://github.com/SFX818/Team-1-backend#readme"
 }

@@ -12,7 +12,7 @@ require('dotenv').config()
 app.use(cors()); /*  Use here   */
 
 
-// parse requests of content-type - application/json
+// parse requests of content-type - application/
 app.use(bodyParser.json())
 
 // parse request of content type = application/x-www-form-urlencoded

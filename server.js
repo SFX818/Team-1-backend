@@ -28,7 +28,11 @@ const dbURI = process.env.MONGODB_URI || `mongodb://${dbConfig.HOST}:${dbConfig.
 const SavedJob = db.savedJob;
 
 // connect to mongo database
-db.mongoose.connect(dbURI, {
+// db.mongoose.connect(dbURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+  db.mongoose.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

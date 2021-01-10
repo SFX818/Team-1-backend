@@ -33,7 +33,7 @@ db.mongoose.connect(dbURI, {
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Successfully connect to MongoDB.");
+    console.log(dbURI,"Successfully connect to MongoDB.");
     initial();
   })
   .catch(err => {

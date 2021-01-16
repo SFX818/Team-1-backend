@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser') 
 const dbConfig = require('./config/db.config')
 const mongoose = require("mongoose");
-require('dotenv').config()
+// require('dotenv').config()
 //to prevent unanthorixed endpoints in the browser
 const cors = require("cors"); /*  Require here   */
 
@@ -10,7 +10,7 @@ const cors = require("cors"); /*  Require here   */
 const app = express()  
 
 app.use(cors()); /*  Use here   */
-
+require('dotenv').config()
 
 // parse requests of content-type - application/
 app.use(bodyParser.json())
